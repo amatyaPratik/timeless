@@ -1,0 +1,41 @@
+#tabsandfilters a {
+  text-decoration: none;
+  color: black;
+}
+
+#tabsandfilters {
+  padding: 13px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  border-bottom: 1px solid grey;
+}
+
+#tabsandfilters .search-tab.active {
+  border-bottom: 3px solid black;
+}
+
+#searchbar {
+  background-image: url(../res/images/icons/songs/search-black.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  background-color: #d2d2d2;
+  padding: 10px 36px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+#searchbar:focus {
+  background-color: #fff;
+}
+
+#genre-selector,
+#sort-selector {
+  display: inline-block;
+}
+
+select {
+  font-size: 15px;
+  text-align: center;
+}

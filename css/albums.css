@@ -1,0 +1,211 @@
+#albums-page {
+  height: 100vh;
+}
+
+#albums-section {
+  /* height: 100%; */
+  padding-left: 1%;
+}
+.albums-card {
+  float: left;
+  margin: 15px;
+  width: 150px;
+  height: max-content;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 2px;
+  /* border-radius: 0 30px 0 0; */
+}
+
+.album-cover {
+  width: 150px;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.cover-a {
+  background-image: url(../album-covers/a.png);
+}
+.cover-b {
+  background-image: url(../album-covers/b.png);
+}
+.cover-c {
+  background-image: url(../album-covers/c.png);
+}
+.cover-d {
+  background-image: url(../album-covers/d.png);
+}
+
+.cover-e {
+  background-image: url(../album-covers/e.png);
+}
+.cover-f {
+  background-image: url(../album-covers/f.png);
+}
+.cover-g {
+  background-image: url(../album-covers/g.png);
+}
+.cover-h {
+  background-image: url(../album-covers/h.png);
+}
+
+.cover-i {
+  background-image: url(../album-covers/i.png);
+}
+.cover-j {
+  background-image: url(../album-covers/j.png);
+}
+.cover-k {
+  background-image: url(../album-covers/k.png);
+}
+
+.cover-l {
+  background-image: url(../album-covers/l.png);
+}
+.cover-m {
+  background-image: url(../album-covers/m.png);
+}
+.cover-n {
+  background-image: url(../album-covers/n.png);
+}
+.cover-o {
+  background-image: url(../album-covers/o.png);
+}
+
+.cover-p {
+  background-image: url(../album-covers/p.png);
+}
+.cover-q {
+  background-image: url(../album-covers/q.png);
+}
+.cover-r {
+  background-image: url(../album-covers/r.png);
+}
+
+.album-info .title {
+  font-size: 18px;
+  max-width: 100%;
+  height: 30px;
+  /* overflow: hidden; */
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+.album-info .artist {
+  font-size: 14px;
+}
+
+.album-link {
+  color: blueviolet;
+}
+
+#album-overlay {
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  width: 603px;
+  height: 400px;
+  background-color: #e5e5e5;
+  border-radius: 10px;
+  filter: drop-shadow(0px 0px 10px #000);
+}
+#top {
+  display: flex;
+  height: 15%;
+  align-items: center;
+  justify-content: space-around;
+}
+button.favorite-btn {
+  /* width: 5%; */
+  /* position: absolute */
+  width: 20px;
+  height: 20px;
+  background-image: url(../res/images/sprites/not-favorite.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+#main-section {
+  position: relative;
+  height: 75%;
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#main-section #cover-art {
+  width: 50%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-image: url(../album-covers/a.png);
+}
+#main-section #songs {
+  width: 50%;
+  height: 100%;
+}
+#songs label {
+  font-size: 13px;
+  color: #000;
+}
+#main-section #thin-scroller {
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background-color: #d2d2d2;
+  top: 0;
+  right: 0;
+  /* bottom: 0; */
+}
+#songs label[for="sn"] {
+  width: 15%;
+  display: inline-block;
+  text-align: right;
+  padding: 5px 0;
+  /* border: 1px solid violet; */
+}
+#songs label[for="songs"] {
+  /* width: %; */
+  /* color: green; */
+  display: inline-block;
+  margin-left: 20px;
+  padding: 5px 0;
+  /* border: 1px solid violet; */
+}
+table {
+  /* text-align: center; */
+}
+table td {
+  padding: 3px 0;
+}
+table#songs-in-album tr td.sn {
+  width: 20%;
+  text-align: right;
+  /* border: 1px solid violet; */
+}
+table#songs-in-album tr td.song-title {
+  width: 80%;
+  padding: 0 0 0 20px;
+  /* color: violet; */
+  /* border: 1px solid violet; */
+}
+
+#bottom {
+  /* clear: both; */
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* border: 1px solid violet; */
+  font-size: 13px;
+  font-weight: 300;
+}

@@ -1,0 +1,126 @@
+.progress-n-favorite {
+  margin-left: 32%;
+  margin-top: 19%;
+  position: relative;
+  width: 35%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* background-color: #fff; */
+}
+.progress-n-favorite button {
+  width: 26px;
+  height: 26px;
+}
+
+#progress-bar {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  /* border: 1px solid firebrick; */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+}
+input[type="range"]#progress {
+  height: 8px;
+  width: 100%;
+  -webkit-appearance: none;
+  outline: none;
+  border: none;
+  border: 1px solid gainsboro;
+  border-radius: 2px;
+  background-color: transparent;
+  overflow: visible;
+}
+
+#progress-bar input::-webkit-progress-value {
+  background-color: blue;
+  color: blue;
+}
+#progress-bar input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  -webkit-appearance: none;
+  background-color: blue;
+  /* margin-top: 50px; */
+}
+
+#progress-bar input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 6px;
+  height: 26px;
+  background-color: lime;
+  border-radius: 5%;
+  transform: translateY(-30%);
+}
+
+/* small#timeHint {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  font-size: 11px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transform: scale(0);
+  transform-origin: bottom;
+  z-index: 3;
+  transition: all 0.3s;
+} */
+
+small#timeHint.show {
+  transform: scale(1);
+}
+
+small#timeHint::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: royalblue;
+  transform: rotate(45deg);
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+}
+small#progress-time {
+  position: absolute;
+  left: -35px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transform: scale(0);
+  /* bottom: -40px; */
+  background-color: inherit;
+  z-index: 4;
+}
+small#end-time {
+  position: absolute;
+  right: -35px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transform: scale(0);
+  /* bottom: -40px; */
+  z-index: 4;
+}
+
+#progress-time.show,
+#end-time.show {
+  font-size: 11px;
+  transform: scale(1);
+  /* background-color: #fff; */
+  filter: drop-shadow(0px 0px 40px white);
+  backdrop-filter: blur(13px);
+  color: chartreuse;
+  border-color: rgba(255, 255, 255, 0.9);
+  /* transform: translateY(50%); */
+}

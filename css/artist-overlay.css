@@ -1,0 +1,229 @@
+#artist-overlay {
+  position: absolute;
+  display: none;
+  border-radius: 10px;
+  width: 949px;
+  height: 584px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e5e5e5;
+  filter: drop-shadow(0px 0px 10px #000);
+  z-index: 99;
+  transition: all 400ms;
+}
+#info-left {
+  border-radius: 10px 0 0 0;
+  width: 50%;
+  height: 100%;
+  float: left;
+  position: relative;
+  border-right: 2px solid darkslategray;
+  /* background-color: #000; */
+  /* border: 1px solid grey; */
+}
+#info-left #cover-image {
+  /* border-radius: 10px; */
+  position: relative;
+  height: 65%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  /* background-color: #fff; */
+  border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+#info-left .cover-image img {
+  /* position: absolute;
+    top: 50%; */
+  /* border: 1px solid grey; */
+}
+#info-left #albums {
+  /* position: relative; */
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  gap: 0 2px;
+  bottom: 0;
+  height: 25%;
+  width: 100%;
+  /* overflow-x: scroll; */
+  background-color: #ab633b;
+}
+#info-right {
+  width: 49%;
+  height: 100%;
+  float: left;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 10px 0 0;
+  border-left: 2px solid darkslategray;
+  /* border: 1px solid black; */
+  text-overflow: clip;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -ms-overflow-style: initial; /* IE and Edge */
+  scrollbar-width: initial; /* Firefox */
+}
+*::-webkit-scrollbar {
+  display: initial;
+}
+
+#info-left .info-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 10%;
+}
+#info-left .info-top h1#artist-name {
+  /* width: 80%; */
+  /* font-size: 20px; */
+}
+#info-left .info-top button.favorite {
+  /* width: 5%; */
+  width: 20px;
+  height: 20px;
+  background-image: url(../res/images/sprites/not-favorite.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#info-right ul.songs-by-artist {
+  width: 100%;
+  position: absolute;
+  /* height: 10%; */
+
+  display: inline-block;
+}
+#info-right ul.songs-by-artist li {
+  cursor: pointer;
+  margin: 8px 0;
+  /* padding: 0 20px; */
+  text-align: right;
+}
+
+#info-right .lite-scroller {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  background-color: #d2d2d2;
+  display: inline-block;
+  cursor: pointer;
+}
+.lite-scroller .scroll-handle {
+  height: 30px;
+  width: 100%;
+  background-color: darkslategrey;
+  border-radius: 5%;
+}
+
+#albums small {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  width: 100%;
+  text-align: center;
+  color: #000;
+  padding-top: 2px;
+  text-decoration: underline;
+}
+#albums .chevron-next {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50px;
+  width: 50px;
+  background-image: url(../res/images/icons/round-chevron-next.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 100ms;
+  filter: drop-shadow(0px 0px 10px #000000);
+}
+#albums .chevron-next:hover {
+  opacity: 1;
+  filter: drop-shadow(0px 0px 10px #fff);
+}
+.album-card {
+  width: 150px;
+  height: 120px;
+  display: inline-block;
+
+  /* border: 1px solid forestgreen; */
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+}
+
+.album-card .album-cover {
+  height: 80%;
+  width: 100%;
+  /* max-width: 300px; */
+  /* display: block; */
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+}
+
+.album-card.a .album-cover {
+  background-image: url(../album-covers/Whomadewho.jpg);
+}
+.album-card.b .album-cover {
+  background-image: url(../album-covers/a.png);
+}
+.album-card.c .album-cover {
+  background-image: url(../album-covers/ACDCPowerUp.jpg);
+}
+.album-card.d .album-cover {
+  background-image: url(../album-covers/Acdc_Highway_to_Hell.jpg);
+}
+
+.album-card .album-title {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 5px 0;
+  line-height: 14px;
+  color: #fff;
+  /* text-overflow: ellipsis; */
+}
+
+#play-album {
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../artist-logo/logo-acdc.png);
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 4px #ab633b);
+  transition: all 200ms;
+  border-radius: 50%;
+}
+#play-album:hover {
+  background-image: url(../res/images/icons/round-play.png);
+  border: 1px solid darkgreen;
+  background-color: whitesmoke;
+  filter: drop-shadow(0px 0px 20px #000000);
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/visualizer.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/switch-schemes.css" />
+    <link rel="stylesheet" href="./css/playlists.css" />
+    <link rel="stylesheet" href="./css/volume.css" />
+    <link rel="stylesheet" href="./css/equalizer.css" />
+    <link rel="stylesheet" href="./css/modes.css" />
+    <link rel="stylesheet" href="./css/progressbar.css" />
+    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    <link rel="stylesheet" href="./css/previousplaynext.css" />
+    <link rel="stylesheet" href="./css/casette.css" />
+    <link rel="stylesheet" href="./css/sleep.css" />
+    <!-- <link rel="stylesheet" href="./css/previousplaynext.css" /> -->
+    <title>timeless | photos</title>
+  </head>
+  <body id="timeless" class="carousel day unmuted">
+    <canvas id="visualizer"></canvas>
+
+    <div id="equalizer">
+      <div class="grid outline">
+        <label for="bass">bass</label>
+        <input type="range" min="0" max="1" value=".01" step=".01" id="bass" />
+
+        <label for="mid">mid</label>
+        <input type="range" min="-10" max="10" value="0" id="mid" />
+
+        <label for="treble">treble</label>
+        <input type="range" min="-10" max="10" value="0" id="treble" />
+
+        <label for="reverb">reverb</label>
+        <input type="range" min="-10" max="10" value="0" id="reverb" />
+      </div>
+    </div>
+
+    <div id="sidebar">
+      <div id="logo"></div>
+      <div id="action-btns">
+        <a href="./songs.html">
+          <div id="btn-songs-folder" class="sidebar-btn"></div
+        ></a>
+        <div id="btn-equalizer" class="sidebar-btn"></div>
+        <a href="./file-mode.html"
+          ><div id="btn-file-play" class="sidebar-btn"></div
+        ></a>
+        <div id="btn-modes" class="sidebar-btn"></div>
+        <div id="btn-fx" class="sidebar-btn"></div>
+      </div>
+      <div id="sleep-btn" class="sidebar-btn"></div>
+    </div>
+
+    <div id="player-container">
+      <div id="switch-schemes" class="circle">
+        <button class="switch-scheme" id="chooseScheme"></button>
+        <button class="switch-scheme" id="serial"></button>
+        <button class="switch-scheme" id="shuffle"></button>
+        <button class="switch-scheme" id="repeat"></button>
+      </div>
+
+      <div id="btn-playlists-n-songs"></div>
+      <div class="playlist-btn-shadow"></div>
+
+      <!-- vinyl-container to casette -container -->
+      <div id="casette-player-parent">
+        <div id="casette-container">
+          <!-- <div id="wheels"> -->
+          <div id="casette"></div>
+          <div id="wheel-left"></div>
+          <div id="wheel-right"></div>
+          <!-- </div> -->
+        </div>
+
+        <div id="player">
+          <div id="song-info">
+            <div id="title">Wish You Were Here</div>
+            <div id="artist">Pink Floyd</div>
+          </div>
+
+          <div class="progress-n-favorite">
+            <button class="btn-favorite"></button>
+            <div id="progress-bar">
+              <small id="progress-time">0:12</small>
+              <input
+                type="range"
+                step="1"
+                value="0"
+                min="0"
+                max="100"
+                id="progress"
+              />
+              <!-- <small id="timeHint">0:0</small> -->
+              <small id="end-time">5:12</small>
+            </div>
+            <button id="lock"></button>
+          </div>
+
+          <div class="previousplaynext">
+            <button class="previous circle subtle" id="previous"></button>
+            <button class="play circle" id="play"></button>
+            <button class="next circle subtle" id="next"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="volume-container">
+      <div id="volume">
+        <div id="set"></div>
+      </div>
+    </div>
+    <div id="btn-volume"></div>
+
+    <div id="modes-overlay">
+      <div class="modes-card">
+        <div class="mode-image bars-img"></div>
+        <label for="bars-img" class="mode-name">bars</label>
+      </div>
+      <div class="modes-card">
+        <div class="mode-image circular-img"></div>
+        <label for="circular-img" class="mode-name">circular</label>
+      </div>
+      <div class="modes-card">
+        <div class="mode-image casette-img"></div>
+        <label for="casette-img" class="mode-name">casette</label>
+      </div>
+      <div class="modes-card">
+        <a href="./carousel-mode.html"
+          ><div class="mode-image photos-img"></div
+        ></a>
+        <label for="photos-img" class="mode-name">photos</label>
+      </div>
+      <div class="modes-card">
+        <div class="mode-image game-img"></div>
+        <label for="game-img" class="mode-name">game</label>
+      </div>
+    </div>
+
+    <div id="songs-collection-overlay">
+      <div id="back-from-options"></div>
+      <div id="playlist-options">
+        <button class="rename">rename</button>
+        <button class="update">update</button>
+        <button class="delete">delete</button>
+      </div>
+      <!-- <div class="blurred-bg"> </div> -->
+      <input type="text" id="quick-search" placeholder="search a song" />
+      <ul id="songs-list">
+        <li>ACDC - Jail Break</li>
+        <li>Banners - Shine A Light</li>
+        <li>Beck - Dreams</li>
+        <li>Blue Swede - Hooked On A Feeling</li>
+        <li>Caroline Pennell - Leaving on a Jet Plane</li>
+        <li>Coldplay - Yellow</li>
+        <li>Ed Sheeran - The A Team</li>
+        <li>George Harrison-My Sweet Lord</li>
+        <li>Hinder - Lips Of An Angel</li>
+        <li>Junip - Don't Let It Pass</li>
+        <li>Pink Floyd - Wish You Were Here</li>
+        <li>Queen - Bohemian Rhapsody</li>
+        <li>Queen - I Want To Break Free</li>
+        <li>Red Hot Chili Peppers - Can't Stop</li>
+        <li>Redbone - Come and Get Your Love</li>
+        <li>Atomic Bush-Sano Prakash</li>
+      </ul>
+
+      <div id="quick-playlists" class="active">
+        <div class="playlist-card-small playlist-favorite">
+          <div class="playlist-name">Favorites</div>
+        </div>
+        <div class="playlist-card-small playlist-electronic">
+          <div class="playlist-name">electronic</div>
+        </div>
+        <div class="playlist-card-small playlist-blues">
+          <div class="playlist-name">blues</div>
+        </div>
+        <div class="playlist-card-small playlist-classical">
+          <div class="playlist-name">classical</div>
+        </div>
+        <div class="playlist-card-small playlist-rock">
+          <div class="playlist-name">rock</div>
+        </div>
+        <div class="playlist-card-small playlist-dance">
+          <div class="playlist-name">dance</div>
+        </div>
+        <div class="playlist-card-small playlist-rnb">
+          <div class="playlist-name">R&B</div>
+        </div>
+        <div class="playlist-card-small playlist-favorite">
+          <div class="playlist-name">Favorites</div>
+        </div>
+
+        <div class="playlist-card-small playlist-jazz">
+          <div class="playlist-name">jazz</div>
+        </div>
+        <div class="playlist-card-small playlist-theatre">
+          <div class="playlist-name">theatre</div>
+        </div>
+        <div class="playlist-card-small playlist-ost">
+          <div class="playlist-name">ost</div>
+        </div>
+        <div class="playlist-card-small playlist-metal">
+          <div class="playlist-name">metal</div>
+        </div>
+        <div class="playlist-card-small playlist-indie">
+          <div class="playlist-name">indie</div>
+        </div>
+        <div class="playlist-card-small playlist-country">
+          <div class="playlist-name">country</div>
+        </div>
+        <div class="playlist-card-small playlist-grunge">
+          <div class="playlist-name">grunge</div>
+        </div>
+        <div class="playlist-card-small playlist-instrumental">
+          <div class="playlist-name">instrumental</div>
+        </div>
+        <div class="playlist-card-small playlist-alt-rock">
+          <div class="playlist-name">alt-rock</div>
+        </div>
+        <div class="playlist-card-small playlist-relaxing">
+          <div class="playlist-name">relaxing</div>
+        </div>
+        <div class="playlist-card-small playlist-upbeat">
+          <div class="playlist-name">upbeat</div>
+        </div>
+        <div class="playlist-card-small playlist-rough-day">
+          <div class="playlist-name">rough-day</div>
+        </div>
+        <div class="playlist-card-small playlist-mellow">
+          <div class="playlist-name">mellow</div>
+        </div>
+      </div>
+      <div id="label-bar">
+        <div class="top">
+          <button id="playlist-play" class="playlist-btn"></button>
+          <button id="playlist-like" class="playlist-btn"></button>
+        </div>
+        <div class="middle">
+          <label for="songs-list">all songs</label>
+          <small id="song-count">0 songs</small>
+        </div>
+
+        <div class="bottom">
+          <button id="playlist-options-btn" class="playlist-btn"></button>
+          <!-- <button id="playlist-delete" class="playlist-btn"></button> -->
+          <!-- <button id="playlist-create" class="playlist-btn"></button> -->
+        </div>
+      </div>
+
+      <div class="alphabetical-scroller">
+        <p class="letter active">#</p>
+        <p class="letter">a</p>
+        <p class="letter">b</p>
+        <p class="letter">c</p>
+        <p class="letter">d</p>
+        <p class="letter">e</p>
+        <p class="letter">f</p>
+        <p class="letter">g</p>
+        <p class="letter">h</p>
+        <p class="letter">i</p>
+        <p class="letter">j</p>
+        <p class="letter">k</p>
+        <p class="letter">l</p>
+        <p class="letter">m</p>
+        <p class="letter">n</p>
+        <p class="letter">o</p>
+        <p class="letter">p</p>
+        <p class="letter">q</p>
+        <p class="letter">r</p>
+        <p class="letter">s</p>
+        <p class="letter">t</p>
+        <p class="letter">u</p>
+        <p class="letter">v</p>
+        <p class="letter">w</p>
+        <p class="letter">x</p>
+        <p class="letter">y</p>
+        <p class="letter">z</p>
+      </div>
+    </div>
+
+    <select id="sleep-options-overlay">
+      <option class="none" selected>none</option>
+      <option value="1000" class="one">1 min</option>
+      <option value="5000" class="five">5 min</option>
+      <option value="10000" class="ten">10 min</option>
+      <option value="20000" class="twenty">20 min</option>
+      <option value="30000" class="thirty">30 min</option>
+      <option value="60000" class="sixty">60 min</option>
+    </select>
+
+    <div id="fx-overlay">
+      <button class="fx-btn" id="rain"></button>
+      <button class="fx-btn" id="bubbles"></button>
+      <button class="fx-btn" id="autotune"></button>
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/classes/Player.js"></script>
+    <script src="./js/playlists.js"></script>
+    <script src="./js/overlays/songsCollections.js"></script>
+    <script src="./js/player.js"></script>
+    <script src="./js/volume.js"></script>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/overlays/equalizer.js"></script>
+    <script src="./js/overlays/slideModes.js"></script>
+    <script src="./js/progressBar.js"></script>
+    <script src="./js/casette.js"></script>
+    <script src="./js/overlays/sleep.js"></script>
+    <script src="./js/visualizer.js"></script>
+    <script src="./js/searchBar.js"></script>
+  </body>
+</html>

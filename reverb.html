@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        html, body {
+  font-size: 12px;
+  font-family: "Open Sans";
+  background: #EEE;
+}
+
+a {
+  text-decoration: none;
+  color: #999;
+}
+
+audio {
+  display: block;
+}
+
+.mix {
+  margin: 0;
+}
+
+div.controls label {
+  display: inline-block;
+  text-align: right;
+  width: 110px;
+}
+
+div.controls label, div.controls input {
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+    </style>
+</head>
+<body>
+    <h2>Web Audio Api Convolver</h2>
+<div class="mix">
+  <div class="controls">
+    <label>Dry Wet</label>
+    <input type="range" value="100" step="1" min="0" max="100" oninput="changeValue(this.value, 'mix');"></input>
+    <label>Choose Impulse</label>
+    <!-- <select id="impulse" size="1" onchange="loadImpulse(this.value);">
+      <option value="factory.hall.wav">Factory Hall</option>
+      <option value="pa.horn.in.hall.wav">PA horn in hall</option>
+      <option value="blaupunkt.tube.radio.wav">Blaupunkt tube radio</option>
+      <option value="church.schellingwoude.wav">Church Schellingwoude</option>
+      <option value="coalhod.wav">Coalhod</option>
+      <option value="vacuum.cleaner.tube.wav">Vacuum cleaner tube</option>
+      <option value="70.philips.box.stereo.wav">70 Philips Box</option>
+      <option value="washing.machine.wav">Washing machine</option>
+      <option value="tin.can.wav">Tin Can</option>
+<option value="Marshall1960A-G12Ms-TAB57-CapEdgeOffAxis-6in.wav">Marshall1960A</option>
+    </select> -->
+  </div>
+</div>
+<h4>Impulse Responses by <a href="http://fokkie.home.xs4all.nl/IR.htm" target="_blank">Fokke van Saane</a></h4>
+<h4>Music by André Michelle <a href="http://www.audiotool.com/track/mono_sonic/">mono sonic</a></h4>
+<audio id="player" crossorigin controls>
+  <source src="./songs/Atomic Bush-Sano Prakash.mp3" type="audio/mpeg">
+  <source src="./songs/Atomic Bush-Sano Prakash.ogg" type="audio/ogg">
+  Your browser does not support the audio tag.
+</audio>
+<p>Impulse Responses are uncompressed wav-files. Please be patient.</p>
+<p>Chrome only.</p>
+
+<script>var context = new AudioContext();
+    var audioElement = document.getElementById('player');
+    var carrier = context.createMediaElementSource(audioElement);
+    var convolver = context.createConvolver();
+    var dry = context.createGain();
+    var wet = context.createGain();
+    
+    carrier.connect( convolver );
+    
+    convolver.connect(wet);
+    carrier.connect(dry);
+    
+    dry.connect( context.destination );
+    wet.connect( context.destination );
+    
+    var mix = function( value ) {
+        dry.gain.value = ( 1.0 - value );
+        wet.gain.value = value;
+    }
+    
+    var loadImpulse = function ( fileName )
+    {
+    //   var url = "http://files.andre-michelle.com/impulse/" + fileName;
+    //   var request = new XMLHttpRequest();
+    //   request.open( "GET", url, true );
+    //   request.responseType = "arraybuffer";
+    //   request.onload = function ()
+    //   {
+        context.decodeAudioData( request.response, function ( buffer ) {
+          convolver.buffer = buffer;
+        }, function ( e ) { console.log( e ); } );
+    //   };
+    //   request.onerror = function ( e )
+    //   {
+    //     console.log( e );
+    //   };
+    //   request.send();
+    };
+    
+    // loadImpulse(document.getElementById('impulse').value);
+    mix(.4);
+    
+    function changeValue(string,type)
+    {
+      var value = parseFloat(string) / 100.0;
+    
+      switch(type)
+      {
+        case 'mix':
+            mix(value);
+          break;
+      }
+    }</script>
+</body>
+</html>

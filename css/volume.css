@@ -1,0 +1,66 @@
+#timeless.muted {
+  height: 100vh;
+}
+#timeless.unmuted #volume-container {
+  z-index: 97;
+  height: 95vh;
+  width: 65px;
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  border-radius: 3px 3px 65px 65px;
+  background-color: rgba(255, 255, 255, 0.3);
+  z-index: 3;
+  display: none;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; */
+}
+
+#volume {
+  margin: 0 auto;
+  margin-top: 37%;
+  position: relative;
+  height: 84%;
+  width: 25%;
+  border-radius: 3px;
+  border: 1px solid darkslategray;
+  background-color: #d2d2d2;
+  cursor: pointer;
+}
+
+/* #volume #total {
+  height: 80%;
+  width: 100%;
+  background-color: gray;
+} */
+#volume #set {
+  position: absolute;
+  bottom: 0;
+  height: 20%;
+  width: 100%;
+  background-color: green;
+  /* border-radius: 10px 10px 0 0; */
+}
+
+#btn-volume {
+  position: absolute;
+  bottom: 4%;
+  right: 2.3%;
+  z-index: 97;
+  height: 55px;
+  width: 55px;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+}
+#timeless.unmuted #btn-volume {
+  background-image: url(../res/images/icons/volume.png);
+}
+
+#timeless.muted #btn-volume {
+  background-image: url(../res/images/icons/mute.png);
+}

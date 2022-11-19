@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="./js/utils.js"></script>
+    <style>
+      body {
+        background-color: #e7e9eb;
+      }
+      #star,
+      #leaf {
+        position: absolute;
+        top: 49%;
+        height: 30px;
+        width: 30px;
+        transition: cubic-bezier(1, 0, 0, 1) 1000ms;
+        transform-origin: 100px 100px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        border: 1px solid firebrick;
+      }
+      #star {
+        left: 45%;
+        background-image: url(./res/images/icons/favorite-btn.png);
+      }
+      #leaf {
+        left: 35%;
+        background-image: url(./res/images/icons/collection/mellow.png);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="star"></div>
+    <div id="leaf"></div>
+
+    <button onclick="rot()">rot</button>
+
+    <script>
+      function rot() {
+        document.getElementById("star").style.transformOrigin = `${getRandomInt(
+          0,
+          500
+        )}px ${(0, 309)}px`;
+        document.getElementById(
+          "star"
+        ).style.transform = `rotate(${getRandomInt(
+          -60,
+          60
+        )}deg)  translate(${getRandomInt(10, 60)}%,${getRandomInt(50, 100)}%)`;
+
+        document.getElementById(
+          "leaf"
+        ).style.transform = `rotate(${getRandomInt(
+          -60,
+          60
+        )}deg)  translate(${getRandomInt(10, 60)}%,${getRandomInt(50, 100)}%)`;
+      }
+    </script>
+  </body>
+</html>

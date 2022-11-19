@@ -1,0 +1,110 @@
+/* @font-face {
+  font-family: "Audiowide";
+  src: url("Audiowide-Regular.ttf");
+} */
+
+#player {
+  width: 50%;
+  height: 50%;
+  /* height: fit-content; */
+  position: relative;
+  top: 55%;
+  transform: translateY(-50%);
+  margin-left: 50%;
+  z-index: 3;
+  /* border: 1px solid rgba(255, 255, 255, 0.5); */
+  /* text-align: left; */
+}
+
+.progress-n-favorite {
+  width: 80%;
+  height: 40px;
+  overflow: hidden;
+  margin: 23px 0;
+  position: relative;
+  /* background-color: #fff; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+#progress-container.normal-progress-bar {
+  position: relative;
+  /* margin-top: 4%; */
+  height: 8px;
+  width: 80%;
+  background-color: transparent;
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+#lock {
+  cursor: pointer;
+  /* position: fixed; */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  background-image: url(../res/images/icons/unlocked.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  /* right: 5%; */
+  transition: all 400ms;
+}
+
+.btn-favorite {
+  height: 26px;
+  width: 26px;
+  background-image: url(../res/images/icons/favorite-btn.png);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+#progress-container .progress {
+  background-color: limegreen;
+  border-top: 1px solid rgba(255, 255, 255, 0.7);
+  width: 0px;
+  height: 100%;
+}
+
+#progress-container:hover {
+  transform: scaleY(1.4);
+  transition: 300ms all;
+}
+
+#timeless.dj .progress-handle {
+  position: absolute;
+  height: 40px;
+  width: 10px;
+  left: 50%;
+  border-radius: 2px;
+  background-color: limegreen;
+}
+
+#title {
+  font-family: "Audiowide", cursive;
+  font-size: 40px;
+  color: aliceblue;
+}
+
+#artist {
+  font-family: "Monofett", cursive;
+  color: whitesmoke;
+  font-size: 25px;
+  word-spacing: 9px;
+  letter-spacing: 5px;
+}
+
+/* #lock:hover {
+  background-color: rgba(255, 255, 255, 0.7);
+} */

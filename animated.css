@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  text-align: center;
+  width: 100vw;
+}
+#animation2 {
+  position: absolute;
+  /* border: 1px solid red; */
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  overflow-x: hidden;
+}
+
+#animation2 g {
+  transform-origin: center;
+  transform-box: fill-box;
+  width: 2%;
+  /* height: px; */
+}
+#camera {
+  animation: a 6s ease-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#kitty,
+#dino,
+#specs,
+#dance1,
+#dance0,
+#dance1,
+#bird1,
+#bird0,
+#bird2,
+#bird3,
+#atom0,
+#atom1,
+#saturn,
+#jupiter,
+#neptune,
+#dance2,
+#cap,
+#boy,
+#spill,
+#mars,
+#mug,
+#atom2,
+#coffee,
+#monalis,
+#paint,
+#brush,
+#paste,
+#einstein,
+#pencil,
+#jupiter0,
+#headrest,
+#earth0,
+#earth1,
+#tmnt0,
+#tmnt1,
+#tmnt2,
+#joystick,
+#jupiter1,
+#duck,
+#sneaker,
+#book1,
+#book,
+#cushion {
+  animation: e 1.3s ease infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#kite,
+#headrest,
+#einstein,
+#monalis,
+#book0,
+#coffee {
+  animation: a 3.2s ease infinite;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+#kitty,
+#sneaker,
+#pencil {
+  animation: d 2.1s infinite linear;
+  transform-origin: center;
+}
+#dance1,
+#paste {
+  animation: b 3.8s infinite linear;
+  transform-origin: left;
+}
+#book1,
+#paint {
+  animation: c 2.3s infinite linear;
+  transform-origin: left;
+}
+
+#jupiter0,
+#neptune,
+#tmnt2,
+#dance1,
+#joystick {
+  animation: e 4s infinite linear;
+  transform-origin: center;
+}
+#cap,
+#atom,
+#tmnt0,
+#dance0 {
+  animation: b 5s infinite linear;
+  transform-origin: center;
+}
+#cushion,
+#atom0,
+#tmnt1,
+#dance1 {
+  animation: d 2.6s infinite linear;
+  transform-origin: center;
+}
+
+@keyframes a {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(-160deg) translate(10px, 300px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes b {
+  from {
+    transform: rotateZ(0deg) scale(2);
+  }
+  to {
+    transform: rotateZ(160deg) translate(0px, 200px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes c {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(160deg) translate(0px, 200px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes d {
+  from {
+    transform: rotateZ(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: rotateZ(360deg) translate(0px, 100px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes e {
+  from {
+    transform: translateY(100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-300%) scale(0.5);
+    opacity: 0;
+  }
+}

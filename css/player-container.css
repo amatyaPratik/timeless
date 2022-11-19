@@ -1,0 +1,41 @@
+#player-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.dj #player-container {
+  background-image: radial-gradient(green, #000000 84%);
+}
+
+#player-container #vinyl-container {
+  /* margin: 0; */
+  position: absolute;
+  height: 100vmin;
+  width: 100vmin;
+  background-image: url(../res/images/sprites/vinyl-no-shadow.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  /* transform: translateX(-50%); */
+  left: 0;
+  top: 0%;
+  margin-left: -348px;
+  /* -ms-transform: translateY(-50%, -50%); */
+  /* transform: translate(-50%, -50%); */
+  transform: translateX(-50%);
+  z-index: 2;
+  /* transform-origin: 380px 380px; */
+  animation: rotate 4s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

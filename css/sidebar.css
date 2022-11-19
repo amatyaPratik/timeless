@@ -1,0 +1,72 @@
+#sidebar,
+body.normal #sidebar {
+  float: left;
+  width: 62px;
+  height: 100vh;
+  background-color: #cea065;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+body #sidebar {
+  background-color: #56d8c1;
+  /* background-image: linear-gradient); */
+  box-shadow: 0px 4px black;
+  box-shadow: 5px 0px 7px rgba(0, 0, 0, 0.3);
+}
+
+#logo {
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 83%;
+  background-image: url("../res/images/logos/logo5.png");
+}
+
+#sidebar .sidebar-btn {
+  height: 50px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 51%;
+  cursor: pointer;
+}
+
+#sidebar .sidebar-btn.active {
+  background-color: gainsboro;
+}
+
+#action-btns {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#action-btns #btn-back {
+  background-image: url("../res/images/icons/sidebar/back.png");
+}
+#action-btns #btn-songs-folder {
+  background-image: url("../res/images/icons/sidebar/music-folder.png");
+}
+#action-btns #btn-equalizer {
+  background-image: url("../res/images/icons/sidebar/equalizer.png");
+}
+#action-btns #btn-file-play {
+  background-image: url("../res/images/icons/sidebar/file-play.png");
+}
+#action-btns #btn-modes {
+  background-image: url("../res/images/icons/sidebar/modes.png");
+}
+#action-btns #btn-fx {
+  background-image: url("../res/images/icons/sidebar/fx.png");
+}
+
+#sidebar #sleep-btn {
+  background-image: url("../res/images/icons/sidebar/zzz.png");
+}

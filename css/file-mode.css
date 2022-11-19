@@ -1,0 +1,23 @@
+#player-container {
+  background-image: url(../res/images/vector-art/playing-cat.png);
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: 48% 40%;
+  height: 100vh;
+}
+
+label[for="uploader"] {
+  position: absolute;
+  bottom: 20%;
+  color: #6f6f6f;
+  font-size: 48px;
+  text-align: center;
+  width: 100%;
+}
+
+input#uploader {
+  position: absolute;
+  bottom: 7%;
+  left: 50%;
+  transform: translateX(-30%);
+}

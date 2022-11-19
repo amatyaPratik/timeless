@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/tabs-n-filter.css" />
+    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    <link rel="stylesheet" href="./css/albums.css" />
+
+    <!-- <link rel="stylesheet" href="./css/songs.css" /> -->
+
+    <title>timeless | artists</title>
+  </head>
+  <body id="timeless" class="dj day unmuted">
+    <div id="sidebar">
+      <div id="logo"></div>
+      <div id="action-btns">
+        <a href="./index.html"><div id="btn-back" class="sidebar-btn"></div></a>
+        <div id="btn-equalizer" class="sidebar-btn"></div>
+        <a href="./file-mode.html"
+          ><div id="btn-file-play" class="sidebar-btn"></div
+        ></a>
+        <div id="btn-modes" class="sidebar-btn"></div>
+        <div id="btn-fx" class="sidebar-btn"></div>
+      </div>
+      <div id="sleep-btn" class="sidebar-btn"></div>
+    </div>
+
+    <div id="albums-page">
+      <div id="tabsandfilters">
+        <a href="./songs.html" class="search-tab">songs</a>
+        <a href="./artists.html" class="search-tab">artists</a>
+        <a href="#" class="search-tab active">albums</a>
+
+        <input
+          type="text"
+          name="searchbar"
+          id="searchbar"
+          placeholder="search for a song"
+        />
+
+        <div id="genre-selector">
+          <label for="genre">genre :</label>
+          <select name="genre" id="genre-select">
+            <option value="all" selected>all</option>
+            <option value="blues">blues</option>
+            <option value="country">country</option>
+            <option value="dance">dance</option>
+            <option value="electronic">electronic</option>
+            <option value="classical">classical</option>
+          </select>
+        </div>
+
+        <div id="sort-selector">
+          <label for="sort">sort :</label>
+          <select name="sort" id="sort-select">
+            <option value="abc" selected>ABC</option>
+            <option value="cba">CBA</option>
+            <option value="length">length</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="albums-section">
+        <div class="albums-card outline">
+          <div class="album-cover cover-a outline"></div>
+          <div class="album-info">
+            <div class="title album-link">Let There Be Rock</div>
+            <div class="artist">ACDC</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-b outline"></div>
+          <div class="album-info">
+            <div class="title">Risk It All</div>
+            <div class="artist">Alex Brown</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-c outline"></div>
+          <div class="album-info">
+            <div class="title">The Razor’s Edge</div>
+            <div class="artist">ACDC</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-d outline"></div>
+          <div class="album-info">
+            <div class="title">MALIBU</div>
+            <div class="artist">Anderson Laak</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-e outline"></div>
+          <div class="album-info">
+            <div class="title">Havana</div>
+            <div class="artist">Camilo Takluabalos</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-f outline"></div>
+          <div class="album-info">
+            <div class="title">THE STRANGER INSIDE</div>
+            <div class="artist">Anderson Laak</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-g outline"></div>
+          <div class="album-info">
+            <div class="title">HAZING</div>
+            <div class="artist">Joy Void</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-h outline"></div>
+          <div class="album-info">
+            <div class="title">Wow that’s crazy</div>
+            <div class="artist">Json Parserboi</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-i outline"></div>
+          <div class="album-info">
+            <div class="title">LOVER</div>
+            <div class="artist">Taylor Swift</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-j outline"></div>
+          <div class="album-info">
+            <div class="title">Back It Up</div>
+            <div class="artist">Klein Calvin</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-k outline"></div>
+          <div class="album-info">
+            <div class="title">XCAPE</div>
+            <div class="artist">MJ</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-l outline"></div>
+          <div class="album-info">
+            <div class="title">SOMEBODY I Like</div>
+            <div class="artist">Kate East</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-m outline"></div>
+          <div class="album-info">
+            <div class="title">eye on you</div>
+            <div class="artist">ACDC</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-n outline"></div>
+          <div class="album-info">
+            <div class="title">song of the sir.</div>
+            <div class="artist">Apple</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-o outline"></div>
+          <div class="album-info">
+            <div class="title">Hoing Boned</div>
+            <div class="artist">paul smith</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-p outline"></div>
+          <div class="album-info">
+            <div class="title">Ahimsa</div>
+            <div class="artist">Maridona Lukis</div>
+          </div>
+        </div>
+        <div class="albums-card outline">
+          <div class="album-cover cover-q outline"></div>
+          <div class="album-info">
+            <div class="title">with a song in ..</div>
+            <div class="artist">Blinkey Hindman</div>
+          </div>
+        </div>
+
+        <div class="albums-card outline">
+          <div class="album-cover cover-r outline"></div>
+          <div class="album-info">
+            <div class="title">your song</div>
+            <div class="artist">His Son'g</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="album-overlay">
+      <div id="top">
+        <h1 id="album-title">Let There Be Rock</h1>
+        <button class="favorite-btn"></button>
+      </div>
+      <div id="main-section">
+        <div id="cover-art"></div>
+        <div id="songs">
+          <label for="sn">sn</label>
+          <label for="songs">songs</label>
+          <table id="songs-in-album">
+            <tr>
+              <td class="sn">1</td>
+              <td class="song-title">Go Down</td>
+            </tr>
+            <tr>
+              <td class="sn">2</td>
+              <td class="song-title">Dog Eat Dog</td>
+            </tr>
+            <tr>
+              <td class="sn">3</td>
+              <td class="song-title">Let There Be Rock</td>
+            </tr>
+            <tr>
+              <td class="sn">4</td>
+              <td class="song-title">Bad Boy Boogie</td>
+            </tr>
+            <tr>
+              <td class="sn">5</td>
+              <td class="song-title">Overdose</td>
+            </tr>
+            <tr>
+              <td class="sn">6</td>
+              <td class="song-title">Crabsody in Blue</td>
+            </tr>
+            <tr>
+              <td class="sn">7</td>
+              <td class="song-title">Hell Ain't a Bad Place to Be</td>
+            </tr>
+            <tr>
+              <td class="sn">8</td>
+              <td class="song-title">Whole Lotta Rosie</td>
+            </tr>
+          </table>
+          <div id="thin-scroller"></div>
+        </div>
+      </div>
+      <div id="bottom">
+        <p id="performed-by">ACDC</p>
+        <p id="year">2000</p>
+        <div id="label">Silver CD Series</div>
+      </div>
+    </div>
+
+    <script src="./js/overlays/album.js"></script>
+  </body>
+</html>

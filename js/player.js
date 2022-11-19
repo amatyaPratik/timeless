@@ -1,0 +1,18 @@
+const player = new Player([
+  "ACDC - Jail Break",
+  "Banners - Shine A Light",
+  "Beck - Dreams",
+  "Blue Swede - Hooked On A Feeling",
+  "Caroline Pennell - Leaving on a Jet Plane",
+  "Coldplay - Yellow",
+  "Ed Sheeran - The A Team",
+  "George Harrison-My Sweet Lord",
+  "Hinder - Lips Of An Angel",
+  "Junip - Don't Let It Pass",
+  "Pink Floyd - Wish You Were Here",
+  "Queen - Bohemian Rhapsody",
+  "Queen - I Want To Break Free",
+  "Red Hot Chili Peppers - Can't Stop",
+  "Redbone - Come and Get Your Love",
+  "Atomic Bush-Sano Prakash",
+]);

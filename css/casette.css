@@ -1,0 +1,255 @@
+/* #timeless {
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #1d1d1d),
+    color-stop(1, #131313)
+  );
+  background: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #1d1d1d),
+    color-stop(1, #131313)
+  );
+  background: -ms-linear-gradient(bottom, #1d1d1d, #131313);
+  background: -moz-linear-gradient(center bottom, #1d1d1d 0%, #131313 100%);
+  background: -o-linear-gradient(#131313, #1d1d1d);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#131313', endColorstr='#1d1d1d', GradientType=0);
+  -webkit-box-shadow: 0 0.2em 0.1em 0.05em rgba(255, 255, 255, 0.1) inset,
+    0 -0.2em 0.1em 0.05em rgba(0, 0, 0, 0.5) inset,
+    0 0.5em 0.65em 0 rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 0.2em 0.1em 0.05em rgba(255, 255, 255, 0.1) inset,
+    0 -0.2em 0.1em 0.05em rgba(0, 0, 0, 0.5) inset,
+    0 0.5em 0.65em 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0.2em 0.1em 0.05em rgba(255, 255, 255, 0.1) inset,
+    0 -0.2em 0.1em 0.05em rgba(0, 0, 0, 0.5) inset,
+    0 0.5em 0.65em 0 rgba(0, 0, 0, 0.3);
+} */
+#player-container {
+  position: relative;
+  height: 100vh;
+  /* width: 100%; */
+  /* background-color: transparent; */
+  overflow: hidden;
+}
+
+#casette-player-parent {
+  position: absolute;
+  margin: 0 !important;
+  height: 68vmin;
+  width: 59.82vmin;
+  z-index: 3;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translateY(-50%);
+  filter: drop-shadow(0px 0px 4px gray);
+  backdrop-filter: blur(30px);
+  overflow: hidden;
+}
+#timeless #player {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  filter: drop-shadow(0px 0px 4px gray);
+  /* border: 1px solid firebrick; */
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+#casette-container {
+  background-color: rgba(33, 33, 33, 0.9);
+  position: absolute;
+  height: 60vmin;
+  width: 100%;
+  border-radius: 30px;
+  left: 0%;
+  top: 0%;
+  z-index: 1;
+  filter: drop-shadow(0px 0px 4px gray);
+
+  border: 1px solid sienna;
+}
+
+#casette-container #casette {
+  height: 100%;
+  width: 100%;
+  background-image: url(../res/images/sprites/casette-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* border: 1px solid red; */
+  z-index: inherit;
+}
+
+#casette-container #wheel-left,
+#casette-container #wheel-right {
+  position: absolute;
+  width: 26%;
+  height: 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url(../res/images/sprites/tape-wheel.png);
+  border: 1px solid gray;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+#casette-container #wheel-left {
+  top: 21%;
+  left: 20%;
+}
+
+#casette-container #wheel-right {
+  top: 21%;
+  right: 18%;
+}
+
+/* __________________________ */
+
+#song-info,
+.progress-n-favorite {
+  /* margin: 0 3%; */
+}
+#title {
+  font-family: "Righteous", cursive;
+  font-size: 25px;
+  color: #fff;
+  border-radius: 30px 30px 0 0;
+  background-color: rgba(218, 175, 108, 1);
+  text-overflow: clip;
+}
+
+#artist {
+  text-overflow: clip;
+  /* font-family: "Fredericka the Great", cursive; */
+  color: rgba(33, 33, 33, 1);
+  font-size: 19px;
+  word-spacing: 9px;
+  letter-spacing: 1px;
+  /* padding-top: ; */
+  /* border: 1px solid red; */
+}
+
+.previousplaynext {
+  position: relative;
+  width: 100% !important;
+  height: 19%;
+  left: 0 !important;
+  top: 60% !important;
+  margin: 0 !important;
+  transition: all 300ms;
+  /* border: 1px solid red; */
+}
+.previousplaynext button {
+  position: absolute;
+  height: 100% !important;
+  width: 46px;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  width: 50px !important;
+  border-radius: 0;
+  border: none;
+  /* border: 3px solid hotpink; */
+  background-image: none !important;
+  background-color: transparent !important;
+}
+
+.previousplaynext button.previous {
+  width: 16.4% !important;
+  left: 23%;
+}
+
+.previousplaynext button.play {
+  width: 11.3% !important;
+  left: 39.2%;
+}
+
+.previousplaynext button.pause {
+  width: 11.3% !important;
+  left: 51.6%;
+}
+
+.previousplaynext button.next {
+  width: 16.4% !important;
+  left: 64%;
+}
+
+#song-info {
+  line-height: 50px;
+  width: 100%;
+  top: 0;
+  text-align: center;
+  bottom: 0;
+}
+
+.previousplaynext {
+  position: absolute;
+  top: 0;
+  left: 40%;
+  width: min-content;
+  margin: 0 3%;
+}
+#player .progress-n-favorite {
+  width: 100%;
+  position: absolute;
+  bottom: 0 !important;
+  margin: 0 !important;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+}
+
+#player .progress-n-favorite button {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+#player .progress-n-favorite .btn-favorite {
+  background-image: url(../res/images/icons/favorite-btn.png);
+}
+#player .progress-n-favorite #lock {
+  background-image: url(../res/images/icons/unlocked.png);
+}
+
+/* #progress-container { 
+  position: relative;
+  width: 80%;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 15px;
+} */
+
+#progress-container .progress {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  background-color: crimson;
+  border-radius: 15px;
+}
+#timeless.casette .progress-handle {
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  left: 11%;
+  border-radius: 50%;
+  background-color: crimson;
+}
+#switch-schemes .switch-scheme {
+  background-color: rgba(0, 0, 0, 0.4);
+}
