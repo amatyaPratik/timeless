@@ -15,15 +15,16 @@
     <link rel="stylesheet" href="./css/volume.css" />
     <link rel="stylesheet" href="./css/equalizer.css" />
     <link rel="stylesheet" href="./css/modes.css" />
-    <link rel="stylesheet" href="./css/progress-bar.css" />
+    <!-- <link rel="stylesheet" href="./css/progressbar.css" /> -->
     <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
-    <link rel="stylesheet" href="./css/previousplaynext.css" />
+    <!-- <link rel="stylesheet" href="./css/previousplaynext.css" /> -->
     <link rel="stylesheet" href="./css/carousel.css" />
     <link rel="stylesheet" href="./css/sleep.css" />
     <!-- <link rel="stylesheet" href="./css/previousplaynext.css" /> -->
     <title>timeless | photos</title>
   </head>
   <body id="timeless" class="carousel day unmuted">
+    <button id="lock"></button>
     <div id="equalizer">
       <div class="grid outline">
         <label for="bass">bass</label>
@@ -89,11 +90,25 @@
 
         <div class="progress-n-favorite">
           <button class="btn-favorite"></button>
-          <div id="progress-container" class="normal-progress-bar">
-            <div class="progress"></div>
+          <div id="progress-bar">
+            <small id="progress-time">0:12</small>
+            <input
+              type="range"
+              step="1"
+              value="0"
+              min="0"
+              max="100"
+              id="progress"
+            />
+            <!-- <small id="timeHint">0:0</small> -->
+            <small id="end-time">5:12</small>
           </div>
-          <div class="progress-handle"></div>
-          <button id="lock" class="circle"></button>
+          <div id="switch-schemes" class="circle">
+            <button class="switch-scheme" id="chooseScheme"></button>
+            <button class="switch-scheme" id="serial"></button>
+            <button class="switch-scheme" id="shuffle"></button>
+            <button class="switch-scheme" id="repeat"></button>
+          </div>
         </div>
 
         <div class="previousplaynext">
@@ -111,7 +126,7 @@
     </div>
     <div id="btn-volume"></div>
 
-    <div id="modes-overlay">
+    <div id="modes-overlay" class="hide">
       <div class="modes-card">
         <div class="mode-image bars-img"></div>
         <label for="bars-img" class="mode-name">bars</label>
@@ -295,6 +310,7 @@
     </div>
 
     <script src="./js/utils.js"></script>
+    <script src="./js/classes/Player.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/carouselMode.js"></script>
     <script src="./js/transitions.js"></script>

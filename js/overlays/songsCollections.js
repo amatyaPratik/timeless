@@ -4,7 +4,7 @@ const collectionsToggle = document.getElementById("btn-playlists-n-songs");
 function toggleCollectionsOverlay() {
   // collectionsToggle.focus();
   console.log("toggling");
-  if (collectionsOverlay.style.display == "none") {
+  if (collectionsOverlay.style.display != "block") {
     collectionsOverlay.style.display = "block";
   } else {
     collectionsOverlay.style.display = "none";

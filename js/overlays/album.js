@@ -2,7 +2,6 @@ const albumOverlay = document.getElementById("album-overlay");
 const albumToggle = document.getElementsByClassName("album-link")[0];
 
 function toggleAlbumOverlay() {
-  console.log("toggling");
   if (albumOverlay.style.display == "none") {
     albumOverlay.style.display = "block";
   } else {

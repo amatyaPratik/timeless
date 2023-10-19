@@ -1,3 +1,26 @@
-#timeless {
+/* #timeless {
   position: relative;
+} */
+
+#box{
+  position: absolute;
+  background-color: transparent;
+  z-index: 6;
+  margin: 10px auto;
+  left: 62px;
+  top: 0;
+  pointer-events: none;
+}
+
+#box .bubble{
+  pointer-events: visibleFill;
+  border: 1px solid white;
+  z-index: 99;
+  background-image: url(../res/images/sprites/bubble2.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: .9;
+  /* background-color: wheat; */
 }

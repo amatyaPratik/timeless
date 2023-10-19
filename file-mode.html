@@ -15,8 +15,10 @@
     <link rel="stylesheet" href="./css/volume.css" />
     <link rel="stylesheet" href="./css/equalizer.css" />
     <link rel="stylesheet" href="./css/modes.css" />
+    <link rel="stylesheet" href="./css/progress-bar.css" />
     <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
-    <link rel="stylesheet" href="./css/file-mode.css" />
+    <link rel="stylesheet" href="./css/previousplaynext.css" />
+    <link rel="stylesheet" href="./css/sleep.css" />
 
     <title>timeless | file player</title>
   </head>
@@ -56,7 +58,7 @@
         <div id="set"></div>
       </div>
     </div>
-    <div id="modes-overlay">
+    <div id="modes-overlay" class="hide">
       <div class="modes-card">
         <div class="mode-image bars-img"></div>
         <label for="bars-img" class="mode-name">bars</label>
@@ -226,16 +228,20 @@
     </div>
     <div id="btn-volume"></div>
     <script src="./js/utils.js"></script>
-    <script src="./js/transitions.js"></script>
-    <script src="./js/playlists.js"></script>
+    <script src="./js/classes/Player.js"></script>
     <script src="./js/overlays/songsCollections.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/volume.js"></script>
+    <script src="./js/particles/bubbles.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/overlays/equalizer.js"></script>
     <script src="./js/overlays/slideModes.js"></script>
+    <script src="./js/progressBar.js"></script>
     <script src="./js/visualizer.js"></script>
-
-    <script src="./js/fileMode.js"></script>
+    <script src="./js/casette.js"></script>
+    <script src="./js/playlists.js"></script>
+    <script src="./js/overlays/sleep.js"></script>
+    
+    <script src="./js/searchBar.js"></script>
   </body>
 </html>

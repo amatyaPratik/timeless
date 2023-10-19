@@ -1,0 +1,114 @@
+.progress-n-favorite {
+    /* margin-left: 32%;
+    margin-top: 19%;
+    position: relative;
+    width: 35%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; */
+    /* background-color: #fff; */
+  }
+  .progress-n-favorite button {
+    width: 26px;
+    height: 26px;
+  }
+  
+  #progress-bar {
+    position: relative;
+    width: 80% !important;
+    height: 100%;
+    /* border: 1px solid firebrick; */
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+  }
+  .progress-n-favorite #progress-bar input[type="range"]#progress {
+    -webkit-appearance: none !important;
+    background-color: transparent;
+    appearance: none;
+    height: 8px;
+    width: 80%;
+    margin: 0 .5rem;
+    outline: none;
+    border: none;
+    /* border: 1px solid gainsboro; */
+    border-radius: 2px;
+    
+    overflow: visible;
+    cursor: pointer !important;
+  }
+
+/********** Range Input Styles **********/
+
+ 
+ /* Removes default focus */
+ input[type="range"]:focus {
+   outline: none;
+ }
+ 
+ /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+ /* slider track */
+ input[type="range"]::-webkit-slider-runnable-track {
+    background-color:var(--primary-color);
+    border-radius: 0.5rem;
+    height: 0.9rem;
+    /* border-top: 3px solid cyan; */
+    border-style: double;
+ }
+ 
+ /* slider thumb */
+ input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -11px; /* Centers thumb on the track */
+ 
+    /*custom styles*/
+    background-color: var(--primary-color);
+    height: 34px;
+    width: 1rem;
+ }
+ 
+ input[type="range"]:focus::-webkit-slider-thumb {   
+   border: 1px solid greenyellow;
+   outline: 3px solid greenyellow;
+   outline-offset: 0.125rem; 
+ }
+ 
+ /******** Firefox styles ********/
+ /* slider track */
+ input[type="range"]::-moz-range-track {
+    background-color:var(--primary-color);
+    border-radius: 0.5rem;
+    height: 0.9rem;
+    /* border-top: 3px solid cyan; */
+    border-style: double;
+ }
+ 
+ /* slider thumb */
+ input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
+    margin-top: -11px;
+    /*custom styles*/
+    background-color: var(--primary-color);
+    height: 34px;
+    width: 1rem;
+ }
+ 
+ input[type="range"]:focus::-moz-range-thumb {
+   border: 1px solid greenyellow;
+   outline: 3px solid greenyellow;
+   outline-offset: 0.125rem; 
+ }
+ 
+
+  small#progress-time {
+    color: white;
+  }
+  small#end-time {
+    color: white;
+  }
+  

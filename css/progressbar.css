@@ -16,7 +16,7 @@
 
 #progress-bar {
   position: relative;
-  width: 80%;
+  width: 80% !important;
   height: 100%;
   /* border: 1px solid firebrick; */
 
@@ -25,54 +25,42 @@
   justify-content: center;
   overflow: visible;
 }
-input[type="range"]#progress {
-  height: 8px;
+.progress-n-favorite #progress-bar input[type="range"]#progress {
+  height: 10px;
   width: 100%;
   -webkit-appearance: none;
+  appearance: none;
   outline: none;
   border: none;
-  border: 1px solid gainsboro;
-  border-radius: 2px;
+  border: 2.5px solid rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
   background-color: transparent;
   overflow: visible;
+  cursor: pointer !important;
 }
 
 #progress-bar input::-webkit-progress-value {
-  background-color: blue;
-  color: blue;
+  /* background-color: darkblue !important; */
+  color: yellow;
 }
 #progress-bar input[type="range"]::-webkit-slider-runnable-track {
   height: 10px;
   -webkit-appearance: none;
-  background-color: blue;
+  /* background-color: yellowgreen; */
+  /* border-radius: 15px !important; */
   /* margin-top: 50px; */
 }
 
 #progress-bar input::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 6px;
+  width: 26px;
   height: 26px;
-  background-color: lime;
-  border-radius: 5%;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
+  background-color: var(--primary-color);
+  border-radius: 50%;
   transform: translateY(-30%);
 }
 
-/* small#timeHint {
-  position: absolute;
-  top: -50px;
-  left: 0;
-  font-size: 11px;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  transform: scale(0);
-  transform-origin: bottom;
-  z-index: 3;
-  transition: all 0.3s;
-} */
 
 small#timeHint.show {
   transform: scale(1);
@@ -101,6 +89,7 @@ small#progress-time {
   /* bottom: -40px; */
   background-color: inherit;
   z-index: 4;
+  color: white;
 }
 small#end-time {
   position: absolute;
@@ -111,16 +100,21 @@ small#end-time {
   transform: scale(0);
   /* bottom: -40px; */
   z-index: 4;
+  color: white;
 }
 
 #progress-time.show,
 #end-time.show {
-  font-size: 11px;
+  border-radius: 10px;
+  font-size: 1rem;
   transform: scale(1);
-  /* background-color: #fff; */
+  transform: translateY(-20px);
+  padding: 0 1rem;
+  /* background-color: rgba(0, 0, 0, 0.5); */
   filter: drop-shadow(0px 0px 40px white);
   backdrop-filter: blur(13px);
   color: chartreuse;
   border-color: rgba(255, 255, 255, 0.9);
+  z-index: 20;
   /* transform: translateY(50%); */
 }

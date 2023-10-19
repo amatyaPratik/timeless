@@ -3,12 +3,30 @@ const getBoundary = (elementDOM) => {
   return elementDOM.getBoundingClientRect();
 };
 
+/**
+ * returns time in padded mm:ss format
+ */
+
+const getTimeInMmSs= (timeInMilliSeconds) =>{
+  const timestamp_sec = timeInMilliSeconds/1000
+  
+    //Calculate minutes and seconds
+    const minutes = Math.floor(timestamp_sec / 60)
+    const seconds = Math.floor(timestamp_sec % 60)
+
+    //Format as "mm:ss"
+    let formattedTime = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+  return formattedTime
+}
+
 /**The maximum is exclusive and the minimum is inclusive */
 const getRandomInt = function (min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min) + min);
 };
+
 
 /** utility to display hint text to user */
 const displayHint = (hintText) => {
@@ -40,3 +58,15 @@ const secondstommsss = (seconds) => {
   }
   return formattedTime;
 };
+
+
+function getRawAudioMedia(){
+  return navigator.mediaDevices.getUserMedia({
+    audio:{
+      echoCancellation: false,
+      autoGainControl: false,
+      noiseSuppression: false,
+      latency: 0
+    }
+  })
+}

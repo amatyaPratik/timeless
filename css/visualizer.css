@@ -2,14 +2,18 @@
 #visualizer {
   height: 100%;
   position: absolute;
-  width: 95.4%;
-  /* width: calc(100%-62px); */
+  /* width: 95.4%; */
+  width: calc(100% - 62px);
   right: 0;
-  /* left: 62px; */
+  left: 62px;
   top: 0;
+  pointer-events: none;
   /* border: 3px solid forestgreen; */
-  background-color: rgba(30, 30, 30, 0.3);
-  z-index: 0;
+  /* background-color: rgba(30, 30, 30, 0.4); */
+  background: rgba(0, 0, 0, 0.1); /* Semi-transparent background color */
+  backdrop-filter: blur(2px); /* Apply a blur effect */
+  
+  z-index: 2;
 }
 
 #visualizer {

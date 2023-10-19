@@ -1,6 +1,6 @@
 let anyOverlay 
 // = document.getElementById("any-overlay");
-const anyToggle 
+let anyToggle 
 // = document.getElementsByClassName("any-link")[0];
 
 function toggleAnyOverlay(toggleBtn, overlay) {

@@ -5,11 +5,16 @@
 }
 
 body.dj #player-container {
-  background-image: radial-gradient(green, #000000 84%);
+  background-image: radial-gradient(black, rgb(56, 71, 71) 95%);
+  /* rgb(77, 33, 73 
+  rgb(60, 120, 122)
+  rgb(122, 60, 117) 
+  */
 }
 
 #player-container #vinyl-container {
   /* margin: 0; */
+  /* box-shadow: 3px 5px 9px bisque; */
   position: absolute;
   height: 100vmin;
   width: 100vmin;
@@ -21,12 +26,13 @@ body.dj #player-container {
   /* transform: translateX(-50%); */
   left: 0;
   top: 0%;
-  margin-left: -348px;
+  margin-left: -25vw; 
+  /* //-348px; */
   /* -ms-transform: translateY(-50%, -50%); */
   /* transform: translate(-50%, -50%); */
   transform: translateX(-50%);
   z-index: 2;
-  /* transform-origin: 380px 380px; */
+  transform-origin: 50vmin 50vmin;
   animation: rotate 4s linear infinite;
   animation-play-state: paused;
 }

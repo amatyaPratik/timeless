@@ -1,8 +1,16 @@
 const minX = 0;
 const minY = 0;
+
+const bubbleCount = 20;
+
+const playerContainer = document.getElementById('player-container');
+const w1 = playerContainer.offsetWidth + 'px';
+const h1 = playerContainer.offsetHeight + 'px';
+
+console.log(w1, h1);
+
 const maxX = 1300;
 const maxY = 600;
-const bubbleCount = 24;
 
 //holds wall boundaries
 let walls;
@@ -12,12 +20,13 @@ let walls;
 let bubbles = [];
 
 function startBubbles() {
+  console.log(container);
   container.init();
   walls = container.getWalls();
   const randInits = []; // array of {rx, ry, rradius} that were initialized with getRandomInt
 
   for (let i = 0; i < bubbleCount; i++) {
-    let randRadius = getRandomInt(5, 25);
+    let randRadius = getRandomInt(5, 45);
     let ranX = getRandomInt(walls.left, walls.right - 2 * randRadius);
     let ranY = getRandomInt(walls.top, walls.bottom - 2 * randRadius);
 
@@ -50,13 +59,19 @@ function endBubbles() {
   bubbles = [];
   container.clear();
 }
+
 let container = {
   reqFrame: -1,
   box: document.createElement("div"),
   init: function () {
+    const playerContainer = document.getElementById('player-container');
+    const w1 = playerContainer.offsetWidth + 'px';
+    const h1 = playerContainer.offsetHeight + 'px';
+
+
     this.box.setAttribute("id", "box");
-    this.box.style.width = maxX + "px";
-    this.box.style.height = maxY + "px";
+    this.box.style.width = w1 //maxX + "px";
+    this.box.style.height = h1 //maxY + "px";
     this.box.style.margin = "10px auto";
     document.body.insertBefore(this.box, document.body.childNodes[0]);
   },
@@ -234,13 +249,12 @@ updateGameArea = (timestamp) => {
   lastRenderTime = timestamp;
 };
 
-if (bubbleMode) {
-  startBubbles();
-}
-
 container.box.addEventListener("mousedown", (e) => {
   if (e.target.classList[0] === "bubble") {
-    new Audio(`../res/sounds/pop2.mp3`).play();
+    console.log(e.target.style.width.split('px')[0]);
+    const popSound = new Audio(`../res/sounds/pop2.mp3`)
+    popSound.volume = (e.target.style.width.split('px')[0])/100
+    popSound.play();
     e.target.style.backgroundImage = "url('../res/images/gif/pop.gif')";
     setTimeout(() => {
       e.target.style.display = "none";
@@ -249,6 +263,7 @@ container.box.addEventListener("mousedown", (e) => {
       e.target.style.display = "initial";
       e.target.style.backgroundImage =
         "url('../res/images/sprites/bubble2.png')";
+        e.target.style.zIndex='99'
     }, 30000);
   }
 });

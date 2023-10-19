@@ -1,32 +1,32 @@
 class Player {
+
+  context;
+  modes = new Set('dj','casette','photos')
+  mode
+
   constructor(songs) {
-    this.context = new AudioContext();
+    // this.context = new AudioContext();
 
     this.chosenScheme = "serial";
     this.songs = songs;
     this.songIndex = 1;
     this.title = document.getElementById("title");
     this.artist = document.getElementById("artist");
+    this.isFavoriteSong = false
 
-    //progress UI
-    this.progressContainer = document.getElementsByClassName(
-      "progress-n-favorite"
-    )[0];
-    // this.progress =
-    //   this.progressContainer.getElementsByClassName("progress")[0];
-    // this.progressHandle = document.getElementsByClassName("progress-handle")[0];
-
-    this.inputProgress =
-      this.progressContainer.getElementsByTagName("input")[0];
+    this.progressContainer = document.getElementsByClassName("progress-n-favorite")[0];
+  
+    this.inputProgress = this.progressContainer.getElementsByTagName("input")[0];
     this.hint = document.getElementById("timeHint");
     this.progressTime = document.getElementById("progress-time");
     this.endTime = document.getElementById("end-time");
 
     this.initAudio();
+    this.source = this.context.createMediaElementSource(this.audio)
 
     this.locked = false;
     this.muted = false;
-    this.playing = false;
+    this.isPlaying = !this.audio.paused;
     this.volume = this.audio.volume;
     this.previous_volume = this.volume;
 
@@ -37,34 +37,65 @@ class Player {
     this.volumeFilled = document.getElementById("set");
     this.btnVolume = document.getElementById("btn-volume");
 
-    this.collectionsOverlay = document.getElementById(
-      "songs-collection-overlay"
-    );
+    this.collectionsOverlay = document.getElementById("songs-collection-overlay");
 
-    this.previousplaynext =
-      document.getElementsByClassName("previousplaynext")[0];
+    this.previousplaynext = document.getElementsByClassName("previousplaynext")[0];
     this.playBtn = document.getElementById("play");
     this.nextBtn = document.getElementById("next");
     this.previousBtn = document.getElementById("previous");
 
     this.btnSwitchScheme = document.getElementById("switch-schemes");
+    this.btnPlaylistsToggle = document.getElementById('btn-playlists-n-songs')
     this.chooseScheme = document.getElementById("chooseScheme");
     this.btnSerial = document.getElementById("serial");
     this.btnShuffle = document.getElementById("shuffle");
     this.btnRepeat = document.getElementById("repeat");
 
     this.lockBtn = document.getElementById("lock");
-    this.favoriteBtn = document.getElementsByClassName("btn-favorite")[0];
+    this.btnFavorite = document.getElementsByClassName("btn-favorite")[0];
+
+    this.bass = document.querySelector("input#bass");
+    this.mid = document.querySelector("input#mid");
+    this.treble = document.querySelector("input#treble");
+    this.reverb = document.querySelector("input#reverb");
 
     this.playBtn.addEventListener("click", () => {
       this.playpause();
     });
 
+    this.btnFavorite.addEventListener('click',()=>{
+      this.addToFavorites();
+    })
+
+    this.analyserNode = this.context.createAnalyser();
+    this.gainNode = new GainNode(this.context, {gain: this.audio.volume}) 
+    this.bassEQ = new BiquadFilterNode(this.context,{
+      type: 'lowshelf',
+      frequency: 500,
+      gain: this.bass.value
+    })
+    this.midEQ = new BiquadFilterNode(this.context,{
+      type: 'peaking',
+      Q: Math.SQRT1_2,
+      frequency: 1500,
+      gain: this.mid.value
+    })
+    this.trebleEQ = new BiquadFilterNode(this.context,{
+      type: 'highshelf',
+      frequency: 3000,
+      gain: this.treble.value
+    })
+
+    this.setupEqualizerEventListeners()
+
     this.lockBtn.addEventListener("click", this.toggleLock);
     this.initDjMode();
     this.nextBtn.addEventListener("click", this.nextSong);
     this.previousBtn.addEventListener("click", this.previousSong);
-
+    this.progressContainer.addEventListener('change',e=>{
+      this.skipTo(e.target.value)
+    })
+    
     this.btnSwitchScheme.addEventListener("click", (e) => {
       if (this.chooseScheme.classList.contains("on")) {
         switch (e.target.id) {
@@ -191,6 +222,7 @@ class Player {
   };
 
   setupContext = () => {
+    this.context = new (window.AudioContext || window.webkitAudioContext)();
     if (this.context.state === "suspended") {
       this.context.resume();
     }
@@ -208,22 +240,31 @@ class Player {
     this.muted = false;
     this.volumeContainer.style.display = "block";
     this.system.classList.replace("muted", "unmuted");
-    this.btnVolume.style.backgroundImage =
-      "url(../res/images/icons/volume.png)";
+    this.btnVolume.style.backgroundImage = "url(../res/images/icons/volume.png)";
     this.audio.volume = this.previous_volume;
   };
 
   updatePlayingSongInfo = () => {
     this.title.textContent = this.songs[this.songIndex].split("-")[1];
     this.artist.textContent = this.songs[this.songIndex].split("-")[0];
+    this.endTime.textContent = getTimeInMmSs(this.audio.duration*1000)
   };
+
+  
+  play = () =>{
+    this.audio.play();
+  }
+
+  pause = () =>{
+    this.audio.pause();
+  }
 
   playpause = () => {
     if (this.audio.paused) {
       this.audio.play();
     } else this.audio.pause();
 
-    this.playing = this.audio.paused;
+    this.isPlaying = !this.audio.paused;
   };
 
   nextSong = () => {
@@ -237,9 +278,10 @@ class Player {
       case "repeat":
     }
     this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
-    this.updatePlayingSongInfo();
+    this.audio.load()   
     this.audio.pause();
     this.playpause();
+    this.updatePlayingSongInfo();
   };
 
   previousSong = () => {
@@ -253,9 +295,9 @@ class Player {
         break;
       case "repeat":
     }
-    this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
-    this.updatePlayingSongInfo();
+    this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";   
     this.playpause();
+    this.updatePlayingSongInfo();
   };
 
   playTitle = (title) => {
@@ -270,9 +312,6 @@ class Player {
     this.updatePlayingSongInfo(title);
   };
 
-  setCurrentTime = (newCurrentTime) => {
-    this.audio.currentTime = newCurrentTime;
-  };
   skipTo = (seekPercent) => {
     if (this.locked) return;
 
@@ -284,41 +323,44 @@ class Player {
     this.inputProgress.value = seekPercent;
   };
 
-  updateProgressThumb = (timeupdateEvent) => {
+  updateProgressInUI = (timeupdateEvent) => {
     const { duration, currentTime } = timeupdateEvent.srcElement;
     const progressedPercent = (currentTime / duration) * 100;
     this.inputProgress.value = progressedPercent;
+    this.progressTime.textContent = getTimeInMmSs(currentTime*1000)
   };
 
-  initAudio = () => {
+  initAudio = () => {this.setupContext();
     if (!this.audio) {
       this.audio = document.createElement("audio");
       this.audio.id = "audio";
       this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
-      this.audio.volume = 0.2;
-      // this.audio.currentTime = 0;
+      this.audio.load()
+      this.audio.volume = 0.0;
+      this.audio.play();
       this.title.textContent = this.songs[this.songIndex].split("-")[1];
       this.artist.textContent = this.songs[this.songIndex].split("-")[0];
-      this.setupContext();
-      this.audio.play();
-
-      this.audio.addEventListener("timeupdate", this.updateProgressThumb);
+      
+      // this.audio.addEventListener('canplay',this.setupAudioAsEqualizerSource)
+      this.audio.addEventListener("timeupdate", this.updateProgressInUI);
       this.audio.addEventListener("ended", this.nextSong);
+      this.audio.addEventListener('loadedmetadata', (function(e) {
+        // Now you can access this.audio.duration safely
+        this.endTime.textContent = getTimeInMmSs(this.audio.duration*1000)
+      }).bind(this));
     }
-    // this.initProgressUI(0, this.audio.duration);
   };
 
-  // initProgressUI = (min, max) => {
-  //   this.inputProgress.setAttribute("min", min);
-  //   this.inputProgress.setAttribute("max", max);
-  // };
+  getAudio(){
+    return this.audio
+  }
 
   toggleSchemeButtons = () => {
     if (!this.chooseScheme.classList.contains("on")) {
       this.chooseScheme.classList.add("on");
-      this.btnSerial.style.transform = "translateX(-80px)";
-      this.btnShuffle.style.transform = "translateY(80px)";
-      this.btnRepeat.style.transform = "translateX(80px)";
+      this.btnSerial.style.transform = "translateX(50px)";
+      this.btnShuffle.style.transform = "translateY(50px)";
+      this.btnRepeat.style.transform = "translateY(-50px)";
       show(this.btnSerial);
       show(this.btnShuffle);
       show(this.btnRepeat);
@@ -330,19 +372,22 @@ class Player {
     }
   };
 
+  addToFavorites = () => {
+    this.isFavoriteSong = !this.isFavoriteSong
+    this.btnFavorite.style.backgroundImage= this.isFavoriteSong? "url('../../res/images/sprites/favorite.png')":"url('../../res/images/icons/favorite-btn.png')"
+  }
+
   initDjMode = () => {
+    this.mode= this.modes.has('dj')&&'dj'
     if (!this.system.classList.contains("dj")) return;
 
     this.disk = document.getElementById("vinyl-container");
 
     this.playBtn.addEventListener("click", () => {
       this.disk.style.animationPlayState =
-        (this.playing && "running") || (!this.playing && "paused");
+        (this.isPlaying && "running") || (!this.isPlaying && "paused");
 
-      this.playBtn.style.backgroundImage =
-        (this.playing && "url('../res/images/icons/play.png')") ||
-        this.playing ||
-        "url('../res/images/icons/pause.png')";
+      this.playBtn.innerHTML = this.isPlaying ? '<i class="fa-solid fa-play"></i>':'<i class="fa-solid fa-pause"></i>'
     });
   };
 
@@ -352,22 +397,53 @@ class Player {
       this.previousBtn.style.display = "none";
       this.playBtn.style.display = "none";
       this.nextBtn.style.display = "none";
-      this.inputProgress.style.display = "none";
-      this.favoriteBtn.style.display = "none";
-      this.progressContainer.style.opacity = 0.2;
-      this.lockBtn.style.backgroundImage =
-        "url(../res/images/icons/locked.png)";
-      // this.lockBtn.style.left = "90%";
+      this.inputProgress.disabled = true;
+      this.lockBtn.style.backgroundImage = "url(../res/images/icons/locked.png)";
+      this.btnFavorite.style.opacity = .4
+      this.btnFavorite.style.pointerEvents = 'none'
+      this.inputProgress.style.opacity = .2
+      this.btnSwitchScheme.style.opacity = .2
+      this.btnSwitchScheme.style.pointerEvents = 'none'
+      this.btnPlaylistsToggle.style.display = 'none'
+      this.btnVolume.style.display = 'none'
     } else {
       this.previousBtn.style.display = "initial";
       this.playBtn.style.display = "initial";
       this.nextBtn.style.display = "initial";
-      this.progressHandle.style.display = "initial";
-      this.favoriteBtn.style.display = "initial";
-      this.progressContainer.style.opacity = 1;
-      // this.lockBtn.style.left = "0";
-      this.lockBtn.style.backgroundImage =
-        "url(../res/images/icons/unlocked.png)";
+      this.inputProgress.disabled = false;
+      this.btnFavorite.style.opacity = 1
+      this.btnFavorite.style.pointerEvents = 'initial'
+      this.inputProgress.style.opacity = 1
+      this.btnSwitchScheme.style.opacity = 1
+      this.btnSwitchScheme.style.pointerEvents = 'initial'
+      this.lockBtn.style.backgroundImage = "url(../res/images/icons/unlocked.png)";
+      this.btnPlaylistsToggle.style.display = 'initial'
+      this.btnVolume.style.display = 'initial'
     }
   };
+
+  setupEqualizerEventListeners(){
+  
+    this.audio.addEventListener('volumechange',e=>{
+      const value = this.audio.volume
+      console.log('value: ',value);
+      this.gainNode.gain.setTargetAtTime(value, this.context.currentTime, 0.01)
+    })
+    this.bass.addEventListener('input',e=>{
+      const value = e.target.value
+      console.log('bass: ',value);
+      this.gainNode.gain.setTargetAtTime(value, this.context.currentTime, 0.01)
+    })
+    mid.addEventListener("input", (e) => {
+      const value = parseInt(e.target.value);
+      console.log('mid: ',value);
+      this.midEQ.gain.setTargetAtTime(value, this.context.currentTime, 0.01);
+    });
+  
+    treble.addEventListener("input", (e) => {
+      const value = parseInt(e.target.value);
+      console.log('treb: ',value);
+      this.trebleEQ.gain.setTargetAtTime(value, this.context.currentTime, 0.01);
+    });
+  }
 }

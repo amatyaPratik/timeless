@@ -19,14 +19,14 @@
 .progress-n-favorite {
   width: 80%;
   height: 40px;
-  overflow: hidden;
+  overflow: visible;
   margin: 23px 0;
   position: relative;
   /* background-color: #fff; */
   display: flex;
   justify-content: space-around;
   align-items: center;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 #progress-container.normal-progress-bar {
@@ -42,17 +42,21 @@
 }
 
 #lock {
+  position: fixed;
+  z-index: 20;
+  left: 53%;
+  top: 4%;
   cursor: pointer;
   /* position: fixed; */
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
   background-image: url(../res/images/icons/unlocked.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: 60%;
   border-radius: 50%;
-  height: 36px;
-  width: 36px;
+  height: 38px;
+  width: 38px;
   /* right: 5%; */
   transition: all 400ms;
 }
@@ -70,8 +74,8 @@
   position: relative;
 }
 
-#progress-container .progress {
-  background-color: limegreen;
+/* #progress-container .progress {
+  background-color: red;
   border-top: 1px solid rgba(255, 255, 255, 0.7);
   width: 0px;
   height: 100%;
@@ -89,7 +93,7 @@
   left: 50%;
   border-radius: 2px;
   background-color: limegreen;
-}
+} */
 
 #title {
   font-family: "Audiowide", cursive;
@@ -99,12 +103,8 @@
 
 #artist {
   font-family: "Monofett", cursive;
-  color: whitesmoke;
+  color:greenyellow;
   font-size: 25px;
   word-spacing: 9px;
   letter-spacing: 5px;
 }
-
-/* #lock:hover {
-  background-color: rgba(255, 255, 255, 0.7);
-} */

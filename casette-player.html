@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/visualizer.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/switch-schemes.css" />
     <link rel="stylesheet" href="./css/playlists.css" />
     <link rel="stylesheet" href="./css/volume.css" />
     <link rel="stylesheet" href="./css/equalizer.css" />
@@ -20,26 +19,34 @@
     <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
     <link rel="stylesheet" href="./css/previousplaynext.css" />
     <link rel="stylesheet" href="./css/casette.css" />
+    <link rel="stylesheet" href="./css/switch-schemes.css" />
     <link rel="stylesheet" href="./css/sleep.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
     <!-- <link rel="stylesheet" href="./css/previousplaynext.css" /> -->
     <title>timeless | photos</title>
   </head>
-  <body id="timeless" class="carousel day unmuted">
+  <body id="timeless" class="casette day unmuted">
+    <div id="video-container" class="hide">
+    <video autoplay loop muted>
+      <source src="./res/videos/rain.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    </div>
     <canvas id="visualizer"></canvas>
 
     <div id="equalizer">
       <div class="grid outline">
-        <label for="bass">bass</label>
-        <input type="range" min="0" max="1" value=".01" step=".01" id="bass" />
+        <label for="bass">BASS</label>
+        <input type="range" min="0" max="10" value="0" step="0.5" id="bass" />
 
-        <label for="mid">mid</label>
+        <label for="mid">MID</label>
         <input type="range" min="-10" max="10" value="0" id="mid" />
 
-        <label for="treble">treble</label>
+        <label for="treble">TREBLE</label>
         <input type="range" min="-10" max="10" value="0" id="treble" />
 
-        <label for="reverb">reverb</label>
-        <input type="range" min="-10" max="10" value="0" id="reverb" />
+        <!-- <label for="reverb">REVERB</label>
+        <input type="range" min="-10" max="10" value="0" id="reverb" /> -->
       </div>
     </div>
 
@@ -59,14 +66,9 @@
       <div id="sleep-btn" class="sidebar-btn"></div>
     </div>
 
-    <div id="player-container">
-      <div id="switch-schemes" class="circle">
-        <button class="switch-scheme" id="chooseScheme"></button>
-        <button class="switch-scheme" id="serial"></button>
-        <button class="switch-scheme" id="shuffle"></button>
-        <button class="switch-scheme" id="repeat"></button>
-      </div>
+    <button id="lock"></button>
 
+    <div id="player-container">
       <div id="btn-playlists-n-songs"></div>
       <div class="playlist-btn-shadow"></div>
 
@@ -75,8 +77,8 @@
         <div id="casette-container">
           <!-- <div id="wheels"> -->
           <div id="casette"></div>
-          <div id="wheel-left"></div>
-          <div id="wheel-right"></div>
+          <div id="wheel-left" class="paused"></div>
+          <div id="wheel-right" class="paused"></div>
           <!-- </div> -->
         </div>
 
@@ -101,13 +103,18 @@
               <!-- <small id="timeHint">0:0</small> -->
               <small id="end-time">5:12</small>
             </div>
-            <button id="lock"></button>
+            <div id="switch-schemes" class="circle">
+              <button class="switch-scheme" id="chooseScheme"></button>
+              <button class="switch-scheme" id="serial"></button>
+              <button class="switch-scheme" id="shuffle"></button>
+              <button class="switch-scheme" id="repeat"></button>
+            </div>
           </div>
 
           <div class="previousplaynext">
-            <button class="previous circle subtle" id="previous"></button>
+            <button class="previous circle" id="previous"></button>
             <button class="play circle" id="play"></button>
-            <button class="next circle subtle" id="next"></button>
+            <button class="next circle" id="next"></button>
           </div>
         </div>
       </div>
@@ -120,7 +127,7 @@
     </div>
     <div id="btn-volume"></div>
 
-    <div id="modes-overlay">
+    <div id="modes-overlay" class="hide">
       <div class="modes-card">
         <div class="mode-image bars-img"></div>
         <label for="bars-img" class="mode-name">bars</label>
@@ -176,67 +183,173 @@
       <div id="quick-playlists" class="active">
         <div class="playlist-card-small playlist-favorite">
           <div class="playlist-name">Favorites</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
+
         <div class="playlist-card-small playlist-electronic">
           <div class="playlist-name">electronic</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-blues">
           <div class="playlist-name">blues</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-classical">
           <div class="playlist-name">classical</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-rock">
           <div class="playlist-name">rock</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-dance">
           <div class="playlist-name">dance</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-rnb">
           <div class="playlist-name">R&B</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-favorite">
           <div class="playlist-name">Favorites</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
 
         <div class="playlist-card-small playlist-jazz">
           <div class="playlist-name">jazz</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-theatre">
           <div class="playlist-name">theatre</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-ost">
           <div class="playlist-name">ost</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-metal">
           <div class="playlist-name">metal</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-indie">
           <div class="playlist-name">indie</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-country">
           <div class="playlist-name">country</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-grunge">
           <div class="playlist-name">grunge</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-instrumental">
           <div class="playlist-name">instrumental</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-alt-rock">
           <div class="playlist-name">alt-rock</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-relaxing">
           <div class="playlist-name">relaxing</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-upbeat">
           <div class="playlist-name">upbeat</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-rough-day">
           <div class="playlist-name">rough-day</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
         <div class="playlist-card-small playlist-mellow">
           <div class="playlist-name">mellow</div>
+          <div class="card-options-overlay">
+            <button class="play-from-card"></button>
+            <button class="card-info"></button>
+            <div class="songs-in-card">2 songs</div>
+          </div>
         </div>
       </div>
       <div id="label-bar">
@@ -298,24 +411,26 @@
     </select>
 
     <div id="fx-overlay">
-      <button class="fx-btn" id="rain"></button>
+      <button class="fx-btn" id="rain" onclick="turnOnRain()"></button>
       <button class="fx-btn" id="bubbles"></button>
       <button class="fx-btn" id="autotune"></button>
     </div>
 
     <script src="./js/utils.js"></script>
     <script src="./js/classes/Player.js"></script>
-    <script src="./js/playlists.js"></script>
     <script src="./js/overlays/songsCollections.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/volume.js"></script>
+    <script src="./js/particles/bubbles.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/overlays/equalizer.js"></script>
     <script src="./js/overlays/slideModes.js"></script>
     <script src="./js/progressBar.js"></script>
-    <script src="./js/casette.js"></script>
-    <script src="./js/overlays/sleep.js"></script>
     <script src="./js/visualizer.js"></script>
+    <script src="./js/casette.js"></script>
+    <script src="./js/playlists.js"></script>
+    <script src="./js/overlays/sleep.js"></script>
+    
     <script src="./js/searchBar.js"></script>
   </body>
 </html>

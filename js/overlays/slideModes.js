@@ -1,6 +1,13 @@
 const modesContainer = document.getElementById("modes-overlay");
 const toggleModes = document.getElementById("btn-modes");
 
+let bubbleMode = false
+
+// function turnOnBubbleMode(){
+//   bubbleMode = true
+//   console.log('bubl');
+// }
+
 document.addEventListener("click", (e) => {
   if (!modesContainer) return;
   if (modesContainer.contains(e.target)) return;
@@ -10,12 +17,12 @@ document.addEventListener("click", (e) => {
   )
     return;
   if (
-    modesContainer.style.bottom == "-200px" &&
+    modesContainer.classList.contains('hide') &&
     toggleModes.contains(e.target)
   ) {
-    modesContainer.style.bottom = "0";
+    modesContainer.classList.replace('hide','show')
     return;
   } else {
-    modesContainer.style.bottom = "-200px";
+    modesContainer.classList.replace('show','hide')
   }
 });

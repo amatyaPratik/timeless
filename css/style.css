@@ -1,4 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200&display=swap"); */
+
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Autour+One&family=Codystar&family=Comfortaa:wght@300;400;500;600&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&family=Lato:wght@300;400;700&family=Lobster&family=Monofett&family=Montserrat:ital,wght@0,200;0,500;0,600;1,200;1,400&family=Outfit:wght@300;400;500;600&family=Pacifico&family=Playpen+Sans:wght@600&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&family=Righteous&family=Roboto:wght@300;400&family=Space+Grotesk:wght@300;400;500&family=Titillium+Web:wght@200;300;400;600&display=swap');
+
+:root{
+  --primary-color: #56d8c1;
+  --secondary-color: purple;
+  --selection-color: greenyellow;
+}
 
 .outline {
   border: 1px solid black;

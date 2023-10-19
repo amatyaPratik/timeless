@@ -1,9 +1,21 @@
 const canvas = document.getElementById("visualizer");
 
-const src = player.context.createMediaElementSource(player.audio);
+const src = player.source
 
 const analyser = player.context.createAnalyser();
-src.connect(analyser).connect(player.context.destination);
+
+const gainNode = player.gainNode
+const bassEQ = player.bassEQ
+const midEQ = player.midEQ
+const trebleEQ = player.trebleEQ
+
+src
+.connect(bassEQ)
+.connect(midEQ)
+.connect(trebleEQ)
+.connect(gainNode)
+.connect(analyser)
+.connect(player.context.destination);
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
@@ -116,7 +128,7 @@ function drawVisualizer() {
 }
 
 function drawDottedVisualizer() {
-  analyser.fftSize = 64;
+  analyser.fftSize = 128;
   x = 0;
   clearCanvas();
   analyser.getByteFrequencyData(sampledArray);
@@ -124,5 +136,5 @@ function drawDottedVisualizer() {
   drawDotted(sampledArray, barWidth, barHeight, x);
 }
 
-drawVisualizer();
-// drawDottedVisualizer();
+// drawVisualizer();
+drawDottedVisualizer();

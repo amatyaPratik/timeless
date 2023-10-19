@@ -157,20 +157,19 @@ btnPlaylistOptions.addEventListener("click", (e) => {
 //   }
 // });
 
-function addCardHoverEvent() {
-  const cards = [...document.getElementsByClassName("playlist-card-small")];
-  cards.forEach((card) => {
-    card.addEventListener("mouseover", (e) => {
-      if (card.contains(e.target)) {
-        card.getElementsByClassName("card-options-overlay")[0].style.display =
-          "flex";
-      }
-    });
-    card.addEventListener("mouseout", (e) => {
-      card.getElementsByClassName("card-options-overlay")[0].style.display =
-        "none";
-    });
-  });
-}
+// function addCardHoverEvent() {
+//   const cards = [...document.getElementsByClassName("playlist-card-small")];
+//   cards.forEach((card) => {
+//     console.log('card: ',card);
+//     card.addEventListener("mouseover", (e) => {
+//       if (card.contains(e.target)) {
+//         card.getElementsByClassName("card-options-overlay")[0].style.display = "flex";
+//       }
+//     });
+//     card.addEventListener("mouseout", (e) => {
+//       card.getElementsByClassName("card-options-overlay")[0].style.display =   "none";
+//     });
+//   });
+// }
 
-addCardHoverEvent();
+// addCardHoverEvent();

@@ -48,3 +48,82 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
     Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
+
+
+#equalizer input[type="range"]{
+  overflow: visible;
+}
+
+/*Range Reset*/
+#equalizer input[type="range"] {
+  -webkit-appearance: none;
+   appearance: none;
+   background: transparent;
+   cursor: pointer;
+   /* width: 15rem; */
+}
+/***** Chrome, Safari, Opera and Edge Chromium styles *****/
+ /* slider track */
+ #equalizer input[type="range"]::-webkit-slider-runnable-track {
+  border-radius: 0.5rem;
+  height: 12px;  
+  overflow: visible;
+  z-index: 19;
+}
+#equalizer input[type="range"]#bass::-webkit-slider-runnable-track{
+  background-color: navy !important;
+}
+#equalizer input[type="range"]#mid::-webkit-slider-runnable-track{
+  background-color: purple !important;
+}
+#equalizer input[type="range"]#treble::-webkit-slider-runnable-track{
+  background-color: coral !important;
+}
+#equalizer input[type="range"]#reverb::-webkit-slider-runnable-track{
+  background-color: yellowgreen !important;
+}
+
+/* slider thumb */
+#equalizer input[type="range"]::-webkit-slider-thumb {
+ -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -11px;
+  /*custom styles*/
+  background-color: white;
+  height: 38px;
+  width: 10px;
+  z-index: 20;
+}
+
+#equalizer input[type="range"]:focus::-webkit-slider-thumb {   
+ border: 1px solid pink;
+ outline: 3px solid pink;
+ outline-offset: 0.125rem; 
+}
+
+/******** Firefox styles ********/
+/* slider track */
+#equalizer input[type="range"]::-moz-range-track {
+  /* background-color: pink; */
+  background-color:maroon;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+  overflow: visible;
+}
+
+/* slider thumb */
+#equalizer input[type="range"]::-moz-range-thumb {
+  border: none; /*Removes extra border that FF applies*/
+  border-radius: 0; /*Removes default border-radius that FF applies*/
+  margin-top: -11px;
+  /*custom styles*/
+  background-color: white;
+  height: 2rem;
+  width: 1rem;
+}
+
+#equalizer input[type="range"]:focus::-moz-range-thumb {
+ border: 1px solid pink;
+ outline: 3px solid pink;
+ outline-offset: 0.125rem; 
+}

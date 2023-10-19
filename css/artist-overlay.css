@@ -222,7 +222,7 @@
   border-radius: 50%;
 }
 #play-album:hover {
-  background-image: url(../res/images/icons/round-play.png);
+  background-image: url(../res/images/icons/round-play.svg);
   border: 1px solid darkgreen;
   background-color: whitesmoke;
   filter: drop-shadow(0px 0px 20px #000000);

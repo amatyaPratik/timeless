@@ -1,10 +1,9 @@
 #switch-schemes {
-  position: absolute;
-  height: 43px;
-  width: 43px;
-  z-index: 97;
-  top: 3%;
-  left: 50%;
+  /* position: absolute; */
+  position: relative;
+  height: 38px;
+  width: 38px;
+  z-index: 0;
   background-color: transparent;
   outline: none;
   opacity: 0.6;
@@ -30,24 +29,22 @@
   transition: all 400ms;
   opacity: 0;
 }
-/* #switch-schemes .switch-scheme.showing {
-  z-index: 97;
-  opacity: 1;
-}
-#switch-schemes .switch-scheme.hidden {
-  z-index: 96;
-  opacity: 0;
-} */
 .switch-scheme#chooseScheme {
   opacity: 0;
-  background-size: 100%;
+  /* background-size: 100%; */
   background-image: url(../res/images/icons/switching-schemes/arrow2.png);
   z-index: 95;
 }
 .switch-scheme#chooseScheme.on {
   opacity: 1;
   background-color: #fff;
+  background-size: 100% !important;
 }
+
+#switch-schemes button.switch-scheme{
+  background-size: 60%;
+}
+
 .switch-scheme#serial {
   background-image: url(../res/images/icons/switching-schemes/serial-white.png);
   z-index: 97;
