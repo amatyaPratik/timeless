@@ -3,7 +3,7 @@
 const src = player.source //player.createMediaElementSource
 
 const analyserNode = new AnalyserNode(player.context,{fftSize: 128})
-console.log(analyserNode);
+//console.log(analyserNode);
 const gainNode = player.gainNode
 const bassEQ = player.bassEQ
 const midEQ = player.midEQ

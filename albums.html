@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/tabs-n-filter.css" />
-    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    
     <link rel="stylesheet" href="./css/albums.css" />
 
     <!-- <link rel="stylesheet" href="./css/songs.css" /> -->
@@ -21,33 +21,36 @@
     <div id="sidebar">
       <div id="logo"></div>
       <div id="action-btns">
-        <a href="./index.html"><div id="btn-back" class="sidebar-btn"></div></a>
-        <div id="btn-equalizer" class="sidebar-btn"></div>
-        <a href="./file-mode.html"
-          ><div id="btn-file-play" class="sidebar-btn"></div
-        ></a>
-        <div id="btn-modes" class="sidebar-btn"></div>
-        <div id="btn-fx" class="sidebar-btn"></div>
+        <a href="./index.html">
+          <div id="btn-back" class="sidebar-btn"></div>
+        </a>
+        <div class="rotate90">
+          <img src="./res/images/icons/sidebar/folder.svg" width="50px" alt="folder">
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          <h3> ALBUMS</h3>
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          <img src="./res/images/icons/sidebar/album-2.svg" width="50px" alt="album">
+        </div>
       </div>
-      <div id="sleep-btn" class="sidebar-btn"></div>
     </div>
 
     <div id="albums-page">
       <div id="tabsandfilters">
-        <a href="./songs.html" class="search-tab">songs</a>
-        <a href="./artists.html" class="search-tab">artists</a>
-        <a href="#" class="search-tab active">albums</a>
+        <a href="./songs.html" class="search-tab">SONGS</a>
+        <a href="./artists.html" class="search-tab">ARTISTS</a>
+        <a href="#" class="search-tab active">ALBUMS</a>
 
         <input
           type="text"
           name="searchbar"
           id="searchbar"
           placeholder="search for a song"
+          class="pl10 pr50 py10"
         />
 
         <div id="genre-selector">
           <label for="genre">genre :</label>
-          <select name="genre" id="genre-select">
+          <select name="genre" id="genre-select" class="cp py5">
             <option value="all" selected>all</option>
             <option value="blues">blues</option>
             <option value="country">country</option>
@@ -59,7 +62,7 @@
 
         <div id="sort-selector">
           <label for="sort">sort :</label>
-          <select name="sort" id="sort-select">
+          <select name="sort" id="sort-select" class="cp py5">
             <option value="abc" selected>ABC</option>
             <option value="cba">CBA</option>
             <option value="length">length</option>
@@ -67,11 +70,11 @@
         </div>
       </div>
 
-      <div id="albums-section">
+      <div id="albums-section" class="albums-grid">
         <div class="albums-card outline">
           <div class="album-cover cover-a outline"></div>
           <div class="album-info">
-            <div class="title album-link">Let There Be Rock</div>
+            <div class="title album-link">Let There Be Rock<span style="color: red;">*</span></div>
             <div class="artist">ACDC</div>
           </div>
         </div>
@@ -191,7 +194,7 @@
         <div class="albums-card outline">
           <div class="album-cover cover-q outline"></div>
           <div class="album-info">
-            <div class="title">with a song in ..</div>
+            <div class="title">With a Song In Mind</div>
             <div class="artist">Blinkey Hindman</div>
           </div>
         </div>
@@ -199,8 +202,8 @@
         <div class="albums-card outline">
           <div class="album-cover cover-r outline"></div>
           <div class="album-info">
-            <div class="title">your song</div>
-            <div class="artist">His Son'g</div>
+            <div class="title">KITES</div>
+            <div class="artist">Wes Todd</div>
           </div>
         </div>
       </div>
@@ -208,8 +211,8 @@
 
     <div id="album-overlay">
       <div id="top">
-        <h1 id="album-title">Let There Be Rock</h1>
-        <button class="favorite-btn"></button>
+        <h2 id="album-title">Let There Be Rock</h2>
+        <button class="favorite-btn cp pl30"></button>
       </div>
       <div id="main-section">
         <div id="cover-art"></div>

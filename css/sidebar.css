@@ -11,62 +11,199 @@ body.normal #sidebar {
   z-index: 3;
 }
 
+body #sidebar-title{
+  display: none;
+}
+
+body.locked #sidebar{
+  opacity: .8;
+}
+
+body.locked #sidebar #sidebar-title{
+  display: flex;
+  font-size: 40px;
+  letter-spacing: 10px;
+  font-family: 'Quicksand';
+  transform: rotate(-90deg);
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform-origin: left center;
+  /* transform: translateY(-50%) rotate(-90deg); */
+  /* white-space: nowrap; */
+}
+
 body #sidebar {
   background-color: #56d8c1;
-  /* background-image: linear-gradient); */
   box-shadow: 0px 4px black;
   box-shadow: 5px 0px 7px rgba(0, 0, 0, 0.3);
+}
+
+section#sleep-time-options .sleep-pref{
+  padding: .4rem 0;
+  margin-bottom: .5rem;
+  position: absolute;
+  width: 100%;
+  bottom: -120px;
+  left: 0;
+  transition: 400ms all;
+}
+
+section#sleep-time-options.show .sleep-pref.sleep-1{
+  bottom: 120px;
+}
+section#sleep-time-options.show .sleep-pref.sleep-2{
+  bottom: 160px;
+}
+section#sleep-time-options.show .sleep-pref.sleep-3{
+  bottom: 200px;
+}
+section#sleep-time-options.show .sleep-pref.sleep-4{
+  bottom: 240px;
 }
 
 #logo {
   height: 50px;
   width: 100%;
-  cursor: pointer;
+  pointer-events: none;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 83%;
+  background-size: 70%;
   background-image: url("../res/images/logos/logo5.png");
 }
 
-#sidebar .sidebar-btn {
-  height: 50px;
+#sidebar .sidebar-btn{
+  height: 62px;
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 51%;
-  cursor: pointer;
+  cursor: pointer !important;
 }
-
+#sidebar .sidebar-btn:not(:last-child) {
+  /* margin-bottom: 1rem; */
+}
+#sidebar .sidebar-btn:hover,
 #sidebar .sidebar-btn.active {
+  transition: 200ms all;
   background-color: gainsboro;
 }
 
-#action-btns {
-  height: 60%;
+body #action-btns {
+  /* height: 60%; */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+}
+
+body.locked #action-btns{
+  display: none; 
 }
 
 #action-btns #btn-back {
   background-image: url("../res/images/icons/sidebar/back.png");
 }
 #action-btns #btn-songs-folder {
-  background-image: url("../res/images/icons/sidebar/music-folder.png");
+  background-image: url("../res/images/icons/sidebar/folder.svg");
 }
 #action-btns #btn-equalizer {
-  background-image: url("../res/images/icons/sidebar/equalizer.png");
+  background-image: url("../res/images/icons/sidebar/fx.png");
 }
 #action-btns #btn-file-play {
   background-image: url("../res/images/icons/sidebar/file-play.png");
 }
 #action-btns #btn-modes {
-  background-image: url("../res/images/icons/sidebar/modes.png");
+  background-image: url("../res/images/icons/sidebar/themes.svg");
 }
-#action-btns #btn-fx {
+/* #action-btns #btn-fx {
   background-image: url("../res/images/icons/sidebar/fx.png");
+} */
+
+#sleep-btn {
+  background-image: none;
+  /* url("../res/images/icons/sidebar/zzz.png"); */
 }
 
-#sidebar #sleep-btn {
-  background-image: url("../res/images/icons/sidebar/zzz.png");
+body #preference-btn{
+  background-image: url("../res/images/icons/sidebar/hand.svg");
+  background-size: 25px !important;
+  filter: invert(.9);
+}
+
+body.locked #preference-btn{
+  background-image: url("../res/images/icons/locked-dark.svg");
+  background-color: white;
+}
+
+#preference-options{
+  position: absolute;
+  left: 62px;
+  bottom: 0;
+  box-sizing: border-box;
+  background: white;
+  border-style:inset;
+  backdrop-filter: blur(4px);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+  border-radius: 0 .35rem 0 0;
+  z-index: 80;
+}
+
+#preference-options button{
+  padding: .6vw .8vw;
+  text-align: left;
+  font-size: 1.2vw;
+  font-weight: 700;
+  width: 100%;
+  /* box-sizing: border-box; */
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2px);
+}
+
+#preference-options.hide{
+  display: none;
+}
+#preference-options.show button{
+  display: block;
+}
+
+
+#preference-options button:hover{
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.preference-btn{
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-style: solid;
+  z-index: 70;
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  bottom: -50px;
+  box-sizing: border-box;  
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 2px 3px 4px rgba(0, 0, 0, 0.3);
+}
+.preference-btn#sleep{
+  transition: 200ms cubic-bezier(0.86, 0, 0.07, 1) all;
+}
+.preference-btn#lock{
+  transition: 500ms cubic-bezier(0.86, 0, 0.07, 1) all;
+ }
+ body .preference-btn#lock{
+  background-image: url(../res/images/icons/locked.svg) !important;
+}
+body.locked .preference-btn#lock{
+  background-image: url(../res/images/icons/unlocked.svg) !important;
+}
+body .preference-btn#sleep{
+  background-image: url(../res/images/icons/sleep-0.svg) !important;
+}
+body.locked .preference-btn#sleep{
+  background-image: url(../res/images/icons/sleep-1.svg) !important;
 }

@@ -1,16 +1,25 @@
 #artist-overlay {
   position: absolute;
-  display: none;
+  /* display: none; */
+  display: block;
   border-radius: 10px;
-  width: 949px;
-  height: 584px;
+  width: 700px;
+  height: 440px;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  left: 51%;
+  transform:  translate(-50%, -50%);
+  scale: 0;
   background-color: #e5e5e5;
   filter: drop-shadow(0px 0px 10px #000);
   z-index: 99;
-  transition: all 400ms;
+  transition: 800ms cubic-bezier(0.165, 0.84, 0.44, 1) all ;
+  transform-origin: left top;
+  opacity: 0;
+}
+#artist-overlay.show{
+  scale: 1;
+  opacity: 1;
+  /* display: block; */
 }
 #info-left {
   border-radius: 10px 0 0 0;
@@ -45,31 +54,27 @@
   display: flex;
   justify-content: space-around;
   align-items: flex-end;
-  gap: 0 2px;
+  gap: 0 1px;
   bottom: 0;
   height: 25%;
   width: 100%;
+  box-shadow: 0 -4px 10px rgba(28, 56, 49, 0.7);
   /* overflow-x: scroll; */
-  background-color: #ab633b;
+  background-color: var(--primary-color-xx);
 }
 #info-right {
-  width: 49%;
+  width: 50%;
   height: 100%;
   float: left;
   position: relative;
   top: 0;
   bottom: 0;
   border-radius: 0 10px 0 0;
-  border-left: 2px solid darkslategray;
-  /* border: 1px solid black; */
+  box-shadow: inset 2px 0 4px rgba(0, 0, 0, 0.4);
+  /* border-left: 2px solid darkslategray; */
   text-overflow: clip;
   overflow-y: scroll;
   overflow-x: hidden;
-  -ms-overflow-style: initial; /* IE and Edge */
-  scrollbar-width: initial; /* Firefox */
-}
-*::-webkit-scrollbar {
-  display: initial;
 }
 
 #info-left .info-top {
@@ -93,17 +98,17 @@
   background-position: center;
   border: none;
   background-color: transparent;
-  cursor: pointer;
 }
 
-#info-right ul.songs-by-artist {
-  width: 100%;
-  position: absolute;
-  /* height: 10%; */
-
-  display: inline-block;
+#info-right ol.songs-by-artist {
+  /* width: 100%; */
+  font-size: .94rem;
+  padding-right: 1rem;
+  font-family: 'Poppins';
+  display: block;
+  /* list-style-type:georgian; */
 }
-#info-right ul.songs-by-artist li {
+#info-right ol.songs-by-artist li {
   cursor: pointer;
   margin: 8px 0;
   /* padding: 0 20px; */
@@ -129,18 +134,21 @@
 
 #albums small {
   position: absolute;
-  left: 10px;
+  left: 0px;
   top: 0px;
+  line-height: 8px;
+  background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   text-align: center;
-  color: #000;
+  color: thistle;
   padding-top: 2px;
-  text-decoration: underline;
+  text-transform: uppercase;
+  /* text-decoration: underline; */
 }
 #albums .chevron-next {
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
   height: 50px;
   width: 50px;
@@ -149,28 +157,30 @@
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 50%;
-  background-color: #fff;
-  opacity: 0.5;
-  cursor: pointer;
+  border: 0;
+  background-color: rgba(221, 218, 218, 0.4);
+  /* opacity: 0.5; */
   transition: all 100ms;
-  filter: drop-shadow(0px 0px 10px #000000);
+  filter: sepia(90);
+  backdrop-filter: blur(1px);
 }
 #albums .chevron-next:hover {
   opacity: 1;
-  filter: drop-shadow(0px 0px 10px #fff);
+  filter: drop-shadow(0px 2px 4px var(--primary-color)); 
 }
 .album-card {
   width: 150px;
-  height: 120px;
+  height: 110px;
   display: inline-block;
-
+  border-right: 3px inset gray;
+  border-radius: 5px 0 0 0;
   /* border: 1px solid forestgreen; */
-  /* overflow: hidden; */
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
 .album-card .album-cover {
-  height: 80%;
+  height: 70%;
   width: 100%;
   /* max-width: 300px; */
   /* display: block; */
@@ -198,9 +208,10 @@
   text-align: center;
   font-size: 13px;
   font-weight: 400;
-  padding: 5px 0;
-  line-height: 14px;
+  padding: 2px 0 0 0;
+  line-height: 12px;
   color: #fff;
+  font-family: 'Poppins';
   /* text-overflow: ellipsis; */
 }
 
@@ -216,14 +227,13 @@
   transform: translate(-50%, -50%);
   width: 110px;
   height: 110px;
-  cursor: pointer;
   filter: drop-shadow(0px 0px 4px #ab633b);
   transition: all 200ms;
   border-radius: 50%;
 }
 #play-album:hover {
-  background-image: url(../res/images/icons/round-play.svg);
-  border: 1px solid darkgreen;
-  background-color: whitesmoke;
+  background-image: url(../res/images/icons/round-play.png);
+  /* border: 1px solid darkgreen; */
+  /* background-color: rgba(0, 0, 0, 0.4); */
   filter: drop-shadow(0px 0px 20px #000000);
 }

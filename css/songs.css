@@ -1,39 +1,94 @@
 #songs-page {
   width: calc(100vw-62px);
   height: 100vh;
-  /* overflow: hidden; */
-  overflow-y: scroll;
+  overflow: hidden;
+  position: relative;
+  /* overflow-y: scroll; */
   scroll-behavior: smooth;
 }
 
+#action-btns{
+  height: 100%;
+  justify-content: space-between;
+}
+
+.rotate90{
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transform: rotate(-90deg);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform-origin: 0 0;
+}
+
+.rotate90 h3{
+  display: inline-block;
+  word-break: keep-all;
+  line-height: 62px;
+  font-size: 40px;
+  font-weight: 200;
+  font-family: 'Monoton';
+  color:gray;
+}
+
+.rotate90 img{
+  display: inline-block;
+  height: 43px;
+  filter: invert(.4);
+}
+
+#tabsandfilters{
+  height: 10vh;
+}
+
 #labels {
-  width: 98%;
-  padding: 10px 0;
+  font-family: 'Outfit','Pacifico', 'Quicksand';
+  width: 100%;
+  height: 4vh;
   text-align: center;
   position: sticky;
   top: 0;
-  text-decoration: underline;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
   background-color: #e5e5e5;
   border: 1px dashed rgba(0, 0, 0, 0.2);
 }
-#labels #title {
-  width: 20%;
+#labels ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
-#labels #artist {
-  width: 15%;
+#labels li {
+  height: 4vh; /* Adjust the height as needed */
+  line-height: 4vh; /* Set line-height equal to the height */
 }
 
-#labels #album {
-  width: 15%;
+#labels #title,
+#songs-table tr.song-item td.title{
+  width: 25%;
 }
-#labels #year {
-  width: 5%;
+#labels #artist,
+#songs-table tr.song-item td.artist
+{
+  width: 19%;
 }
-#labels #genre {
+
+#labels #album,
+#songs-table tr.song-item td.album
+{
+  width: 19%;
+}
+#labels #year,
+#songs-table tr.song-item td.year
+{
+  width: 7%;
+}
+#labels #genre,
+#songs-table tr.song-item td.genre
+{
   width: 30%;
-}
-#labels #label {
-  width: 15%;
 }
 
 #labels ul {
@@ -44,17 +99,33 @@
 
 #labels ul li {
   font-weight: 500;
-  font-size: 12px;
-  color: teal;
+  font-size: .9rem;
+  /* color: teal; */
+  color: grey;
 }
 
-#songs-table {
-  width: 98%;
-  text-align: center;
+#songs-page .section-table{
+  width: 100% !important;
+  height: 86vh;
+  position: relative;
+  overflow-y: auto;
+}
+table#songs-table {
+  width: 100%;
+  /* text-align: center; */
+  table-layout: auto !important;
+}
+#songs-table tr{
+  width: 100%;
+}
+
+table#songs-table  td{
+  /* text-align: center; */
+  padding-left: 1rem;
 }
 
 #songs-table .song-item:nth-child(odd) {
-  background-color: #dadada;
+  background-color: #dadadaa0;
 }
 
 .song-item td {

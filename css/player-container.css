@@ -34,7 +34,7 @@ body.dj #player-container {
   z-index: 2;
   transform-origin: 50vmin 50vmin;
   animation: rotate 4s linear infinite;
-  animation-play-state: paused;
+  animation-play-state: running;
 }
 
 @keyframes rotate {

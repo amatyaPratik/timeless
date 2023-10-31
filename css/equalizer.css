@@ -2,14 +2,15 @@
   width: 452px;
   height: 427px;
   background-color: dimgray;
-  border-radius: 10px;
+  border:0 !important;
   position: absolute;
   z-index: 99;
   top: 50%;
   left: 50%;
   display: none;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   transform: translate(-40%, -50%);
   transition: all 300ms;
   filter: drop-shadow(0px 0px 14px rgba(0, 0, 0, 0.53));
@@ -21,10 +22,60 @@
   border-radius: 30px;
 }
 
+#equalizer .fx-bar{
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
+  /* background-color: antiquewhite; */
+  /* height: ; */
+}
+#equalizer .fx-bar button{
+  width: 40px !important;
+  height: 40px !important;
+  cursor: pointer;
+}
+
+#equalizer .fx-bar button.off{
+  background-color:thistle;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+#equalizer .fx-bar button:hover{
+  box-shadow: none;
+}
+
+.fx-bar .btn-rain{
+  background-image: url(../res/images/icons/sidebar/rain-0.svg);
+  background-size: 70%;
+}
+.fx-bar .btn-bubble{
+  background-image: url(../res/images/icons/sidebar/bubble.png);
+  background-size: 70%;
+}
+.fx-bar .btn-nature{
+  background-image: url(../res/images/icons/sidebar/insect.svg);
+  background-size: 100%;
+}
+.fx-bar .btn-talks{
+  background-image: url(../res/images/icons/sidebar/talk.svg);
+  background-size: 100%;
+}
+.fx-bar .btn-visualizer{
+  background-image: url(../res/images/icons/sidebar/visualizer-empty.svg);
+  background-size: 80%;
+}
+.fx-bar .btn-thunder{
+  background-image: url(../res/images/icons/sidebar/thunder.svg);
+  background-size: 80%;
+}
+
 .grid {
   width: 100%;
-  height: 100%;
-  position: absolute;
+  height: 80%;
+  /* position: absolute; */
   font-weight: 200;
   font-size: 15px;
   display: grid;
@@ -38,17 +89,17 @@
   z-index: 20;
   transition: 300ms;
   color: whitesmoke;
+  /* border:0 !important; */
+  border-top: 1px dotted violet;
 }
+
 .grid input {
-  /* transform: rotate(-90deg); */
-  /* border-radius: 0; */
   width: 100%;
   color: black;
   cursor: pointer;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif,
     Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
-
 
 #equalizer input[type="range"]{
   overflow: visible;
@@ -71,7 +122,7 @@
   z-index: 19;
 }
 #equalizer input[type="range"]#bass::-webkit-slider-runnable-track{
-  background-color: navy !important;
+  background-color:khaki !important;
 }
 #equalizer input[type="range"]#mid::-webkit-slider-runnable-track{
   background-color: purple !important;

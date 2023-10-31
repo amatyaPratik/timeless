@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="./css/equalizer.css" />
     <link rel="stylesheet" href="./css/modes.css" />
     <link rel="stylesheet" href="./css/progress-bar.css" />
-    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    
     <link rel="stylesheet" href="./css/previousplaynext.css" />
     <link rel="stylesheet" href="./css/sleep.css" />
 
@@ -29,11 +29,11 @@
       <div id="logo"></div>
       <div id="action-btns">
         <a href="./songs.html">
-          <div id="btn-songs-folder" class="sidebar-btn"></div
+          <div id="btn-songs-folder" class="sidebar-btn" title="music explorer"></div
         ></a>
-        <div id="btn-equalizer" class="sidebar-btn"></div>
+        <div id="btn-equalizer" class="sidebar-btn" title="mood maker"></div>
         <a href="./index.html"><div id="btn-back" class="sidebar-btn"></div></a>
-        <div id="btn-modes" class="sidebar-btn"></div>
+        <div id="btn-modes" class="sidebar-btn" title="music players"></div>
         <div id="btn-fx" class="sidebar-btn"></div>
       </div>
       <div id="sleep-btn" class="sidebar-btn"></div>
@@ -47,7 +47,7 @@
         <button class="switch-scheme" id="repeat"></button>
       </div> -->
 
-      <div id="btn-playlists-n-songs"></div>
+      <div id="btn-playlists-n-songs" class="cp"></div>
       <div class="playlist-btn-shadow"></div>
 
       <label for="uploader">Drop a file from your pc to play</label>
@@ -93,7 +93,7 @@
         <button class="delete">delete</button>
       </div>
       <!-- <div class="blurred-bg"> </div> -->
-      <input type="text" id="quick-search" placeholder="search a song" />
+      <input type="text" id="quick-search" placeholder="search for a song" />
       <ul id="songs-list">
         <li>ACDC - Jail Break</li>
         <li>Banners - Shine A Light</li>
@@ -195,38 +195,9 @@
           <!-- <button id="playlist-create" class="playlist-btn"></button> -->
         </div>
       </div>
-
-      <div class="alphabetical-scroller">
-        <p class="letter active">#</p>
-        <p class="letter">a</p>
-        <p class="letter">b</p>
-        <p class="letter">c</p>
-        <p class="letter">d</p>
-        <p class="letter">e</p>
-        <p class="letter">f</p>
-        <p class="letter">g</p>
-        <p class="letter">h</p>
-        <p class="letter">i</p>
-        <p class="letter">j</p>
-        <p class="letter">k</p>
-        <p class="letter">l</p>
-        <p class="letter">m</p>
-        <p class="letter">n</p>
-        <p class="letter">o</p>
-        <p class="letter">p</p>
-        <p class="letter">q</p>
-        <p class="letter">r</p>
-        <p class="letter">s</p>
-        <p class="letter">t</p>
-        <p class="letter">u</p>
-        <p class="letter">v</p>
-        <p class="letter">w</p>
-        <p class="letter">x</p>
-        <p class="letter">y</p>
-        <p class="letter">z</p>
       </div>
     </div>
-    <div id="btn-volume"></div>
+    <div id="btn-volume" class="cp"></div>
     <script src="./js/utils.js"></script>
     <script src="./js/classes/Player.js"></script>
     <script src="./js/overlays/songsCollections.js"></script>

@@ -7,6 +7,8 @@
 
     <link rel="icon" type="image/x-icon" href="./favicon.ico" />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/visualizer.css" />
@@ -16,13 +18,15 @@
     <link rel="stylesheet" href="./css/equalizer.css" />
     <link rel="stylesheet" href="./css/modes.css" />
     <link rel="stylesheet" href="./css/progressbar.css" />
-    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    
     <link rel="stylesheet" href="./css/previousplaynext.css" />
     <link rel="stylesheet" href="./css/casette.css" />
     <link rel="stylesheet" href="./css/switch-schemes.css" />
     <link rel="stylesheet" href="./css/sleep.css" />
     <link rel="stylesheet" href="./css/layout.css" />
-    <!-- <link rel="stylesheet" href="./css/previousplaynext.css" /> -->
+    <link rel="stylesheet" href="./css/buttons.css">
+    <link rel="stylesheet" href="./css/rain.css" />
+    <link rel="stylesheet" href="./css/particles.css">
     <title>timeless | photos</title>
   </head>
   <body id="timeless" class="casette day unmuted">
@@ -35,51 +39,69 @@
     <canvas id="visualizer"></canvas>
 
     <div id="equalizer">
-      <div class="grid outline">
-        <label for="bass">BASS</label>
-        <input type="range" min="0" max="10" value="0" step="0.5" id="bass" />
-
+      <div class="fx-bar">
+        <button type="button" class="btn-round off sfx-btn btn-rain" title="rain" id="rain" onclick="toggleRain()"></button>
+        <button type="button" class="btn-round off fx-btn btn-bubble" title="bubble" id="bubbles"></button>
+        <button type="button" class="btn-round off fx-btn btn-visualizer" title="visualizer" id="btn-visualizer"></button>
+        <button type="button" class="btn-round off sfx-btn btn-nature" title="nature sounds" id="btn-nature-sounds" disabled></button>
+        <button type="button" class="btn-round off sfx-btn btn-talks" title="cafe sounds" id="btn-cafe-sounds" disabled></button>
+        <button type="button" class="btn-round off sfx-btn btn-thunder" title="thunder" id="btn-thunder-sounds" disabled></button>
+      </div>
+      <div class="grid">
+        <label for="bass">GAIN</label>
+        <input type="range" min="0" max="10" value="0.5" step="0.5" id="bass" />
+        
         <label for="mid">MID</label>
         <input type="range" min="-10" max="10" value="0" id="mid" />
-
+        
         <label for="treble">TREBLE</label>
         <input type="range" min="-10" max="10" value="0" id="treble" />
-
-        <!-- <label for="reverb">REVERB</label>
-        <input type="range" min="-10" max="10" value="0" id="reverb" /> -->
       </div>
     </div>
-
+    
     <div id="sidebar">
       <div id="logo"></div>
       <div id="action-btns">
         <a href="./songs.html">
-          <div id="btn-songs-folder" class="sidebar-btn"></div
+          <div id="btn-songs-folder" class="sidebar-btn" title="music explorer"></div
         ></a>
-        <div id="btn-equalizer" class="sidebar-btn"></div>
-        <a href="./file-mode.html"
-          ><div id="btn-file-play" class="sidebar-btn"></div
-        ></a>
-        <div id="btn-modes" class="sidebar-btn"></div>
-        <div id="btn-fx" class="sidebar-btn"></div>
+        <div id="btn-equalizer" class="sidebar-btn" title="mood maker"></div>
+        <div id="btn-modes" class="sidebar-btn" title="music players"></div>
       </div>
-      <div id="sleep-btn" class="sidebar-btn"></div>
+      <span id="sidebar-title">
+        TIMELESS
+      </span>
+
+      <section id="sleep-time-options">
+        <button class="sleep-pref sleep-1" onclick="sleepAfterMinutes(1)">1 min</button>
+        <button class="sleep-pref sleep-2" onclick="sleepAfterMinutes(10)">10 min</button>
+        <button class="sleep-pref sleep-3" onclick="sleepAfterMinutes(20)">20 min</button>
+        <button class="sleep-pref sleep-4" onclick="sleepAfterMinutes(30)">30 min</button>
+      </section>
+
+      <div id="preference-btn" class="sidebar-btn dfc">
+      </div>
+
+      <button class="preference-btn" id="sleep" title="sleep"></button>
+      <button class="preference-btn" id="lock" title="lock player"></button>
     </div>
 
-    <button id="lock"></button>
+    <!-- <button id="lock" class="cp"></button> -->
 
     <div id="player-container">
-      <div id="btn-playlists-n-songs"></div>
+      <h3 id="player-title">Casette</h3>
+      <div id="btn-playlists-n-songs" class="cp closed">
+        <img src="./res/images/icons/btn-playlist-toggle-closed.png" width="100%" alt="playlist-icon">
+        <div id="bg-playlist-cd"></div>
+      </div>
       <div class="playlist-btn-shadow"></div>
 
       <!-- vinyl-container to casette -container -->
       <div id="casette-player-parent">
         <div id="casette-container">
-          <!-- <div id="wheels"> -->
           <div id="casette"></div>
-          <div id="wheel-left" class="paused"></div>
-          <div id="wheel-right" class="paused"></div>
-          <!-- </div> -->
+          <div id="wheel-left" class="running"></div>
+          <div id="wheel-right" class="running"></div>
         </div>
 
         <div id="player">
@@ -89,7 +111,7 @@
           </div>
 
           <div class="progress-n-favorite">
-            <button class="btn-favorite"></button>
+            <button class="btn-favorite cp"></button>
             <div id="progress-bar">
               <small id="progress-time">0:12</small>
               <input
@@ -104,17 +126,17 @@
               <small id="end-time">5:12</small>
             </div>
             <div id="switch-schemes" class="circle">
-              <button class="switch-scheme" id="chooseScheme"></button>
-              <button class="switch-scheme" id="serial"></button>
-              <button class="switch-scheme" id="shuffle"></button>
-              <button class="switch-scheme" id="repeat"></button>
+              <button class="switch-scheme cp" id="chooseScheme"></button>
+              <button class="switch-scheme cp" id="serial"></button>
+              <button class="switch-scheme cp" id="shuffle"></button>
+              <button class="switch-scheme cp" id="repeat"></button>
             </div>
           </div>
 
           <div class="previousplaynext">
-            <button class="previous circle" id="previous"></button>
-            <button class="play circle" id="play"></button>
-            <button class="next circle" id="next"></button>
+            <button class="previous circle cp" id="previous"></button>
+            <button class="play circle cp" id="play"></button>
+            <button class="next circle cp" id="next"></button>
           </div>
         </div>
       </div>
@@ -125,19 +147,25 @@
         <div id="set"></div>
       </div>
     </div>
-    <div id="btn-volume"></div>
+    <div id="btn-volume" class="cp"></div>
 
     <div id="modes-overlay" class="hide">
       <div class="modes-card">
-        <div class="mode-image bars-img"></div>
-        <label for="bars-img" class="mode-name">bars</label>
+        <a href="./classic-player.html">
+          <div class="mode-image classic-player-img"></div>
+        </a>
+        <label for="classic-player-img" class="mode-name">classic-player</label>
       </div>
       <div class="modes-card">
-        <div class="mode-image circular-img"></div>
-        <label for="circular-img" class="mode-name">circular</label>
+        <a href="./index.html"
+          ><div class="mode-image vinyl-player-img"></div
+        ></a>
+        <label for="vinyl-player-img" class="mode-name">Vinyl player</label>
       </div>
-      <div class="modes-card">
-        <div class="mode-image casette-img"></div>
+      <div class="modes-card active">
+        <a href="./casette-player.html"
+          ><div class="mode-image casette-img"></div
+        ></a>
         <label for="casette-img" class="mode-name">casette</label>
       </div>
       <div class="modes-card">
@@ -155,37 +183,41 @@
     <div id="songs-collection-overlay">
       <div id="back-from-options"></div>
       <div id="playlist-options">
-        <button class="rename">rename</button>
-        <button class="update">update</button>
-        <button class="delete">delete</button>
+        <button class="rename cp">rename</button>
+        <button class="update cp">update</button>
+        <button class="delete cp">delete</button>
       </div>
       <!-- <div class="blurred-bg"> </div> -->
-      <input type="text" id="quick-search" placeholder="search a song" />
+      <input type="text" id="quick-search" placeholder="search for a song" />
       <ul id="songs-list">
-        <li>ACDC - Jail Break</li>
-        <li>Banners - Shine A Light</li>
-        <li>Beck - Dreams</li>
-        <li>Blue Swede - Hooked On A Feeling</li>
-        <li>Caroline Pennell - Leaving on a Jet Plane</li>
-        <li>Coldplay - Yellow</li>
-        <li>Ed Sheeran - The A Team</li>
-        <li>George Harrison-My Sweet Lord</li>
-        <li>Hinder - Lips Of An Angel</li>
-        <li>Junip - Don't Let It Pass</li>
-        <li>Pink Floyd - Wish You Were Here</li>
-        <li>Queen - Bohemian Rhapsody</li>
-        <li>Queen - I Want To Break Free</li>
-        <li>Red Hot Chili Peppers - Can't Stop</li>
-        <li>Redbone - Come and Get Your Love</li>
-        <li>Atomic Bush-Sano Prakash</li>
+        <li><small>50 Cent</small> - In Da Club </li>
+        <li><small>ACDC</small> - Jail Break </li>
+        <li><small>Atomic Bush</small> - Sano Prakash </li>
+        <li><small>Banners</small> - Shine A Light </li>
+        <li><small>Beck</small> - Dreams </li>
+        <li><small>Bipul Chettri</small> - Asaar </li>
+        <li><small>Blue Swede</small> - Hooked On A Feeling </li>
+        <li><small>Caroline Pennell</small> - Leaving on a Jet Plane </li>
+        <li><small>Coldplay</small> - Yellow </li>
+        <li><small>Ed Sheeran</small> - The A Team </li>
+        <li><small>Erik Satie</small> - Gymnopedie No 1 </li>
+        <li><small>George Harriso</small>n-My Sweet Lord </li>
+        <li><small>Hinder</small> - Lips Of An Angel </li>
+        <li><small>Junip</small> - Don't Let It Pass </li>
+        <li><small>Pink Floyd</small> - Wish You Were Here </li>
+        <li><small>Queen</small> - Bohemian Rhapsody </li>
+        <li><small>Queen</small> - I Want To Break Free </li>
+        <li><small>Red Hot Chili Peppers</small> - Can't Stop </li>
+        <li><small>Redbone</small> - Come and Get Your Love </li>
+        <li><small>Tribal Rain</small> - Bhanai </li>
       </ul>
 
       <div id="quick-playlists" class="active">
         <div class="playlist-card-small playlist-favorite">
           <div class="playlist-name">Favorites</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
@@ -193,56 +225,56 @@
         <div class="playlist-card-small playlist-electronic">
           <div class="playlist-name">electronic</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-blues">
           <div class="playlist-name">blues</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-classical">
           <div class="playlist-name">classical</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-rock">
           <div class="playlist-name">rock</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-dance">
           <div class="playlist-name">dance</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-rnb">
           <div class="playlist-name">R&B</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-favorite">
           <div class="playlist-name">Favorites</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
@@ -250,112 +282,112 @@
         <div class="playlist-card-small playlist-jazz">
           <div class="playlist-name">jazz</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-theatre">
           <div class="playlist-name">theatre</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-ost">
           <div class="playlist-name">ost</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-metal">
           <div class="playlist-name">metal</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-indie">
           <div class="playlist-name">indie</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-country">
           <div class="playlist-name">country</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-grunge">
           <div class="playlist-name">grunge</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-instrumental">
           <div class="playlist-name">instrumental</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-alt-rock">
           <div class="playlist-name">alt-rock</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-relaxing">
           <div class="playlist-name">relaxing</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-upbeat">
           <div class="playlist-name">upbeat</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-rough-day">
           <div class="playlist-name">rough-day</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
         <div class="playlist-card-small playlist-mellow">
           <div class="playlist-name">mellow</div>
           <div class="card-options-overlay">
-            <button class="play-from-card"></button>
-            <button class="card-info"></button>
+            <button class="play-from-card cp"></button>
+            <button class="card-info cp"></button>
             <div class="songs-in-card">2 songs</div>
           </div>
         </div>
       </div>
       <div id="label-bar">
         <div class="top">
-          <button id="playlist-play" class="playlist-btn"></button>
-          <button id="playlist-like" class="playlist-btn"></button>
+          <button id="playlist-play" class="playlist-btn cp"></button>
+          <button id="playlist-like" class="playlist-btn cp"></button>
         </div>
         <div class="middle">
           <label for="songs-list">all songs</label>
@@ -363,57 +395,11 @@
         </div>
 
         <div class="bottom">
-          <button id="playlist-options-btn" class="playlist-btn"></button>
+          <button id="playlist-options-btn" class="playlist-btn cp"></button>
           <!-- <button id="playlist-delete" class="playlist-btn"></button> -->
           <!-- <button id="playlist-create" class="playlist-btn"></button> -->
         </div>
       </div>
-
-      <div class="alphabetical-scroller">
-        <p class="letter active">#</p>
-        <p class="letter">a</p>
-        <p class="letter">b</p>
-        <p class="letter">c</p>
-        <p class="letter">d</p>
-        <p class="letter">e</p>
-        <p class="letter">f</p>
-        <p class="letter">g</p>
-        <p class="letter">h</p>
-        <p class="letter">i</p>
-        <p class="letter">j</p>
-        <p class="letter">k</p>
-        <p class="letter">l</p>
-        <p class="letter">m</p>
-        <p class="letter">n</p>
-        <p class="letter">o</p>
-        <p class="letter">p</p>
-        <p class="letter">q</p>
-        <p class="letter">r</p>
-        <p class="letter">s</p>
-        <p class="letter">t</p>
-        <p class="letter">u</p>
-        <p class="letter">v</p>
-        <p class="letter">w</p>
-        <p class="letter">x</p>
-        <p class="letter">y</p>
-        <p class="letter">z</p>
-      </div>
-    </div>
-
-    <select id="sleep-options-overlay">
-      <option class="none" selected>none</option>
-      <option value="1000" class="one">1 min</option>
-      <option value="5000" class="five">5 min</option>
-      <option value="10000" class="ten">10 min</option>
-      <option value="20000" class="twenty">20 min</option>
-      <option value="30000" class="thirty">30 min</option>
-      <option value="60000" class="sixty">60 min</option>
-    </select>
-
-    <div id="fx-overlay">
-      <button class="fx-btn" id="rain" onclick="turnOnRain()"></button>
-      <button class="fx-btn" id="bubbles"></button>
-      <button class="fx-btn" id="autotune"></button>
     </div>
 
     <script src="./js/utils.js"></script>
@@ -421,16 +407,18 @@
     <script src="./js/overlays/songsCollections.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/volume.js"></script>
-    <script src="./js/particles/bubbles.js"></script>
     <script src="./js/sidebar.js"></script>
     <script src="./js/overlays/equalizer.js"></script>
-    <script src="./js/overlays/slideModes.js"></script>
     <script src="./js/progressBar.js"></script>
     <script src="./js/visualizer.js"></script>
     <script src="./js/casette.js"></script>
     <script src="./js/playlists.js"></script>
-    <script src="./js/overlays/sleep.js"></script>
-    
     <script src="./js/searchBar.js"></script>
+    <script src="./js/effects/rain.js"></script>
+    <script src="./js/overlays/slideModes.js"></script>
+    <script src="./js/overlays/overlay.js"></script>
+    <script src="./js/particles/bubbles.js"></script>
+    <script src="./js/overlays/sleep.js"></script>
+    <script src="./js/volume.js"></script>
   </body>
 </html>

@@ -1,5 +1,8 @@
 const canvas = document.getElementById("visualizer");
 
+let visualizerMode = 'none'
+let requestedAnimationFrame
+
 const src = player.source
 
 const analyser = player.context.createAnalyser();
@@ -46,12 +49,32 @@ function clearCanvas() {
 function drawFrame(sampledArray, barWidth, barHeight, x) {
   sampledArray.forEach((data, index) => {
     barHeight = data * 1.3;
-
+    const borderRadius = 10;
     let r = barHeight + 25 * (index / bufferLength);
     let g = 250 * (index / bufferLength);
     let b = 50;
 
     ctx.fillStyle = `rgb(${r},${g},${b})`;
+
+    // // Begin the path
+    // ctx.beginPath();
+    // // Draw the rounded rectangle
+    // ctx.moveTo(x + borderRadius, y);
+    // ctx.lineTo(x + barWidth - borderRadius, y);
+    // ctx.arcTo(x + barWidth, y, x + barWidth, y + borderRadius, borderRadius);
+    // ctx.lineTo(x + barWidth, y + dotHeight - borderRadius);
+    // ctx.arcTo(x + barWidth, y + dotHeight, x + barWidth - borderRadius, y + dotHeight, borderRadius);
+    // ctx.lineTo(x + borderRadius, y + dotHeight);
+    // ctx.arcTo(x, y + dotHeight, x, y + dotHeight - borderRadius, borderRadius);
+    // ctx.lineTo(x, y + borderRadius);
+    // ctx.arcTo(x, y, x + borderRadius, y, borderRadius);
+    // // Set the fill color
+    // ctx.fillStyle = dotColor;
+    // // Fill the rounded rectangle
+    // ctx.fill();
+    // // Close the path
+    // ctx.closePath();
+
     ctx.fillRect(x, HEIGHT - barHeight, barWidth, barHeight);
 
     x += barWidth;
@@ -76,30 +99,30 @@ function drawDotted(sampledArray, barWidth, barHeight, x) {
         case 0:
         case 1:
         case 2:
-          dotColor = "darkgreen";
+          dotColor = "blue";
           break;
         case 3:
         case 4:
         case 5:
-          dotColor = "lime";
+          dotColor = "greenyellow";
           break;
         case 6:
         case 7:
         case 8:
-          dotColor = "orange";
+          dotColor = "yellowgreen";
           break;
         case 9:
         case 10:
         case 11:
-          dotColor = "yellow";
+          dotColor = "orange";
           break;
         case 12:
         case 13:
         case 14:
-          dotColor = "pink";
+          dotColor = "crimson";
           break;
         default:
-          dotColor = "red";
+          dotColor = "purple";
       }
 
       y -= dotHeight;
@@ -123,7 +146,7 @@ function drawVisualizer() {
   x = 0;
   clearCanvas();
   analyser.getByteFrequencyData(sampledArray);
-  requestAnimationFrame(drawVisualizer);
+  requestedAnimationFrame = requestAnimationFrame(drawVisualizer);
   drawFrame(sampledArray, barWidth, barHeight, x);
 }
 
@@ -132,9 +155,38 @@ function drawDottedVisualizer() {
   x = 0;
   clearCanvas();
   analyser.getByteFrequencyData(sampledArray);
-  requestAnimationFrame(drawDottedVisualizer);
+  requestedAnimationFrame = requestAnimationFrame(drawDottedVisualizer);
   drawDotted(sampledArray, barWidth, barHeight, x);
 }
 
-// drawVisualizer();
-drawDottedVisualizer();
+function stopVisualizer(){
+  cancelAnimationFrame(requestedAnimationFrame)
+  clearCanvas()
+}
+
+function toggleVisualizer(){
+  const btn = document.querySelector('#btn-visualizer.btn-visualizer')
+  if(visualizerMode !== 'none'){
+    if(visualizerMode === 'dotted'){
+      visualizerMode = 'bars'
+      btn.classList.remove('off')
+      btn.classList.add('on')
+      btn.style.backgroundImage = "url(../res/images/icons/sidebar/histogram.svg)"
+      stopVisualizer()
+      drawVisualizer()
+    }
+    else{
+      btn.classList.add('off')
+      btn.classList.remove('on')
+      visualizerMode = 'none'
+      btn.style.backgroundImage = "url(../res/images/icons/sidebar/visualizer-empty.svg)"
+      stopVisualizer()
+    }
+  }else{
+    btn.classList.remove('off')
+    btn.classList.add('on')
+    visualizerMode = 'dotted'
+    btn.style.backgroundImage = "url(../res/images/icons/sidebar/dotted-visualizer.svg)"
+    drawDottedVisualizer();
+  }
+}

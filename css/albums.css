@@ -1,27 +1,85 @@
 #albums-page {
   height: 100vh;
+  overflow: hidden;
 }
 
-#albums-section {
-  /* height: 100%; */
-  padding-left: 1%;
+#action-btns{
+  height: 100%;
+  justify-content: space-between;
+}
+
+.rotate90{
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content:space-around;
+  transform: rotate(-90deg);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform-origin: 0 0;
+}
+
+.rotate90 h3{
+  display: inline-block;
+  word-break: keep-all;
+  line-height: 62px;
+  font-size: 40px;
+  font-weight: 100;
+  font-family: 'Monoton';
+  color:gray;
+}
+
+.rotate90 img{
+  display: inline-block;
+  height: 43px;
+  filter: invert(.4);
+}
+
+#tabsandfilters{
+  height: 10vh;
+}
+
+#albums-section.albums-grid {
+  padding:2vw 5vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 90vh;
+  /* border: 3px dotted red; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12vw, 1fr));
+  grid-gap: 1vw 2vw;
+  justify-content: center;
+  align-items: start;
 }
 .albums-card {
   float: left;
   margin: 15px;
-  width: 150px;
-  height: max-content;
+  width: 10vw;
+  height: 12vw;
   display: flex;
   flex-direction: column;
   text-align: center;
   overflow: hidden;
+  border: 0;
   border-radius: 2px;
-  /* border-radius: 0 30px 0 0; */
+  cursor: pointer;
+  filter:drop-shadow(1px);
+  transition: 400ms all;
+  /* border:3px dotted fuchsia */
+}
+
+.albums-card{
+  box-shadow: 0 4px 15px rgba(0, 0.9, 0, 0.1);
+}
+.albums-card:hover{
+  box-shadow: 0 4px 15px rgba(46, 176, 134, 0.4);
 }
 
 .album-cover {
-  width: 150px;
-  height: 150px;
+  width: 10vw;
+  height: 10vw;
+  border: 0;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -52,7 +110,6 @@
 .cover-h {
   background-image: url(../album-covers/h.png);
 }
-
 .cover-i {
   background-image: url(../album-covers/i.png);
 }
@@ -75,7 +132,6 @@
 .cover-o {
   background-image: url(../album-covers/o.png);
 }
-
 .cover-p {
   background-image: url(../album-covers/p.png);
 }
@@ -87,38 +143,56 @@
 }
 
 .album-info .title {
-  font-size: 18px;
+  font-size: 15px;
   max-width: 100%;
-  height: 30px;
-  /* overflow: hidden; */
+  height: 2vw;
+  line-height: 1vw;
+  word-spacing: .1rem;
+  overflow: hidden;
   cursor: pointer;
-  text-overflow: ellipsis;
+  margin-top: .3rem;
+  text-transform: uppercase;
+  
 }
 .album-info .artist {
-  font-size: 14px;
+  font-size: 13px;
+  color: grey;
+  font-family: 'Pacifico','Outfit','Quicksand';
 }
 
 .album-link {
-  color: blueviolet;
+  /* color: blueviolet; */
 }
 
 #album-overlay {
-  display: none;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
   width: 603px;
+  opacity: 0;
+  scale: 0;
   height: 400px;
   background-color: #e5e5e5;
   border-radius: 10px;
-  filter: drop-shadow(0px 0px 10px #000);
+  filter: drop-shadow(0px 0px 10px #4f6d6a);
+  backdrop-filter: blur(30px);
+  transition: 800ms cubic-bezier(0.165, 0.84, 0.44, 1) all ;
+  transform-origin: left top;
 }
+
+#album-overlay.show{
+  scale: 1;
+  opacity: 1;
+}
+
 #top {
   display: flex;
   height: 15%;
+  width: 50%;
+  padding-left: 2rem;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 button.favorite-btn {
   /* width: 5%; */
@@ -131,7 +205,6 @@ button.favorite-btn {
   background-position: center;
   border: none;
   background-color: transparent;
-  cursor: pointer;
 }
 #main-section {
   position: relative;

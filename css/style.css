@@ -1,11 +1,18 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,200&display=swap"); */
 
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Autour+One&family=Codystar&family=Comfortaa:wght@300;400;500;600&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&family=Lato:wght@300;400;700&family=Lobster&family=Monofett&family=Montserrat:ital,wght@0,200;0,500;0,600;1,200;1,400&family=Outfit:wght@300;400;500;600&family=Pacifico&family=Playpen+Sans:wght@600&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&family=Righteous&family=Roboto:wght@300;400&family=Space+Grotesk:wght@300;400;500&family=Titillium+Web:wght@200;300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Autour+One&family=Codystar&family=Comfortaa:wght@300;400;500;600&family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300&family=Lato:wght@300;400;700&family=Lobster&family=Monofett&family=Monoton&family=Montserrat:ital,wght@0,200;0,500;0,600;1,200;1,400&family=Outfit:wght@300;400;500;600&family=Pacifico&family=Playpen+Sans:wght@600&family=Poppins:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&family=Righteous&family=Roboto:wght@300;400&family=Space+Grotesk:wght@300;400;500&family=Titillium+Web:wght@200;300;400;600&display=swap');
 
 :root{
   --primary-color: #56d8c1;
+  --primary-color-x:#42a794;
+  --primary-color-xx:#2b6a5e;
   --secondary-color: purple;
   --selection-color: greenyellow;
+  --primary-red: tomato;
+  --primary-red-x: crimson;
+  --primary-red-xx: coral ;
+  --primary-red-xxx:maroon;
+  --primary-red-pink: plum;
 }
 
 .outline {
@@ -125,6 +132,15 @@
   margin-top: 50%;
   transform: translateY(40%);
 }
+.tac{
+  text-align: center;
+}
+.tal{
+  text-align: left;
+}
+.tar{
+  text-align: right;
+}
 .ha {
   margin: 0 auto;
 }
@@ -132,6 +148,22 @@
   margin-left: 50%;
   transform: translateX(-50%);
 }
+
+.cp{
+  cursor: pointer !important;
+}
+
+.dfc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dfs{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
 .btn-sm {
   border: none;
   font-size: 10px;
@@ -424,31 +456,28 @@
 .pb5 {
   padding-top: 5px;
 }
-
 .pb10 {
   padding-top: 10px;
 }
-
 .pb15 {
   padding-top: 15px;
 }
-
 .pb20 {
   padding-top: 20px;
 }
 
+.pl3 {
+  padding-left: 3px;
+}
 .pl5 {
   padding-left: 5px;
 }
-
 .pl10 {
   padding-left: 10px;
 }
-
 .pl15 {
   padding-left: 15px;
 }
-
 .pl20 {
   padding-left: 20px;
 }
@@ -462,70 +491,95 @@
   padding-left: 50px;
 }
 
+.pr3 {
+  padding-right: 3px;
+}
 .pr5 {
   padding-right: 5px;
 }
-
 .pr10 {
   padding-right: 10px;
 }
-
 .pr15 {
   padding-right: 15px;
 }
-
 .pr20 {
   padding-right: 20px;
 }
+.pr30 {
+  padding-right: 30px;
+}
+.pr40 {
+  padding-right: 40px;
+}
+.pr50 {
+  padding-right: 50px;
+}
 
 .px5 {
-  padding: 0 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 .px10 {
-  padding: 0 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .px15 {
-  padding: 0 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 .px20 {
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .px20 {
-  padding: 0 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .px30 {
-  padding: 0 30px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 .px40 {
-  padding: 0 40px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 .px50 {
-  padding: 0 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .py5 {
-  padding: 5px 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .py10 {
-  padding: 10px 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .py15 {
-  padding: 15px 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .py20 {
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .py20 {
-  padding: 20px 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .py30 {
-  padding: 30px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 .py40 {
-  padding: 40px 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 .py50 {
-  padding: 50px 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .p49 {

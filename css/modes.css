@@ -29,6 +29,11 @@ body {
   border: 1px solid lightslategray;
   /* border: 1px solid forestgreen; */
 }
+.modes-card.active {
+  border: 1px solid greenyellow;
+  pointer-events: none;
+}
+
 .modes-card .mode-image {
   background-repeat: no-repeat;
   background-position: center;
@@ -41,11 +46,22 @@ body {
   font-weight: 100;
   color: white;
 }
-.modes-card .mode-image.bars-img {
-  background-image: url(../res/images/modes/bars.png);
+.modes-card.active .mode-name::after{
+  content: "\2713"; /* Unicode character for a checkmark (tick) */
+  display: inline-block; /* This makes the checkmark inline with the text */
+  margin-left: 5px; /* Adjust the margin to position the checkmark as needed */
+  font-size: 18px; /* Adjust the font size as needed */
+  color: yellowgreen; 
 }
-.modes-card .mode-image.circular-img {
-  background-image: url(../res/images/modes/circular.png);
+
+/* .modes-card .mode-image.bars-img {
+  background-image: url(../res/images/modes/bars.png);
+} */
+.modes-card .mode-image.classic-player-img{
+  background-image: url(../res/images/modes/classic.svg);
+}
+.modes-card .mode-image.vinyl-player-img{
+  background-image: url(../res/images/modes/dj-mode.png);
 }
 .modes-card .mode-image.casette-img {
   background-image: url(../res/images/modes/casette.png);

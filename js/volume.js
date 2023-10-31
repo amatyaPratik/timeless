@@ -1,73 +1,45 @@
-// const volumeContainer = document.getElementById("volume-container");
-// const volume = document.getElementById("volume");
-// const setVolume = document.getElementById("set");
-// const btnVolume = document.getElementById("btn-volume");
+// Variables to track the drag state
+let isDragging = false;
+let initialMouseY = 0;
+let initialVolumeHeight = 0;
 
-// const artistOverlay = document.getElementById("artist-overlay");
-// const system = document.getElementById("timeless");
+// Event listener for mouse down to start dragging
+player.volumeHollow.addEventListener("mousedown", (e) => {
+  isDragging = true;
+  initialMouseY = e.clientY;
+  initialVolumeHeight = getBoundary(player.volumeFilled).height;
+});
 
-// let previous_volume;
+// Event listener for mouse move while dragging
+player.system.addEventListener("mousemove", (e) => {
+  if (isDragging) {
+    e.preventDefault();
+    let mouseY = e.clientY;
+    let deltaY = mouseY - initialMouseY;
+    let newHeight = initialVolumeHeight - deltaY;
 
-// btnVolume.addEventListener("mouseenter", () => {
-//   volumeContainer.style.display = "block";
-//   volumeContainer.focus();
-// });
-// volumeContainer.addEventListener("mouseout", () => {
-//   volumeContainer.style.display = "none";
-// });
+    if (newHeight < 0) {
+      newHeight = 0;
+    } else if (newHeight > getBoundary(player.volumeHollow).height) {
+      newHeight = getBoundary(player.volumeHollow).height;
+    }
 
-// btnVolume.addEventListener("click", () => {
-//   if (!muted) {
-//     mute();
-//   } else {
-//     unmute();
-//   }
-// });
+    player.volumeFilled.style.height = newHeight + "px";
 
-// volume.addEventListener("mousedown", (e) => {
-//   let totalHeight = e.clientY;
-//   let newHeight = Math.floor(getBoundary(volume).height - totalHeight);
-//   setVolume.style.height = newHeight + "px";
-//   previous_volume = Math.abs(newHeight / getBoundary(volume).height).toFixed(2);
-//   audio.volume = previous_volume;
-// });
+    player.volume = Math.abs(newHeight / getBoundary(player.volumeHollow).height).toFixed(2);
+    player.previous_volume = player.volume;
+    player.setVolume(player.volume > 1 ? 1 : player.volume);
+  }
+});
 
-// system.addEventListener("click", (e) => {
-//   if (
-//     e.target.id != "volume-container" &&
-//     e.target.id != "volume" &&
-//     e.target.id != "set" &&
-//     volumeContainer.style.display != "none"
-//   ) {
-//     volumeContainer.style.display = "none";
-//   }
-// });
+// Event listener for mouse up to stop dragging
+player.system.addEventListener("mouseup", () => {
+  isDragging = false;
+});
 
-// system.addEventListener("wheel", (e) => {
-//   if (collectionsOverlay.contains(e.target)) return;
-//   volumeContainer.style.display = "block";
-//   let dy;
-
-//   if (e.target.id != "sidebar") {
-//     if (
-//       getBoundary(setVolume).height >= getBoundary(volume).height &&
-//       e.deltaY < 0
-//     ) {
-//       dy = 0;
-//       setVolume.style.height = "100%";
-//     } else if (setVolume.style.height.split("px")[0] <= 0 && e.deltaY > 0) {
-//       dy = 0;
-//       setVolume.style.height = "0%";
-//     } else {
-//       dy = Math.ceil(e.deltaY * -0.01) * 10;
-//     }
-
-//     let currentVolume = getBoundary(setVolume).height;
-//     setVolume.style.height = currentVolume + dy + "px";
-
-//     previous_volume = Math.abs(
-//       (currentVolume + dy) / getBoundary(volume).height
-//     ).toFixed(2);
-//     audio.volume = previous_volume;
-//   }
-// });
+// Event listener for mouse leave to stop dragging if the mouse leaves the volume control
+player.system.addEventListener("mouseleave", () => {
+  if (isDragging) {
+    isDragging = false;
+  }
+});

@@ -1,13 +1,6 @@
 const modesContainer = document.getElementById("modes-overlay");
 const toggleModes = document.getElementById("btn-modes");
 
-let bubbleMode = false
-
-// function turnOnBubbleMode(){
-//   bubbleMode = true
-//   console.log('bubl');
-// }
-
 document.addEventListener("click", (e) => {
   if (!modesContainer) return;
   if (modesContainer.contains(e.target)) return;

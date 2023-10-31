@@ -1,0 +1,22 @@
+.btn{
+    border: 0;
+}
+
+.btn-white{
+    background: whitesmoke;
+}
+.btn-round{
+    border: 0;
+    border-radius: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+button{
+    cursor: pointer;
+}
+
+button:disabled, button[disabled]{
+    cursor: not-allowed !important;
+}

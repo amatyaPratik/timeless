@@ -1,38 +1,96 @@
 #artists-page {
   height: 100vh;
+  overflow: hidden;
 }
 
-#artists-section {
-  padding: 20px 20px 20px 50px;
+#action-btns{
+  height: 100%;
+  justify-content: space-between;
+}
+
+.rotate90{
+  width: max-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transform: rotate(-90deg);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform-origin: 0 0;
+}
+
+.rotate90 h3{
+  display: inline-block;
+  word-break: keep-all;
+  line-height: 62px;
+  font-size: 40px;
+  font-weight: 200;
+  font-family: 'Monoton';
+  color:gray;
+}
+
+.rotate90 img{
+  display: inline-block;
+  height: 43px;
+  filter: invert(.4);
+}
+
+#tabsandfilters{
+  height: 10vh;
+}
+
+#artists-section.artists-grid {
+  padding-left: 5vw;
+  padding-top: 2vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 90vh;
+  /* border: 3px dotted red; */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  grid-gap: 0 5vw;
+  justify-content:flex-start;
+  align-items: start;
 }
 
 .artist-card {
-  float: left;
-  margin: 30px 0px;
-  width: 200px;
-  height: fit-content;
+  /* border: 3px dotted red; */
+  /* margin: 5px 5px; */
+  width: min-content;
+  height: min-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  cursor: pointer;
+  justify-content:space-evenly;
 }
 
 .artist-card .artist-image {
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   background-repeat: no-repeat;
-  background-size: 95%;
+  background-size: 100%;
+  box-sizing: border-box;
   background-position: center;
+  /* backdrop-filter: blur(30px); */
+  filter:drop-shadow(1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .artist-name {
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
   cursor: pointer;
+  max-width: 100%;
+  color: grey;
+  margin-top: .6rem;
+  /* text-overflow: clip; */
 }
 .artist-link {
-  color: blueviolet;
+  /* color: blueviolet; */
 }
 .artist-default {
   background-image: url(../artist-profile-pic/default.png);

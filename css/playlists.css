@@ -1,16 +1,40 @@
 #btn-playlists-n-songs {
   position: absolute;
-  right: 2%;
-  top: 3%;
+  top: .1vw;
+  right: .1vw;
   z-index: 98;
-  height: 45px;
-  width: 56px;
-  background-image: url(../res/images/icons/btn-playlist-toggle.png);
   background-color: transparent;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  cursor: pointer;
+  height: 5.6vw;
+  width: 5.6vw;
+  scale: .5;
+  box-sizing: border-box;
+  padding: 0;
+  /* box-shadow:  0 2px 13px rgba(126, 126, 126, 0.7); */
+}
+#btn-playlists-n-songs img{
+  transition: 200ms all;
+  position: absolute;
+  border-radius: 3px;
+  z-index: 98;
+  height: 100%;
+  width: 100%;
+}
+#btn-playlists-n-songs.closed img{
+    /* right: .5vw; */
+}
+#btn-playlists-n-songs.opened img{
+  translate: -40% 0;
+}
+#btn-playlists-n-songs #bg-playlist-cd{
+  position: absolute;
+  top: 2%;
+  right: 0%;
+  background: black;
+  border-radius: 50%;
+  height: 96%;
+  width: 96%;
+  z-index: 97;
+  /* scale: .5; */
 }
 
 .playlist-btn-shadow {
@@ -54,13 +78,12 @@
   border: none;
   border-bottom: 2px solid gray;
   border-right: 2px solid gray;
-  cursor: pointer;
 }
 #songs-collection-overlay #playlist-options button:hover {
   background-color: #fff;
 }
 
-#songs-collection-overlay #back-from-options {
+/* #songs-collection-overlay #back-from-options {
   width: 55px;
   height: 55px;
   background-color: lightgray;
@@ -73,19 +96,25 @@
   background-repeat: no-repeat;
   background-size: 60%;
   background-position: center;
-  cursor: pointer;
 }
 #songs-collection-overlay.editable #back-from-options {
   display: block;
-}
+} */
 ul#songs-list {
   text-align: right;
-  height: 83%;
+  height: 80%;
   width: max-content;
   position: absolute;
+  top: 5rem;
   right: 3%;
-  bottom: 0%;
+  /* bottom: 0%; */
+  padding: 1.5vw 2vw 0 0;
   line-height: 32px;
+  overflow-y: auto;
+}
+
+ul#songs-list li small{
+  pointer-events: none;
 }
 ul#songs-list li {
   list-style-type: none;
@@ -105,18 +134,18 @@ ul#songs-list li:hover {
 
 input#quick-search {
   position: absolute;
-  padding: 10px 17px;
+  padding: 8px 17px;
   background-color: #f9f9f9;
   background-image: url(../res/images/icons/songs/search-black.png);
   background-repeat: no-repeat;
   background-size: 8%;
   background-position: 98% 50%;
   width: 25%;
-  right: 8%;
-  top: 4%;
+  right: 6.5vw;
+  top: 1.8vw;
   border-radius: 30px 0 0 30px;
   border: none;
-  font-size: 17px;
+  font-size: 15px;
 }
 #quick-playlists {
   transition: all 400ms;
@@ -157,7 +186,6 @@ input#quick-search {
   margin: 42% 0;
   border: none;
   display: block;
-  cursor: pointer;
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: center;
@@ -245,22 +273,22 @@ small#song-count {
   grid-gap: 0px;
 }
 .playlist-card-small {
-  height: 98px;
-  width: 98px;
+  height: 90px;
+  width: 90px;
   display: block;
   margin: 10px auto;
-  background-color: #f9f9f9;
+  background-color: rgba(227, 227, 227,1);
   position: relative;
   background-repeat: no-repeat;
   background-size: 50%;
   background-position: 50% 40%;
-  border-radius: 30px;
+  border-radius: 20px;
   cursor: pointer;
   transition: all 30ms;
   box-sizing: border-box;
 }
 .playlist-card-small:hover {
-  filter: drop-shadow(0px 0px 4px rgba(33, 33, 33, 0.7));
+  /* filter: drop-shadow(0px 0px 4px rgba(33, 33, 33, 0.7)); */
   backdrop-filter: blur(5px);
   box-shadow: 0 0 9px rgba(33, 33, 33, 0.7);
 }
@@ -273,6 +301,9 @@ small#song-count {
   position: absolute;
   bottom: 10px;
   text-align: center;
+  font-size: 12px;
+  font-family: 'Outfit';
+  font-weight: 800;
 }
 
 .playlist-card-small .card-options-overlay {
@@ -284,7 +315,7 @@ small#song-count {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: rgba(33, 33, 33, 0.9);
+  background-color: rgba(22, 70, 62, 0.9);
   backdrop-filter: blur(5px);
   border-radius: inherit;
   z-index: 1;
@@ -305,7 +336,6 @@ small#song-count {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 60%;
-  cursor: pointer;
 }
 .playlist-card-small .card-options-overlay button:hover {
   filter: drop-shadow(0px 0px 4px rgba(20, 12, 26, 0.6));
@@ -315,7 +345,7 @@ small#song-count {
   background-image: url(../res/images/icons/play.png);
 }
 .playlist-card-small .card-info {
-  background-image: url(../res/images/icons/expand-blue.png);
+  background-image: url(../res/images/icons/expand-orange.png);
 }
 .playlist-card-small .songs-in-card {
   position: absolute;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/tabs-n-filter.css" />
-    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    
     <link rel="stylesheet" href="./css/artists.css" />
     <link rel="stylesheet" href="./css/artist-overlay.css" />
 
@@ -23,33 +23,36 @@
     <div id="sidebar">
       <div id="logo"></div>
       <div id="action-btns">
-        <a href="./index.html"><div id="btn-back" class="sidebar-btn"></div></a>
-        <div id="btn-equalizer" class="sidebar-btn"></div>
-        <a href="./file-mode.html"
-          ><div id="btn-file-play" class="sidebar-btn"></div
-        ></a>
-        <div id="btn-modes" class="sidebar-btn"></div>
-        <div id="btn-fx" class="sidebar-btn"></div>
+        <a href="./index.html">
+          <div id="btn-back" class="sidebar-btn"></div>
+        </a>
+        <div class="rotate90">
+          <img src="./res/images/icons/sidebar/folder.svg" width="50px" alt="folder">
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          <h3> ARTISTS</h3>
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          <img src="./res/images/icons/sidebar/guitar.svg" width="50px" alt="artist icon">
+        </div>
       </div>
-      <div id="sleep-btn" class="sidebar-btn"></div>
     </div>
 
     <div id="artists-page">
       <div id="tabsandfilters">
-        <a href="./songs.html" class="search-tab">songs</a>
-        <a href="#" class="search-tab active">artists</a>
-        <a href="./albums.html" class="search-tab">albums</a>
+        <a href="./songs.html" class="search-tab">SONGS</a>
+        <a href="#" class="search-tab active">ARTISTS</a>
+        <a href="./albums.html" class="search-tab">ALBUMS</a>
 
         <input
           type="text"
           name="searchbar"
           id="searchbar"
           placeholder="search for a song"
+          class="pl10 pr50 py10"
         />
 
         <div id="genre-selector">
           <label for="genre">genre :</label>
-          <select name="genre" id="genre-select">
+          <select name="genre" id="genre-select" class="cp py5">
             <option value="all" selected>all</option>
             <option value="blues">blues</option>
             <option value="country">country</option>
@@ -61,7 +64,7 @@
 
         <div id="sort-selector">
           <label for="sort">sort :</label>
-          <select name="sort" id="sort-select">
+          <select name="sort" id="sort-select" class="cp py5">
             <option value="abc" selected>ABC</option>
             <option value="cba">CBA</option>
             <option value="length">length</option>
@@ -69,74 +72,76 @@
         </div>
       </div>
 
-      <div id="artists-section">
-        <div class="artist-card">
-          <div class="artist-image artist-default"></div>
-          <div class="artist-name">Unknown</div>
-        </div>
+      <!-- <div class="section-artists"> -->
+        <div id="artists-section" class="artists-grid">
+          <div class="artist-card">
+            <div class="artist-image artist-default"></div>
+            <div class="artist-name">Unknown</div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-acdc"></div>
-          <div class="artist-name artist-link">ACDC</div>
-        </div>
+          <div class="artist-card">
+            <div class="artist-image artist-acdc"></div>
+            <div class="artist-name artist-link">ACDC <span style="color: red;">*</span></div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-banners"></div>
-          <div class="artist-name">Banners</div>
-        </div>
-        <div class="artist-card">
-          <div class="artist-image artist-blue-swede"></div>
-          <div class="artist-name">Blue Swede</div>
-        </div>
+          <div class="artist-card">
+            <div class="artist-image artist-banners"></div>
+            <div class="artist-name">Banners</div>
+          </div>
+          <div class="artist-card">
+            <div class="artist-image artist-blue-swede"></div>
+            <div class="artist-name">Blue Swede</div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-coldplay"></div>
-          <div class="artist-name">Coldplay</div>
-        </div>
+          <div class="artist-card">
+            <div class="artist-image artist-coldplay"></div>
+            <div class="artist-name">Coldplay</div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-ed-sheeran"></div>
-          <div class="artist-name">Ed-Sheeran</div>
-        </div>
-        <div class="artist-card">
-          <div class="artist-image artist-george-harrison"></div>
-          <div class="artist-name">George Harrison</div>
-        </div>
+          <div class="artist-card">
+            <div class="artist-image artist-ed-sheeran"></div>
+            <div class="artist-name">Ed-Sheeran</div>
+          </div>
+          <div class="artist-card">
+            <div class="artist-image artist-george-harrison"></div>
+            <div class="artist-name">George Harrison</div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-hinder"></div>
-          <div class="artist-name">Hinder</div>
-        </div>
+          <div class="artist-card">
+            <div class="artist-image artist-hinder"></div>
+            <div class="artist-name">Hinder</div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-junip"></div>
-          <div class="artist-name">Junip</div>
-        </div>
-        <div class="artist-card">
-          <div class="artist-image artist-queen"></div>
-          <div class="artist-name">Queen</div>
-        </div>
+          <div class="artist-card">
+            <div class="artist-image artist-junip"></div>
+            <div class="artist-name">Junip</div>
+          </div>
+          <div class="artist-card">
+            <div class="artist-image artist-queen"></div>
+            <div class="artist-name">Queen</div>
+          </div>
 
-        <div class="artist-card">
-          <div class="artist-image artist-rhcp"></div>
-          <div class="artist-name">Red Hot Chilli Pepper</div>
-        </div>
-      </div>
+          <div class="artist-card">
+            <div class="artist-image artist-rhcp"></div>
+            <div class="artist-name">Red Hot Chilli Pepper</div>
+          </div>
+      <!-- </div> -->
+
     </div>
 
     <div id="artist-overlay">
-      <div id="play-album"></div>
+      <div id="play-album" class="cp" title="play all songs"></div>
       <div id="info-left">
         <div class="info-top">
           <h1 id="artist-name">ACDC</h1>
-          <button class="favorite"></button>
+          <button class="favorite cp"></button>
         </div>
         <div id="cover-image">
           <img src="./artist-cover-pic/acdc.png" alt="acdc" width="100%" />
         </div>
         <div id="albums">
-          <small>albums</small>
-          <div class="chevron-next"></div>
+          <!-- <small>albums</small> -->
+          <div class="chevron-next cp"></div>
           <div class="album-card a">
             <div class="album-cover"></div>
             <div class="album-title">Who Made Who</div>
@@ -156,40 +161,30 @@
         </div>
       </div>
       <div id="info-right">
-        <ul class="songs-by-artist">
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-          <li>Rock n’ Roll singer</li>
-          <li>Black Jack</li>
-        </ul>
+        <!-- <h5>SONGS</h5> -->
+        <ol class="songs-by-artist">
+          <li>Highway to Hell</li>
+          <li>Back in Black</li>
+          <li>Thunderstruck</li>
+          <li>You Shook Me All Night Long</li>
+          <li>Whole Lotta Rosie</li>
+          <li>Dirty Deeds Done Dirt Cheap</li>
+          <li>T.N.T.</li>
+          <li>Shoot to Thrill</li>
+          <li>For Those About to Rock (We Salute You)</li>
+          <li>Rock and Roll Ain't Noise Pollution</li>
+          <li>Rock 'n' Roll Train</li>
+          <li>Moneytalks</li>
+          <li>Let There Be Rock</li>
+          <li>The Jack</li>
+          <li>Big Balls</li>
+          <li>Ride On</li>
+          <li>Sin City</li>
+          <li>Jailbreak</li>
+          <li>Rock 'n' Roll Damnation</li>
+          <li>If You Want Blood (You've Got It)</li>
+          <li>Givin the Dog a Bone</li>
+        </ol>
       </div>
     </div>
 

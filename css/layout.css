@@ -12,15 +12,9 @@
   pointer-events: none;
 }
 
-#box .bubble{
-  pointer-events: visibleFill;
-  border: 1px solid white;
-  z-index: 99;
-  background-image: url(../res/images/sprites/bubble2.png);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  opacity: .9;
-  /* background-color: wheat; */
+h3#player-title{
+  color: var(--primary-color-xx);
+  margin: 1vw 0 0 2vw;
+  font-size: 2.5rem;
+  opacity: .3;
 }

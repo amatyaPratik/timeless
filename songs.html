@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/tabs-n-filter.css" />
-    <link rel="stylesheet" href="./css/alphabetical-scroller.css" />
+    
 
     <link rel="stylesheet" href="./css/songs.css" />
 
@@ -20,33 +20,36 @@
     <div id="sidebar">
       <div id="logo"></div>
       <div id="action-btns">
-        <a href="./index.html"><div id="btn-back" class="sidebar-btn"></div></a>
-        <div id="btn-equalizer" class="sidebar-btn"></div>
-        <a href="./file-mode.html"
-          ><div id="btn-file-play" class="sidebar-btn"></div
-        ></a>
-        <div id="btn-modes" class="sidebar-btn"></div>
-        <div id="btn-fx" class="sidebar-btn"></div>
+        <a href="./index.html">
+          <div id="btn-back" class="sidebar-btn"></div>
+        </a>
+        <div class="rotate90">
+          <img src="./res/images/icons/sidebar/folder.svg" width="50px" alt="folder">
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+          <h3> SONGS</h3>
+          &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp;
+          <img src="./res/images/icons/sidebar/audio.svg" width="50px" alt="folder">
+        </div>
       </div>
-      <div id="sleep-btn" class="sidebar-btn"></div>
     </div>
 
     <div id="songs-page">
       <div id="tabsandfilters">
-        <a href="#" class="search-tab active">songs</a>
-        <a href="./artists.html" class="search-tab">artists</a>
-        <a href="./albums.html" class="search-tab">albums</a>
+        <a href="#" class="search-tab active">SONGS</a>
+        <a href="./artists.html" class="search-tab">ARTISTS</a>
+        <a href="./albums.html" class="search-tab">ALBUMS</a>
 
         <input
           type="text"
           name="searchbar"
           id="searchbar"
           placeholder="search for a song"
+          class="pl10 pr50 py10"
         />
 
         <div id="genre-selector">
           <label for="genre">genre :</label>
-          <select name="genre" id="genre-select">
+          <select name="genre" id="genre-select" class="cp py5">
             <option value="all" selected>all</option>
             <option value="blues">blues</option>
             <option value="country">country</option>
@@ -58,14 +61,13 @@
 
         <div id="sort-selector">
           <label for="sort">sort :</label>
-          <select name="sort" id="sort-select">
+          <select name="sort" id="sort-select" class="cp py5">
             <option value="abc" selected>ABC</option>
             <option value="cba">CBA</option>
             <option value="length">length</option>
           </select>
         </div>
       </div>
-      <!-- <hr /> -->
 
       <div id="labels">
         <ul>
@@ -74,476 +76,16 @@
           <li class="" id="album">album</li>
           <li class="" id="year">year</li>
           <li class="" id="genre">genre</li>
-          <li class="" id="label">label</li>
+          <!-- <li class="" id="label">label</li> -->
         </ul>
       </div>
 
-      <table id="songs-table">
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-        <tr class="song-item">
-          <td class="title" width="20%">Can’t stop</td>
-          <td class="artist" width="15%">RHCP</td>
-          <td class="album" width="15%">By the Way</td>
-          <td class="year" width="5%">2002</td>
-          <td class="genre" width="30%">Alt. Rock, funk rock ; rap rock</td>
-          <td class="album" width="15%">Warner Records</td>
-        </tr>
-      </table>
-
-      <div class="alphabetical-scroller">
-        <p class="letter active">#</p>
-        <p class="letter">a</p>
-        <p class="letter">b</p>
-        <p class="letter">c</p>
-        <p class="letter">d</p>
-        <p class="letter">e</p>
-        <p class="letter">f</p>
-        <p class="letter">g</p>
-        <p class="letter">h</p>
-        <p class="letter">i</p>
-        <p class="letter">j</p>
-        <p class="letter">k</p>
-        <p class="letter">l</p>
-        <p class="letter">m</p>
-        <p class="letter">n</p>
-        <p class="letter">o</p>
-        <p class="letter">p</p>
-        <p class="letter">q</p>
-        <p class="letter">r</p>
-        <p class="letter">s</p>
-        <p class="letter">t</p>
-        <p class="letter">u</p>
-        <p class="letter">v</p>
-        <p class="letter">w</p>
-        <p class="letter">x</p>
-        <p class="letter">y</p>
-        <p class="letter">z</p>
+      <div class="section-table">
+        <table id="songs-table">
+        </table>
       </div>
     </div>
     <script src="./js/utils.js"></script>
-    <script src="./js/alphabetical-scroller.js"></script>
+    <script src="./js/songs.js"></script>
   </body>
 </html>

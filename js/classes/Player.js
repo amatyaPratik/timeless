@@ -61,6 +61,18 @@ class Player {
 
     this.playBtn.addEventListener("click", () => {
       this.playpause();
+      if(document.body.classList.contains('carousel')||document.body.classList.contains('classic')){
+        switch (this.isPlaying) {
+          case true:
+            this.playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
+            this.playBtn.style.border = '3px solid var(--primary-color-x)';
+            break;
+          default:
+            this.playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+            this.playBtn.style.border = 'initial'
+            break;
+        }
+      }
     });
 
     this.btnFavorite.addEventListener('click',()=>{
@@ -97,10 +109,71 @@ class Player {
     })
     
     this.btnSwitchScheme.addEventListener("click", (e) => {
-      if (this.chooseScheme.classList.contains("on")) {
-        switch (e.target.id) {
-          case "serial":
-            this.chosenScheme = "serial";
+      const bodyThemes = document.getElementsByTagName('body')[0].classList
+      //console.log('bodyThemes: ',bodyThemes);
+      if(bodyThemes.contains('casette') || bodyThemes.contains('dj')){
+        if (this.chooseScheme.classList.contains("on")) {
+          switch (e.target.id) {
+            case "serial":
+              this.chosenScheme = "serial";
+              this.btnSerial.style.zIndex = 97;
+              show(this.btnSerial);
+              this.btnShuffle.style.zIndex = 96;
+              hide(this.btnShuffle);
+              this.btnRepeat.style.zIndex = 96;
+              hide(this.btnRepeat);
+              break;
+            case "shuffle":
+              this.chosenScheme = "shuffle";
+              this.btnSerial.style.zIndex = 96;
+              hide(this.btnSerial);
+              this.btnShuffle.style.zIndex = 97;
+              show(this.btnShuffle);
+              this.btnRepeat.style.zIndex = 96;
+              hide(this.btnRepeat);
+              break;
+            case "repeat":
+              this.chosenScheme = "repeat";
+              this.btnSerial.style.zIndex = 96;
+              hide(this.btnSerial);
+              this.btnShuffle.style.zIndex = 96;
+              hide(this.btnShuffle);
+              this.btnRepeat.style.zIndex = 97;
+              show(this.btnRepeat);
+              break;
+            default:
+              this.btnSerial.id !== this.chosenScheme && hide(this.btnSerial);
+              this.btnShuffle.id !== this.chosenScheme && hide(this.btnShuffle);
+              this.btnRepeat.id !== this.chosenScheme && hide(this.btnRepeat);
+          }
+        }
+        this.toggleSchemeButtons();
+      }
+      else if(bodyThemes.contains('carousel')||bodyThemes.contains('classic')){
+        switch (this.chosenScheme){
+          case 'serial':
+            this.chosenScheme = 'shuffle'
+            //console.log(this.chosenScheme);
+            this.btnShuffle.style.zIndex = 97;
+            show(this.btnShuffle);
+            this.btnSerial.style.zIndex = 96;
+            hide(this.btnSerial);
+            this.btnRepeat.style.zIndex = 96;
+            hide(this.btnRepeat);
+            break;
+          case 'shuffle':
+            this.chosenScheme = 'repeat'
+            //console.log(this.chosenScheme);
+            this.btnRepeat.style.zIndex = 97;
+            show(this.btnRepeat);
+            this.btnSerial.style.zIndex = 96;
+            hide(this.btnSerial);
+            this.btnShuffle.style.zIndex = 96;
+            hide(this.btnShuffle);
+            break;
+          case 'repeat':
+            this.chosenScheme = 'serial'
+            //console.log(this.chosenScheme);
             this.btnSerial.style.zIndex = 97;
             show(this.btnSerial);
             this.btnShuffle.style.zIndex = 96;
@@ -108,32 +181,9 @@ class Player {
             this.btnRepeat.style.zIndex = 96;
             hide(this.btnRepeat);
             break;
-          case "shuffle":
-            this.chosenScheme = "shuffle";
-            this.btnSerial.style.zIndex = 96;
-            hide(this.btnSerial);
-            this.btnShuffle.style.zIndex = 97;
-            show(this.btnShuffle);
-            this.btnRepeat.style.zIndex = 96;
-            hide(this.btnRepeat);
-            break;
-          case "repeat":
-            this.chosenScheme = "repeat";
-            this.btnSerial.style.zIndex = 96;
-            hide(this.btnSerial);
-            this.btnShuffle.style.zIndex = 96;
-            hide(this.btnShuffle);
-            this.btnRepeat.style.zIndex = 97;
-            show(this.btnRepeat);
-            break;
           default:
-            this.btnSerial.id !== this.chosenScheme && hide(this.btnSerial);
-            this.btnShuffle.id !== this.chosenScheme && hide(this.btnShuffle);
-            this.btnRepeat.id !== this.chosenScheme && hide(this.btnRepeat);
         }
       }
-
-      this.toggleSchemeButtons();
     });
 
     this.btnVolume.addEventListener("mouseenter", () => {
@@ -148,16 +198,15 @@ class Player {
     });
 
     this.volumeHollow.addEventListener("mousedown", (e) => {
-      let totalHeight = e.clientY;
-      let newHeight = Math.floor(
-        getBoundary(this.volumeHollow).height - totalHeight
-      );
+      let totalHeight = getHeightFromBottom(this.volumeHollow, e.clientY);
+      let newHeight = Math.floor(totalHeight);
       this.volumeFilled.style.height = newHeight + "px";
       this.volume = Math.abs(
         newHeight / getBoundary(this.volumeHollow).height
       ).toFixed(2);
       this.previous_volume = this.volume;
-      this.setVolume(this.volume);
+      //console.log(this.volume);
+      this.setVolume(this.volume>1?1:this.volume);
     });
 
     this.system.addEventListener("click", (e) => {
@@ -203,7 +252,7 @@ class Player {
 
         this.previous_volume = this.volume;
 
-        this.setVolume(this.volume);
+        this.setVolume(this.volume>1?1:this.volume)
       }
     });
   }
@@ -212,8 +261,19 @@ class Player {
     return this.audio.volume;
   };
   setVolume = (newVolume) => {
+    if(this.muted) return
     this.audio.volume = newVolume;
+    if(newVolume<=0.02 && !this.muted)
+    {
+      this.mute()
+      return
+    }
+    if(newVolume>0 && this.muted)
+    {
+      this.unmute()
+    }
   };
+  
   getDuration = () => {
     return {
       current: this.audio.currentTime,
@@ -253,10 +313,12 @@ class Player {
   
   play = () =>{
     this.audio.play();
+    this.isPlaying = true
   }
 
   pause = () =>{
     this.audio.pause();
+    this.isPlaying = false
   }
 
   playpause = () => {
@@ -302,13 +364,13 @@ class Player {
 
   playTitle = (title) => {
     let idx = this.songs.findIndex((song) =>
-      song.toLowerCase().includes(title.toLowerCase())
+      song.toLowerCase().includes(title.trim().toLowerCase())
     );
 
     this.songIndex = idx;
     this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
-    this.audio.pause();
-    this.playpause();
+    // this.audio.load()
+    this.play();
     this.updatePlayingSongInfo(title);
   };
 
@@ -356,20 +418,20 @@ class Player {
   }
 
   toggleSchemeButtons = () => {
-    if (!this.chooseScheme.classList.contains("on")) {
-      this.chooseScheme.classList.add("on");
-      this.btnSerial.style.transform = "translateX(50px)";
-      this.btnShuffle.style.transform = "translateY(50px)";
-      this.btnRepeat.style.transform = "translateY(-50px)";
-      show(this.btnSerial);
-      show(this.btnShuffle);
-      show(this.btnRepeat);
-    } else {
-      this.chooseScheme.classList.remove("on");
-      this.btnSerial.style.transform = "translateX(0px)";
-      this.btnShuffle.style.transform = "translateY(0px)";
-      this.btnRepeat.style.transform = "translateX(0px)";
-    }
+      if (!this.chooseScheme.classList.contains("on")) {
+        this.chooseScheme.classList.add("on");
+        this.btnSerial.style.transform = "translateX(50px)";
+        this.btnShuffle.style.transform = "translateY(50px)";
+        this.btnRepeat.style.transform = "translateY(-50px)";
+        show(this.btnSerial);
+        show(this.btnShuffle);
+        show(this.btnRepeat);
+      } else {
+        this.chooseScheme.classList.remove("on");
+        this.btnSerial.style.transform = "translateX(0px)";
+        this.btnShuffle.style.transform = "translateY(0px)";
+        this.btnRepeat.style.transform = "translateX(0px)";
+      }
   };
 
   addToFavorites = () => {
@@ -387,18 +449,28 @@ class Player {
       this.disk.style.animationPlayState =
         (this.isPlaying && "running") || (!this.isPlaying && "paused");
 
-      this.playBtn.innerHTML = this.isPlaying ? '<i class="fa-solid fa-play"></i>':'<i class="fa-solid fa-pause"></i>'
+              switch (this.isPlaying) {
+          case true:
+            this.playBtn.innerHTML = '<i class="fa-solid fa-play"></i>'
+            this.playBtn.style.border = '3px solid var(--primary-color-x)';
+            break;
+          default:
+            this.playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>'
+            this.playBtn.style.border = 'initial'
+            break;
+        }
     });
   };
 
   toggleLock = () => {
     this.locked = !this.locked;
     if (this.locked) {
+      document.body.classList.add('locked')
       this.previousBtn.style.display = "none";
       this.playBtn.style.display = "none";
       this.nextBtn.style.display = "none";
       this.inputProgress.disabled = true;
-      this.lockBtn.style.backgroundImage = "url(../res/images/icons/locked.png)";
+      this.lockBtn.title = 'unlock player'
       this.btnFavorite.style.opacity = .4
       this.btnFavorite.style.pointerEvents = 'none'
       this.inputProgress.style.opacity = .2
@@ -407,6 +479,7 @@ class Player {
       this.btnPlaylistsToggle.style.display = 'none'
       this.btnVolume.style.display = 'none'
     } else {
+      document.body.classList.remove('locked')
       this.previousBtn.style.display = "initial";
       this.playBtn.style.display = "initial";
       this.nextBtn.style.display = "initial";
@@ -416,33 +489,32 @@ class Player {
       this.inputProgress.style.opacity = 1
       this.btnSwitchScheme.style.opacity = 1
       this.btnSwitchScheme.style.pointerEvents = 'initial'
-      this.lockBtn.style.backgroundImage = "url(../res/images/icons/unlocked.png)";
+      this.lockBtn.title = 'lock player'
       this.btnPlaylistsToggle.style.display = 'initial'
       this.btnVolume.style.display = 'initial'
     }
   };
 
   setupEqualizerEventListeners(){
-  
     this.audio.addEventListener('volumechange',e=>{
       const value = this.audio.volume
-      console.log('value: ',value);
+      //console.log('value: ',value);
       this.gainNode.gain.setTargetAtTime(value, this.context.currentTime, 0.01)
     })
     this.bass.addEventListener('input',e=>{
       const value = e.target.value
-      console.log('bass: ',value);
+      //console.log('bass: ',value);
       this.gainNode.gain.setTargetAtTime(value, this.context.currentTime, 0.01)
     })
     mid.addEventListener("input", (e) => {
       const value = parseInt(e.target.value);
-      console.log('mid: ',value);
+      //console.log('mid: ',value);
       this.midEQ.gain.setTargetAtTime(value, this.context.currentTime, 0.01);
     });
   
     treble.addEventListener("input", (e) => {
       const value = parseInt(e.target.value);
-      console.log('treb: ',value);
+      //console.log('treb: ',value);
       this.trebleEQ.gain.setTargetAtTime(value, this.context.currentTime, 0.01);
     });
   }

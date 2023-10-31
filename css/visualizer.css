@@ -1,5 +1,5 @@
 /* canvas */
-#visualizer {
+#visualizer, #visualizer.on {
   height: 100%;
   position: absolute;
   /* width: 95.4%; */
@@ -11,9 +11,17 @@
   /* border: 3px solid forestgreen; */
   /* background-color: rgba(30, 30, 30, 0.4); */
   background: rgba(0, 0, 0, 0.1); /* Semi-transparent background color */
-  backdrop-filter: blur(2px); /* Apply a blur effect */
+  backdrop-filter: blur(1px); /* Apply a blur effect */
   
   z-index: 2;
+}
+
+#visualizer.off{
+  display: none;
+}
+
+body.classic #visualizer{
+  z-index: 0 !important;
 }
 
 #visualizer {

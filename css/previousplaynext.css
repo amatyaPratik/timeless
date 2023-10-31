@@ -9,18 +9,19 @@
 
 .previousplaynext button {
   position: relative;
-  height: 96px;
-  width: 96px;
-  
+  height: 4.8vw;
+  width: 4.8vw;
   background-color: rgba(255, 255, 255, 0.2);
-  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: 200ms all;
 }
 
-.previousplaynext button.play {
+body:not(.casette) .previousplaynext button.play {
   height: 110px;
   width: 110px;
   background-color: rgba(255, 255, 255, 0.1);
   font-size: 60px;
+  border: 3px solid var(--primary-color);
 }
 
 .previousplaynext button.play i,
@@ -31,17 +32,16 @@
   align-items: center;
   padding: 0;
   font-size: 30px;
-  color: whitesmoke;
+  color: var(--primary-color);
   height: 100%;
   width: 100%;
-  /* var(--primary-color); */
+  background-color: transparent;
 }
 
 .previousplaynext button:hover,
 button:hover
 {
-  opacity: 1;box-shadow: 2px 3px 8px bisque;
-  transition: 200ms;
+  opacity: 1;box-shadow: 2px 3px 8px rgba(103, 214, 196, 0.4);
 }
 .previousplaynext button:active {
   box-shadow: initial;

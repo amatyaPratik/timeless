@@ -19,9 +19,9 @@ quickSearch.addEventListener("input", (e) => {
 
 songsList.addEventListener("click", (e) => {
   if (e.target.tagName.toLowerCase() == "li") {
+    //console.log(e.target.textContent);
     player.playTitle(e.target.textContent);
     quickSearch.textContent = "";
     btnTogglePlaylists.click();
-    // console.log(btnTogglePlaylists);
   }
 });

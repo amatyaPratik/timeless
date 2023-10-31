@@ -1,6 +1,6 @@
 #tabsandfilters a {
   text-decoration: none;
-  color: black;
+  color: grey;
 }
 
 #tabsandfilters {
@@ -8,20 +8,22 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  border-bottom: 1px solid grey;
+  /* border-bottom: 1px solid grey; */
+  box-shadow: 0px 2px 4px rgba(19, 83, 76, 0.1);
 }
 
 #tabsandfilters .search-tab.active {
-  border-bottom: 3px solid black;
+  border-bottom: 3px solid var(--primary-color);
+  color: black;
 }
 
 #searchbar {
   background-image: url(../res/images/icons/songs/search-black.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 24px;
   background-position: right;
   background-color: #d2d2d2;
-  padding: 10px 36px;
+  /* padding: 10px 36px; */
   border: 1px solid gray;
   border-radius: 5px;
 }
@@ -35,7 +37,15 @@
   display: inline-block;
 }
 
+label{
+  color: grey;
+}
+
 select {
   font-size: 15px;
   text-align: center;
+  border: 0;
+  background-color: transparent;
+  font-weight: 600;
+  font-family: 'Outfit','Quicksand';
 }

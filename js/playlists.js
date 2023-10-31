@@ -34,7 +34,7 @@ function updateLabel(nowActive) {
 }
 
 document.addEventListener("click", (e) => {
-  if (btnOptionUpdate.contains(e.target)) {
+  if (btnOptionUpdate && btnOptionUpdate.contains(e.target)) {
     // if (collectionsPage.classList.contains("editable"))
     //   collectionsPage.classList.remove("editable");
     // else
@@ -42,7 +42,7 @@ document.addEventListener("click", (e) => {
     collectionsPage.classList.add("editable");
     return;
   }
-  if (backFromOptions.contains(e.target)) {
+  if (backFromOptions && backFromOptions.contains(e.target)) {
     collectionsPage.classList.remove("editable");
   }
   if (labelBar.contains(e.target)) return;
@@ -160,7 +160,7 @@ btnPlaylistOptions.addEventListener("click", (e) => {
 // function addCardHoverEvent() {
 //   const cards = [...document.getElementsByClassName("playlist-card-small")];
 //   cards.forEach((card) => {
-//     console.log('card: ',card);
+//     //console.log('card: ',card);
 //     card.addEventListener("mouseover", (e) => {
 //       if (card.contains(e.target)) {
 //         card.getElementsByClassName("card-options-overlay")[0].style.display = "flex";

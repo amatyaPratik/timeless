@@ -1,0 +1,224 @@
+#player-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 !important;
+    /* border: 3px solid palevioletred; */
+    box-sizing: border-box;
+}
+
+#timeless.classic #player {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #e3e3e3;
+    width: 100%;
+    height: 15vh;
+    /* border-top: 2px solid rgba(0, 0, 0, 0.1); */
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    /* filter: drop-shadow(0px 0px 4px gray); */
+    backdrop-filter: blur(2px);
+  }
+  
+  #timeless.classic #player #switch-schemes {
+    width: 35px;
+    height: 35px;
+    border: 0;
+  }
+  #timeless.classic #player #switch-schemes button{
+    border: 0;
+    background-color: none;
+    filter: invert(1);
+  }
+  
+  #timeless.classic #classic-container {
+    pointer-events: none;
+    height: 70vh;
+    width: 100vw;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    background-color: #d2d2d2;
+    overflow: hidden;
+  }
+  
+  #classic-container .images {
+    height: 100%;
+    width: 950vw;
+    /* width: fit-content; */
+    position: relative;
+    /* float: left; */
+    left: 0vw;
+    /* top: 0; */
+    border: 2px solid rgba(30, 30, 30);
+    /* transition: all 800ms; */
+  
+    /* float: left; */
+  }
+  #classic-container img {
+    height: 100%;
+    width: 50vw;
+    float: left;
+    object-fit: contain;
+    object-position: center;
+    background-color: rgba(30, 30, 30);
+  }
+  
+
+  img.classic-icon{
+    width: 200px;
+    height: 200px;
+    /* display: block; */
+    /* position: relative; */
+    backdrop-filter: blur(10px);
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 7px;
+    border: 3px solid rgba(77, 82, 81, 0.3);
+  }
+  /* #lock{
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url(../res/images/icons/unlocked.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-image: none;
+    border-radius: 50%;
+  } */
+  
+  #song-info {
+    position: fixed;
+    margin-left: 2%;
+    max-width: 30vw;
+    height: 71%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:start;
+  }
+  
+  #title {
+    font-family: "Lato", sans-serif;
+    font-size: 1.6vw;
+    color: #000;
+  }
+  
+  #artist {
+    font-family: "Pacifico", cursive;
+    color: black;
+    font-size: 1.3vw;
+  }
+  
+  .progress-n-favorite {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    /* border: 1px dashed black; */
+    margin-left: 50%;
+    translate: -50% 0;
+    width: 50vw;
+    overflow: visible;
+  }
+  
+  .progress-n-favorite .btn-favorite {
+    height: 1.5vw;
+    width: 1.5vw;
+    background-image: url(../res/images/icons/favorite-btn.png);
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+    position: relative;
+  }
+  
+  .previousplaynext {
+    width: 12vw;
+    height: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 80vw;
+    transition: all 300ms;
+    /* border: 1px dotted gray; */
+  }
+  .previousplaynext button {
+    height: 2.8vw;
+    width: 2.8vw;
+    position: relative;
+    opacity: .8;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.5vw;
+    border-style:groove;
+  }
+  
+  
+  .previousplaynext button:hover{
+    border-color: rgba(0, 0, 0, 0.3);
+  }
+  
+  .previousplaynext button i{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100%;
+  }
+  
+  .previousplaynext button#play {
+    height: 3.4vw;
+    width: 3.4vw;
+    border: 3px solid var(--primary-color-x);
+  }
+  
+  .previousplaynext {
+    height: initial;
+    /* display: table-cell; */
+    /* width: min-content; */
+    /* margin: 0 3%; */
+    /* border: 3px solid palevioletred; */
+  }
+  
+  #btn-volume, body.unmuted #btn-volume {
+   scale: .5;
+    background-image: url('../res/images/icons/volume-2.svg') !important;
+  }
+  
+  body.muted #btn-volume{
+    background-image: url('../res/images/icons/volume-0.svg') !important;
+  }
+  
+  /* #progress-bar:hover input[type="range"]{
+    height: 40px;
+  } */
+
+  @media screen and (max-width: 4000px) {
+    #progress-bar input{
+      width: 40vw;
+    }
+    .previousplaynext {
+      margin-left: 78vw;
+    }
+  }
+  
+  @media screen and (max-width: 1440px) {
+    .progress-n-favorite {
+      width: 45vw;
+      justify-content: space-around;
+    }
+  
+    #progress-bar input{
+      width: 30vw;
+    }
+  
+    .previousplaynext {
+      margin-left: 74vw;
+    }
+  }

@@ -1,0 +1,14 @@
+#box .bubble{
+    pointer-events: visibleFill;
+    border: 1px solid white;
+    z-index: 99;
+    background-image: url(../res/images/sprites/bubble2.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(255,255,255,.1);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+    opacity: .9;
+    /* background-color: wheat; */
+  }

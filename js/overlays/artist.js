@@ -1,8 +1,8 @@
 const artistOverlay = document.getElementById("artist-overlay");
-const artistToggle = document.getElementsByClassName("artist-link")[0];
+const secondArtistCard = document.getElementsByClassName("artist-card")[1];
 
 function toggleArtistOverlay() {
-  console.log("toggling");
+  //console.log("toggling");
   if (artistOverlay.style.display == "none") {
     artistOverlay.style.display = "block";
   } else {
@@ -13,17 +13,17 @@ function toggleArtistOverlay() {
 document.addEventListener("click", (e) => {
   if (!artistOverlay) return;
   if (artistOverlay.contains(e.target)) return;
-  if (artistOverlay.style.display == "none" && !artistToggle.contains(e.target))
+  if (artistOverlay.style.display == "none" && !secondArtistCard.contains(e.target))
     return;
   if (
-    artistOverlay.style.display == "none" &&
-    artistToggle.contains(e.target)
+    !artistOverlay.classList.contains('show') &&
+    secondArtistCard.contains(e.target)
   ) {
-    artistOverlay.style.display = "block";
+    artistOverlay.classList.add('show')
     return;
   } else {
-    artistOverlay.style.display = "none";
+    artistOverlay.classList.remove('show')
   }
 });
 
-// artistToggle.addEventListener("click", toggleArtistOverlay);
+// secondArtistCard.addEventListener("click", toggleArtistOverlay);

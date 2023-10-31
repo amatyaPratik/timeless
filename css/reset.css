@@ -1,14 +1,35 @@
 * {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
+  box-sizing: border-box;
+  /* overflow-x: hidden; */
+  /* -ms-overflow-style: none; */
   /* IE and Edge */
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
   /* Firefox */
 }
 *::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
+  /* background-color: transparent; */
+
+  cursor: pointer;
+  width: 10px;
+}
+*::-webkit-scrollbar-thumb{
+  cursor: pointer !important;
+  /* border-radius: 20px; */
+  box-shadow: 2px 0 5px darkslategray;
+  background: repeating-linear-gradient(
+    -45deg, 
+    gray, 
+    var(--primary-color-xx) 10px, 
+    var(--primary-color-x) 10px, 
+    var(--primary-color) 20px
+  );
+}
+*::-webkit-scrollbar-track-piece{
+background-color: lightgray;
+/* border-radius: 20px; */
 }
 
 body {

@@ -43,22 +43,6 @@ select#sleep-options-overlay option {
   background-position: center;
   border-radius: 50%;
   position: absolute;
-  cursor: pointer;
-}
-
-button.fx-btn#rain {
-  background-image: url(../res/images/icons/cloud-outline.png);
-  top: 5%;
-  left: 60%;
-  transform: translateX(-50%);
-  /* margin: 0 auto; */
-}
-
-button.fx-btn#bubbles {
-  background-image: url(../res/images/icons/bubble-outline.png);
-  top: 50%;
-  right: 0%;
-  transform: translateY(-50%);
 }
 
 button.fx-btn#autotune {

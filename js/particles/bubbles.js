@@ -7,7 +7,7 @@ const playerContainer = document.getElementById('player-container');
 const w1 = playerContainer.offsetWidth + 'px';
 const h1 = playerContainer.offsetHeight + 'px';
 
-console.log(w1, h1);
+// //console.log(w1, h1);
 
 const maxX = 1300;
 const maxY = 600;
@@ -20,7 +20,7 @@ let walls;
 let bubbles = [];
 
 function startBubbles() {
-  console.log(container);
+  // //console.log(container);
   container.init();
   walls = container.getWalls();
   const randInits = []; // array of {rx, ry, rradius} that were initialized with getRandomInt
@@ -56,6 +56,7 @@ function startBubbles() {
 }
 
 function endBubbles() {
+  //console.log('ending');
   bubbles = [];
   container.clear();
 }
@@ -251,7 +252,7 @@ updateGameArea = (timestamp) => {
 
 container.box.addEventListener("mousedown", (e) => {
   if (e.target.classList[0] === "bubble") {
-    console.log(e.target.style.width.split('px')[0]);
+    //console.log(e.target.style.width.split('px')[0]);
     const popSound = new Audio(`../res/sounds/pop2.mp3`)
     popSound.volume = (e.target.style.width.split('px')[0])/100
     popSound.play();

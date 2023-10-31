@@ -3,6 +3,12 @@ const getBoundary = (elementDOM) => {
   return elementDOM.getBoundingClientRect();
 };
 
+/** Function to get the height of an element from its bottom */
+function getHeightFromBottom(element, y) {
+  const rect = element.getBoundingClientRect();
+  return rect.bottom - y;
+}
+
 /**
  * returns time in padded mm:ss format
  */
