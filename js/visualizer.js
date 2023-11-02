@@ -171,7 +171,7 @@ function toggleVisualizer(){
       visualizerMode = 'bars'
       btn.classList.remove('off')
       btn.classList.add('on')
-      btn.style.backgroundImage = "url(../res/images/icons/sidebar/histogram.svg)"
+      btn.style.backgroundImage = "url(./res/images/icons/sidebar/histogram.svg)"
       stopVisualizer()
       drawVisualizer()
     }
@@ -179,14 +179,14 @@ function toggleVisualizer(){
       btn.classList.add('off')
       btn.classList.remove('on')
       visualizerMode = 'none'
-      btn.style.backgroundImage = "url(../res/images/icons/sidebar/visualizer-empty.svg)"
+      btn.style.backgroundImage = "url(./res/images/icons/sidebar/visualizer-empty.svg)"
       stopVisualizer()
     }
   }else{
     btn.classList.remove('off')
     btn.classList.add('on')
     visualizerMode = 'dotted'
-    btn.style.backgroundImage = "url(../res/images/icons/sidebar/dotted-visualizer.svg)"
+    btn.style.backgroundImage = "url(./res/images/icons/sidebar/dotted-visualizer.svg)"
     drawDottedVisualizer();
   }
 }
