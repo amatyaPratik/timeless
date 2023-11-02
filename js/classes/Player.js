@@ -400,7 +400,7 @@ class Player {
       this.audio.src = "songs/" + this.songs[this.songIndex] + ".mp3";
       this.audio.load()
       this.audio.volume = 0.0;
-      this.audio.play();
+      // this.audio.play();
       this.title.textContent = this.songs[this.songIndex].split("-")[1];
       this.artist.textContent = this.songs[this.songIndex].split("-")[0];
       
