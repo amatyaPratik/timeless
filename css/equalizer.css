@@ -48,23 +48,23 @@
 }
 
 .fx-bar .btn-rain{
-  background-image: url(../images/icons/sidebar/rain-0.svg);
+  background-image: url(../res/images/icons/sidebar/rain-0.svg);
   background-size: 70%;
 }
 .fx-bar .btn-bubble{
-  background-image: url(../images/icons/sidebar/bubble.png);
+  background-image: url(../res/images/icons/sidebar/bubble.png);
   background-size: 70%;
 }
 .fx-bar .btn-nature{
-  background-image: url(../images/icons/sidebar/insect.svg);
+  background-image: url(../res/images/icons/sidebar/insect.svg);
   background-size: 100%;
 }
 .fx-bar .btn-talks{
-  background-image: url(../images/icons/sidebar/talk.svg);
+  background-image: url(../res/images/icons/sidebar/talk.svg);
   background-size: 100%;
 }
 .fx-bar .btn-visualizer{
-  background-image: url(../images/icons/sidebar/visualizer-empty.svg);
+  background-image: url(../res/images/icons/sidebar/visualizer-empty.svg);
   background-size: 80%;
 }
 .fx-bar .btn-thunder{
