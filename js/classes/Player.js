@@ -392,8 +392,9 @@ class Player {
     this.progressTime.textContent = getTimeInMmSs(currentTime*1000)
   };
 
-  initAudio = () => {this.setupContext();
+  initAudio = () => {
     if (!this.audio) {
+      this.setupContext();
       this.audio = document.createElement("audio");
       this.audio.id = "audio";
       this.audio.src = "timeless/songs/" + this.songs[this.songIndex] + ".mp3";
