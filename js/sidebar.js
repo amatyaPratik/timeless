@@ -10,14 +10,14 @@ function toggleBubbles(){
   if(isBubbling){
     endBubbles()
     isBubbling = false
-    btnBubble.style.backgroundImage = "url(../res/images/icons/sidebar/bubble.png)"
+    btnBubble.style.backgroundImage = "url(./res/images/icons/sidebar/bubble.png)"
     btnBubble.classList.remove('on')
     btnBubble.classList.add('off')
   }
   else{
     startBubbles()
     isBubbling = true
-    btnBubble.style.backgroundImage = "url(../res/images/icons/sidebar/bubble-outline.png)"
+    btnBubble.style.backgroundImage = "url(./res/images/icons/sidebar/bubble-outline.png)"
     btnBubble.classList.add('on')
     btnBubble.classList.remove('off')
   }
