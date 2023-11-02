@@ -253,17 +253,17 @@ updateGameArea = (timestamp) => {
 container.box.addEventListener("mousedown", (e) => {
   if (e.target.classList[0] === "bubble") {
     //console.log(e.target.style.width.split('px')[0]);
-    const popSound = new Audio(`../res/sounds/pop2.mp3`)
+    const popSound = new Audio(`./res/sounds/pop2.mp3`)
     popSound.volume = (e.target.style.width.split('px')[0])/100
     popSound.play();
-    e.target.style.backgroundImage = "url('../res/images/gif/pop.gif')";
+    e.target.style.backgroundImage = "url('./res/images/gif/pop.gif')";
     setTimeout(() => {
       e.target.style.display = "none";
     }, 100);
     setTimeout(() => {
       e.target.style.display = "initial";
       e.target.style.backgroundImage =
-        "url('../res/images/sprites/bubble2.png')";
+        "url('./res/images/sprites/bubble2.png')";
         e.target.style.zIndex='99'
     }, 30000);
   }
