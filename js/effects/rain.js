@@ -4,7 +4,7 @@ const rainBtn = document.querySelector('#rain.sfx-btn')
 const rainSound = document.createElement('audio')
 rainSound.volume = 0.3
 rainSound.loop = true
-rainSound.src = "../res/sounds/rain.mp3";
+rainSound.src = "./res/sounds/rain.mp3";
 rainSound.load()
 
 isRaining = false
