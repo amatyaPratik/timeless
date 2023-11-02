@@ -2,7 +2,7 @@
     pointer-events: visibleFill;
     border: 1px solid white;
     z-index: 99;
-    background-image: url(./res/images/sprites/bubble2.png);
+    background-image: url(timeless/res/images/sprites/bubble2.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
