@@ -13,13 +13,13 @@ function toggleRain(){
     if(isRaining){
         rainBtn.classList.remove('on')
         rainBtn.classList.add('off')
-        rainBtn.style.backgroundImage = "url(../res/images/icons/sidebar/rain-0.svg)"
+        rainBtn.style.backgroundImage = "url(./res/images/icons/sidebar/rain-0.svg)"
         turnOffRain()
     }
     else{
         rainBtn.classList.add('on')
         rainBtn.classList.remove('off')
-        rainBtn.style.backgroundImage = "url(../res/images/icons/sidebar/rain-1.svg)"
+        rainBtn.style.backgroundImage = "url(./res/images/icons/sidebar/rain-1.svg)"
         turnOnRain()
     }
 }
