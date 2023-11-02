@@ -292,7 +292,7 @@ class Player {
     this.muted = true;
     this.volumeContainer.style.display = "none";
     this.system.classList.replace("unmuted", "muted");
-    this.btnVolume.style.backgroundImage = "url(../res/images/icons/mute.png)";
+    this.btnVolume.style.backgroundImage = "url(./res/images/icons/mute.png)";
     this.audio.volume = 0;
   };
 
@@ -300,7 +300,7 @@ class Player {
     this.muted = false;
     this.volumeContainer.style.display = "block";
     this.system.classList.replace("muted", "unmuted");
-    this.btnVolume.style.backgroundImage = "url(../res/images/icons/volume.png)";
+    this.btnVolume.style.backgroundImage = "url(./res/images/icons/volume.png)";
     this.audio.volume = this.previous_volume;
   };
 
@@ -339,7 +339,7 @@ class Player {
         break;
       case "repeat":
     }
-    this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
+    this.audio.src = "./songs/" + this.songs[this.songIndex] + ".mp3";
     this.audio.load()   
     this.audio.pause();
     this.playpause();
@@ -357,7 +357,7 @@ class Player {
         break;
       case "repeat":
     }
-    this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";   
+    this.audio.src = "./songs/" + this.songs[this.songIndex] + ".mp3";   
     this.playpause();
     this.updatePlayingSongInfo();
   };
@@ -368,7 +368,7 @@ class Player {
     );
 
     this.songIndex = idx;
-    this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
+    this.audio.src = "./songs/" + this.songs[this.songIndex] + ".mp3";
     // this.audio.load()
     this.play();
     this.updatePlayingSongInfo(title);
@@ -396,7 +396,7 @@ class Player {
     if (!this.audio) {
       this.audio = document.createElement("audio");
       this.audio.id = "audio";
-      this.audio.src = "../songs/" + this.songs[this.songIndex] + ".mp3";
+      this.audio.src = "./songs/" + this.songs[this.songIndex] + ".mp3";
       this.audio.load()
       this.audio.volume = 0.0;
       this.audio.play();
@@ -436,7 +436,7 @@ class Player {
 
   addToFavorites = () => {
     this.isFavoriteSong = !this.isFavoriteSong
-    this.btnFavorite.style.backgroundImage= this.isFavoriteSong? "url('../../res/images/sprites/favorite.png')":"url('../../res/images/icons/favorite-btn.png')"
+    this.btnFavorite.style.backgroundImage= this.isFavoriteSong? "url('./res/images/sprites/favorite.png')":"url('./res/images/icons/favorite-btn.png')"
   }
 
   initDjMode = () => {
