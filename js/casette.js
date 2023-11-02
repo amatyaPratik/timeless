@@ -23,7 +23,7 @@ playBtn.addEventListener("click", () => {
 
 controls.addEventListener('mouseup',e=>{
   if(e.target.tagName==='BUTTON'){
-    new Audio('../res/sounds/click6.wav').play()
+    new Audio('./res/sounds/click6.wav').play()
   }
 })
 
