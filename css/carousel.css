@@ -139,7 +139,7 @@ img {
 .progress-n-favorite .btn-favorite {
   height: 1.5vw;
   width: 1.5vw;
-  background-image: url(./res/images/icons/favorite-btn.png);
+  background-image: url(../res/images/icons/favorite-btn.png);
   background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
@@ -197,11 +197,11 @@ img {
 
 #btn-volume, body.unmuted #btn-volume {
  scale: .45;
-  background-image: url('./res/images/icons/volume-2.svg') !important;
+  background-image: url('../res/images/icons/volume-2.svg') !important;
 }
 
 body.muted #btn-volume{
-  background-image: url('./res/images/icons/volume-0.svg') !important;
+  background-image: url('../res/images/icons/volume-0.svg') !important;
 }
 
 #progress-bar input{
