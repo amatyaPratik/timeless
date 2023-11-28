@@ -73,7 +73,7 @@
   border-radius: 50%;
   z-index: -1;
   animation: rotate 4s linear infinite;
-  /* animation-play-state: paused; */
+  animation-play-state: paused;
 }
 
 #casette-player-parent #casette-container #wheel-left.paused,
