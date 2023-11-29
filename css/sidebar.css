@@ -107,7 +107,7 @@ body.locked #action-btns{
   background-image: url("../res/images/icons/sidebar/folder.svg");
 }
 #action-btns #btn-equalizer {
-  background-image: url("../res/images/icons/sidebar/mood-happy.png");
+  background-image: url("../res/images/icons/sidebar/mood-happy.svg");
 }
 #action-btns #btn-file-play {
   background-image: url("../res/images/icons/sidebar/file-play.png");
