@@ -162,7 +162,7 @@ input#quick-search {
 }
 #quick-playlists.active {
   /* border: 6px solid var(--secondary-color); */
-  border: 6px solid #99d856;
+  border: 3px ridge #d8b856;
 }
 #label-bar {
   position: relative;
