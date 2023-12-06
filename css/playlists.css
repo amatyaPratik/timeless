@@ -289,8 +289,8 @@ small#song-count {
 }
 .playlist-card-small:hover {
   /* filter: drop-shadow(0px 0px 4px rgba(33, 33, 33, 0.7)); */
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 9px rgba(33, 33, 33, 0.7);
+  backdrop-filter: blur(50px);
+   /* box-shadow: 0 0 9px rgba(33, 33, 33, 0.7); */
 }
 .playlist-card-small.active {
   border: 4px solid #99d856;
