@@ -101,7 +101,9 @@ body.locked #action-btns{
 }
 
 #action-btns #btn-back {
-  background-image: url("../res/images/icons/sidebar/back.png");
+  margin-top: 2rem;
+  background-image: url("../res/images/icons/round-play.svg");
+  background-size: 40%;
 }
 #action-btns #btn-songs-folder {
   background-image: url("../res/images/icons/sidebar/folder.svg");
