@@ -71,4 +71,5 @@ body {
 }
 .modes-card .mode-image.game-img {
   background-image: url(../res/images/modes/game.png);
+  filter: grayscale(1);
 }
